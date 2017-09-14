@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>[Book Summary] 속깊은 Javascript 8/9 | Soopdop&#39;s note</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Chapter 8. Javascript 코딩과 개발 환경8.1. 자바스크립트 코딩 스타일8.1.1. 변수 이름 표기법Javascript에서는 camel case 표기법이 좋다. getElementById 처럼 DOM을 다루는 API들이 이미 채택하고 있기 때문이다. 여기에 다음과 같이 변수 타입을 나타내는 헝가리안 표기법을 더하는 것도 좋다.camel c">
+<meta name="keywords" content="javascript, Book Summary">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Book Summary] 속깊은 Javascript 8&#x2F;9">
+<meta property="og:url" content="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-8-9/index.html">
+<meta property="og:site_name" content="Soopdop&#39;s note">
+<meta property="og:description" content="Chapter 8. Javascript 코딩과 개발 환경8.1. 자바스크립트 코딩 스타일8.1.1. 변수 이름 표기법Javascript에서는 camel case 표기법이 좋다. getElementById 처럼 DOM을 다루는 API들이 이미 채택하고 있기 때문이다. 여기에 다음과 같이 변수 타입을 나타내는 헝가리안 표기법을 더하는 것도 좋다.camel c">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-8-9/cover.jpg">
+<meta property="og:updated_time" content="2017-08-17T08:57:15.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Book Summary] 속깊은 Javascript 8&#x2F;9">
+<meta name="twitter:description" content="Chapter 8. Javascript 코딩과 개발 환경8.1. 자바스크립트 코딩 스타일8.1.1. 변수 이름 표기법Javascript에서는 camel case 표기법이 좋다. getElementById 처럼 DOM을 다루는 API들이 이미 채택하고 있기 때문이다. 여기에 다음과 같이 변수 타입을 나타내는 헝가리안 표기법을 더하는 것도 좋다.camel c">
+<meta name="twitter:image" content="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-8-9/cover.jpg">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80990910-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Soopdop&#39;s note</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Soopdop</h2>
+            <h3 id="title">Software Engineer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Seoul, Korea</span>
+            <a id="follow" target="_blank" href="https://www.linkedin.com/in/soondong-park">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                86
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                16
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/soopdop" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.linkedin.com/in/soondong-park" target="_blank" title="linkedin" class=tooltip>
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="blog-Book-Deep-Javascript-8-9" class="article article-type-blog" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            [Book Summary] 속깊은 Javascript 8/9
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/29/Book-Deep-Javascript-8-9/">
+            <time datetime="2017-06-29T09:35:15.000Z" itemprop="datePublished">2017-06-29</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/programming/">programming</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <img src="/2017/06/29/Book-Deep-Javascript-8-9/cover.jpg" alt="cover.jpg" title="">
+<h1 id="Chapter-8-Javascript-코딩과-개발-환경"><a href="#Chapter-8-Javascript-코딩과-개발-환경" class="headerlink" title="Chapter 8. Javascript 코딩과 개발 환경"></a>Chapter 8. Javascript 코딩과 개발 환경</h1><h2 id="8-1-자바스크립트-코딩-스타일"><a href="#8-1-자바스크립트-코딩-스타일" class="headerlink" title="8.1. 자바스크립트 코딩 스타일"></a>8.1. 자바스크립트 코딩 스타일</h2><h3 id="8-1-1-변수-이름-표기법"><a href="#8-1-1-변수-이름-표기법" class="headerlink" title="8.1.1. 변수 이름 표기법"></a>8.1.1. 변수 이름 표기법</h3><p>Javascript에서는 camel case 표기법이 좋다. <code>getElementById</code> 처럼 DOM을 다루는 API들이 이미 채택하고 있기 때문이다. 여기에 다음과 같이 변수 타입을 나타내는 헝가리안 표기법을 더하는 것도 좋다.<br><figure class="highlight javascript"><figcaption><span>camel case + hungarian</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> nFirstVariable = <span class="number">0</span>;</div><div class="line"><span class="keyword">var</span> strSecondVariable = <span class="string">""</span>;</div><div class="line"><span class="keyword">var</span> arrSomeLongVariableName = [];</div><div class="line"><span class="keyword">var</span> g_nGlobalVariable;</div></pre></td></tr></table></figure></p>
+<h3 id="8-1-2-공백과-탭"><a href="#8-1-2-공백과-탭" class="headerlink" title="8.1.2. 공백과 탭"></a>8.1.2. 공백과 탭</h3><p>공백을 선호하는 추세로 바뀌고 있으나, 탭은 1바이트라는 장점을 가지고 있다. 이 책에서는 4칸이 가독성이 더 좋다고 하지만, depth가 깊어지면 보기가 어려워 진다는 것이 나의 의견. </p>
+<h3 id="8-1-3-중괄호를-여는-위치"><a href="#8-1-3-중괄호를-여는-위치" class="headerlink" title="8.1.3. 중괄호를 여는 위치"></a>8.1.3. 중괄호를 여는 위치</h3><p>중괄호는 줄바꿈하지 않는 것이 좋고, 줄바꿈을 한다면 오동작을 주의해야 한다. Javascript는 세미콜론 사용에 대한 규칙을 느슨하게 적용하는데, <code>return</code> 다음 줄에 결과를 주더라도 <code>return;</code>으로 만들어 버리기 때문이다. </p>
+<h3 id="8-1-4-strict-mode"><a href="#8-1-4-strict-mode" class="headerlink" title="8.1.4. strict mode"></a>8.1.4. strict mode</h3><p>ECMAScript 5가 권장하는 방법이다. <code>&quot;use strict&quot;</code>파일이나 함수에 추가함으로서 설정 가능하다. strict 모드에서 제한 되는 내용은 다음과 같다.</p>
+<h4 id="“scope-내부에서-var-없이-global-변수를-선언할-수-없다-”"><a href="#“scope-내부에서-var-없이-global-변수를-선언할-수-없다-”" class="headerlink" title="“scope 내부에서 var 없이 global 변수를 선언할 수 없다.”"></a>“scope 내부에서 var 없이 global 변수를 선언할 수 없다.”</h4><p>책에서의 설명은 “var 없이 변수를 사용할때 레퍼런스 오류 발생”이라고 하는데 맞기도 하고 틀리기도 한 말이다. strict mode에서는 글로벌 변수를 선언할때도 var를 붙어야만 하기 때문이다. 하지만 아래와 같은 코드일 경우, global에 이미 선언되어 있으면 에러가 발생하지 않는다. 이 것은 delete가 변수에 동작하지 않는 것과도 연관이 있다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    globalVar = <span class="string">"This will be global"</span>; </div><div class="line">    <span class="comment">// 에러! 단, 이미 해당 글로벌 변수가 선언되어 있으면 에러 발생하지 않음.</span></div><div class="line">&#125;());</div></pre></td></tr></table></figure></p>
+<h4 id="“delete를-변수나-함수에-사용할-수-없다-”"><a href="#“delete를-변수나-함수에-사용할-수-없다-”" class="headerlink" title="“delete를 변수나 함수에 사용할 수 없다.”"></a>“delete를 변수나 함수에 사용할 수 없다.”</h4><p>원래 객체의 속성을 지우는 기능이이라고 생각하면 쉽다. 그러나, <code>delete</code>에는 좀 더 깊은 내용이 숨어 있다. <code>var a = 1;</code> 와 <code>window.a = 1;</code>은 같은 글로벌 변수인데다가 결국 window객체의 속성 값인   <code>a</code>가 셋팅 되는 것이지만, <code>delete</code>의 가능 여부가 다르기 때문에 분명한 차이가 있다. hoisted와도 연관이 있다. <a href="&quot;https://stackoverflow.com/questions/1596782/how-to-unset-a-javascript-variable&quot;">Stack overflow</a>를 보고 나중에 보고 조금 더 정리 예정.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">delete</span> a; <span class="comment">// 에러!</span></div></pre></td></tr></table></figure>  </p>
+<h4 id="“변수에-eval과-arguments를-이름으로-사용할-수-없다-”"><a href="#“변수에-eval과-arguments를-이름으로-사용할-수-없다-”" class="headerlink" title="“변수에 eval과 arguments를 이름으로 사용할 수 없다.”"></a>“변수에 eval과 arguments를 이름으로 사용할 수 없다.”</h4><p>이 것은 “좀 더 명료한 코드를 위해서”인 것으로 보인다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="keyword">var</span> <span class="built_in">arguments</span> = <span class="number">1</span>; <span class="comment">// 에러!</span></div><div class="line"><span class="keyword">var</span> <span class="built_in">eval</span> = <span class="number">1</span>; <span class="comment">// 이것도 에러!</span></div></pre></td></tr></table></figure>    </p>
+<h3 id="“eval-함수-안에서-변수를-선언이-불가하다-”"><a href="#“eval-함수-안에서-변수를-선언이-불가하다-”" class="headerlink" title="“eval()함수 안에서 변수를 선언이 불가하다.(??)”"></a>“eval()함수 안에서 변수를 선언이 불가하다.(??)”</h3><p>이건 책이 명백히 틀렸다고 보여지는 내용이다. 에러 발생하지 않는다. 단지 주변 스코프에 영향의 주는지의 차이가 있음. </p>
+<ul>
+<li><p>일반모드 : 실행 컨텍스트에 영향을 줌. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">eval</span>(<span class="string">"var a=42;a"</span>)); <span class="comment">// 42</span></div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 42</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>strict 모드 : 실행 컨텍스트에 영향을 주지 않음. 새로운 스코프가 생기는 것처럼 보인다 (불명확함.)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">eval</span>(<span class="string">"var a=42;a"</span>)); <span class="comment">// 42</span></div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="“같은-이름의-파라미터-두개-이상-사용할-수-없다-”"><a href="#“같은-이름의-파라미터-두개-이상-사용할-수-없다-”" class="headerlink" title="“같은 이름의 파라미터 두개 이상 사용할 수 없다.”"></a>“같은 이름의 파라미터 두개 이상 사용할 수 없다.”</h3><ul>
+<li><p>일반 모드 : 파라미터가 같으면 마지막 파라미터를 해당 변수명으로 인식한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a,a</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(a); </div><div class="line">&#125;</div><div class="line">foo(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">// 2</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>strict 모드 : 파라미터가 같으면 문법 에러를 발생시킨다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a,a</span>) </span>&#123; <span class="comment">// 에러!</span></div><div class="line">    <span class="built_in">console</span>.log(a); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="“arguments-caller-arguments-callee-에-접근할-수-없다-”"><a href="#“arguments-caller-arguments-callee-에-접근할-수-없다-”" class="headerlink" title="“arguments.caller, arguments.callee 에 접근할 수 없다.”"></a>“arguments.caller, arguments.callee 에 접근할 수 없다.”</h3><p>caller는 사라진 속성인 것 같고, callee를 strict 모드에서 접근하면 에러가 발생한다.</p>
+<ul>
+<li><p>일반 모드 : foo()와 함수 코드 출력.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee); <span class="comment">// foo() &#123;...&#125;; </span></div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure>
+</li>
+<li><p>strict 모드 : callee에 접근하면 에러를 발생 시킨다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee); <span class="comment">// 에러! </span></div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="“with-구문을-사용할-수-없다-”"><a href="#“with-구문을-사용할-수-없다-”" class="headerlink" title="“with 구문을 사용할 수 없다.”"></a>“with 구문을 사용할 수 없다.”</h3><p>앞장에서 본 모호함 때문인지, strict 모드에서는 사용 금지다.</p>
+<h2 id="8-2-자바스크립트-검증-도구-JSLint"><a href="#8-2-자바스크립트-검증-도구-JSLint" class="headerlink" title="8.2. 자바스크립트 검증 도구 - JSLint"></a>8.2. 자바스크립트 검증 도구 - JSLint</h2><p>자바스크립트의 코드 검증 도구이다. 권장하는 방법과 모호한 표현을 잡아내고, 불필요한 공백까지도 경고를 출력한다. 예를 들어서 for in 내부에서 속성를 검사할 때 <code>hasOwnProperty()</code>를 사용하여 걸러 내는 것이 매우 중요하다. 그렇지 않으면, 프로토타입 체인에 있는 속성까지도 사용하게 되어 의도치 않은 결과가 나온다ㅏ. 여러 IDE에 대해서 JSLint 플러그인이 존재한다. 자세한 규칙에 관해서는 <a href="&quot;http://www.jslint.com/help.html&quot;">JSLint</a>를 참고하면 된다.</p>
+<h2 id="8-3-자바스크립트-빌드-환경"><a href="#8-3-자바스크립트-빌드-환경" class="headerlink" title="8.3. 자바스크립트 빌드 환경"></a>8.3. 자바스크립트 빌드 환경</h2><p> 배포와 빌드에 관한 내용이다. Google Closure를 사용할 때의 설정과 실행방법에 대한 설명이다. 압축을 하거나, git에 hook 스크립트를 집어 넣거나, makefile을 만드는 것에 대한 설명이다.</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-8-9/" data-id="cj7jysc66005m10n2w6p38hbx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-8-9/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-8-9/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/06/29/Book-Deep-Javascript-9-9/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    [Book Summary] 속깊은 Javascript 9/9
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/06/29/Book-Deep-Javascript-7-9/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">[Book Summary] 속깊은 Javascript 7/9</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
+                            <p class="item-title"><a href="/2017/09/14/Note-Everyday-English-2017-08-14/" class="title">[Note] Everyday English - 14th September</a></p>
+                            <p class="item-date"><time datetime="2017-09-14T01:18:04.000Z" itemprop="datePublished">2017-09-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
+                            <p class="item-title"><a href="/2017/07/19/Note-Everyday-English-2017-07-18/" class="title">[Note] Everyday English - 18th July</a></p>
+                            <p class="item-date"><time datetime="2017-07-19T00:26:42.000Z" itemprop="datePublished">2017-07-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
+                            <p class="item-title"><a href="/2017/07/14/Note-Everyday-English-2017-07-14/" class="title">[Note] Everyday English - 14th July</a></p>
+                            <p class="item-date"><time datetime="2017-07-14T02:15:21.000Z" itemprop="datePublished">2017-07-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
+                            <p class="item-title"><a href="/2017/07/14/Note-Everyday-English-2017-07-13/" class="title">[Note] Everyday English - 13th July</a></p>
+                            <p class="item-date"><time datetime="2017-07-14T00:26:23.000Z" itemprop="datePublished">2017-07-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
+                            <p class="item-title"><a href="/2017/07/13/Note-Everyday-English-2017-07-12/" class="title">[Note] Everyday English - 12th July</a></p>
+                            <p class="item-date"><time datetime="2017-07-12T23:19:36.000Z" itemprop="datePublished">2017-07-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">75</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">75</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/400/" style="font-size: 18.89px;">400</a> <a href="/tags/500E/" style="font-size: 13.33px;">500E</a> <a href="/tags/500W/" style="font-size: 17.78px;">500W</a> <a href="/tags/600W/" style="font-size: 14.44px;">600W</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Grammar/" style="font-size: 12.22px;">Grammar</a> <a href="/tags/Movie/" style="font-size: 12.22px;">Movie</a> <a href="/tags/Reading/" style="font-size: 11.11px;">Reading</a> <a href="/tags/etc/" style="font-size: 16.67px;">etc</a> <a href="/tags/grammar/" style="font-size: 17.78px;">grammar</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript-Book-Summary/" style="font-size: 15.56px;">javascript, Book Summary</a> <a href="/tags/javascript-jsfiddle/" style="font-size: 10px;">javascript, jsfiddle</a> <a href="/tags/osd/" style="font-size: 14.44px;">osd</a> <a href="/tags/reading/" style="font-size: 16.67px;">reading</a> <a href="/tags/writing/" style="font-size: 14.44px;">writing</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 soopdop<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-8-9/';
+        
+        this.page.identifier = 'Book-Deep-Javascript-8-9';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'soopdop' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
