@@ -147,7 +147,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                246
+                247
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -182,6 +182,177 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-Book-Deep-Javascript-1-9" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/06/26/Book-Deep-Javascript-1-9/">[Book Summary] 속깊은 Javascript 1/9</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/26/Book-Deep-Javascript-1-9/">
+            <time datetime="2017-06-26T05:32:05.000Z" itemprop="datePublished">2017-06-26</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/programming/">programming</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <img src="/2017/06/26/Book-Deep-Javascript-1-9/cover.jpg"> 
+<h1 id="Chapter-1-웹과-자바-스크립트"><a href="#Chapter-1-웹과-자바-스크립트" class="headerlink" title="Chapter 1. 웹과 자바 스크립트"></a>Chapter 1. 웹과 자바 스크립트</h1><p>이제부터 구매하고 읽은 책에 대해서 정리를 해보려 한다. 앞으로도 보는 책은 짧게나마 요약할 예정이다. 내가 읽은 책을 요약하는 이유는 읽기 시작한 책의 “완독”을 위해서 이기도 하고, 독서의 효과를 높기이 위해서 이기도 하다. 책은 다른 사람의 언어로 씌여진 것이기 때문에 읽고 이해 했다 하더라도, 나의 언어로 바꾸어 재정리 하지 않으면 독서의 효과가 매우 떨어진다. 당연히 시작은 어려울 수 있다. 익숙해 져야 한다. 화이팅. </p>
+<h2 id="1-1-자바스크립트의-어제와-오늘"><a href="#1-1-자바스크립트의-어제와-오늘" class="headerlink" title="1.1. 자바스크립트의 어제와 오늘"></a>1.1. 자바스크립트의 어제와 오늘</h2><p><code>alert</code> 창을 띄워 가며 디버깅 하던 시절이 있었다. 문법에러를 잡아 주지 않았기에 디버깅도 어려웠다. 지금은 다양한 디버깅 툴과 IDE 등의 등장으로 개발 환경이 확연히 달라졌다.</p>
+<h3 id="“자바스크립트와-자바와의-관계는-햄과-햄버거의-관계이다-”"><a href="#“자바스크립트와-자바와의-관계는-햄과-햄버거의-관계이다-”" class="headerlink" title="“자바스크립트와 자바와의 관계는 햄과 햄버거의 관계이다.”"></a>“자바스크립트와 자바와의 관계는 햄과 햄버거의 관계이다.”</h3><p>그럴듯한 비유이다. 둘의 이름은 공통된 부분이 있지만, 그닥 관계있는 음식은 아니다. 자바와 자바스크립트는 무관하다고 하다고 말할 수 있을 정도로 전혀 관련이 없다. 역사적으로는 Netscape가 개발한 Livescript를 Sun Microsystems가 협업하면서 전략적으로 이름을 Javascript로 바꾼 것이다. </p>
+<h2 id="1-2-웹-개발-방법론의-변화"><a href="#1-2-웹-개발-방법론의-변화" class="headerlink" title="1.2. 웹 개발 방법론의 변화"></a>1.2. 웹 개발 방법론의 변화</h2><h3 id="2000년-이전의-웹"><a href="#2000년-이전의-웹" class="headerlink" title="2000년 이전의 웹"></a>2000년 이전의 웹</h3><ul>
+<li>HTML 파일로 제공하는 텍스트 정보가 주를 이룬다.</li>
+<li>대부분 정적인 정보를 제공하는 웹페이지가 주를 이루었다.</li>
+<li>포털이나 이메일 처럼 동적인 페이지를 생성하는 서버는 Perl과 CGI(Common Gateway Interface)를 구현하여 동적인 데이터를 제공.</li>
+</ul>
+<h3 id="2000년-이후의-웹"><a href="#2000년-이후의-웹" class="headerlink" title="2000년 이후의 웹"></a>2000년 이후의 웹</h3><ul>
+<li>다양한 웹 언어가 활성화 되기 시작한다. (ASP, JSP, PHP)</li>
+<li>HTML(클라이언트측 코드)과 PHP(서버측 코드)와 섞어서 코딩했다.<ul>
+<li>서버와 클라이언트 코드가 실행되는 시점이 헷갈려 소스를 읽는데 어려움이 있었다.</li>
+<li>본인이 개발한 소스도 다시 보면 어려웠다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="AJAX의-등장"><a href="#AJAX의-등장" class="headerlink" title="AJAX의 등장"></a>AJAX의 등장</h3><ul>
+<li>구글이 2005년에 공개한 구글맵에서 AJAX(Asynchronous Javascript And XML)를 이용함.</li>
+<li>화면의 리플레시 없이도 서버로부터 받은 정보를 표시할 수 있음.</li>
+<li>DHTML도 활발하게 이용되기 시작했다.</li>
+<li>AJAX를 위한 함수 이름은 XMLHttpRequest()로, HTML을 XML규격에 맞추기 위한 표준화 작업도 진행 됐었다.</li>
+<li>AJAX를 통해서 html 페이지의 일부를 받아서 직접 보여줌.</li>
+</ul>
+<h3 id="JSON-규격의-사용"><a href="#JSON-규격의-사용" class="headerlink" title="JSON 규격의 사용"></a>JSON 규격의 사용</h3><ul>
+<li>AJAX를 통해서 웹페이지의 일부가 아닌 JSON 규격의 텍스트를 받는 방식으로 변경됨. </li>
+<li>웹서비스라고 불리는 API들이 등장하기 시작하면서 JSON이 일반화 되시 시작함. (구글 API)</li>
+<li>개발 프레임워크와 라이브러리들이 등장하기 시작함. (JQuery, Prototype)</li>
+<li>HTML 5 표준화작업으로 넘어가기 시작.</li>
+</ul>
+<h3 id="Javascript와-CSS의-역할-변화"><a href="#Javascript와-CSS의-역할-변화" class="headerlink" title="Javascript와 CSS의 역할 변화"></a>Javascript와 CSS의 역할 변화</h3><ul>
+<li>Javascript<ul>
+<li>웹언어의 보조 수단. =&gt; 데이터 처리와 렌더링을 담당.</li>
+</ul>
+</li>
+<li>CSS<ul>
+<li>폰트, 테두리 등을 바꾸기 위해 사용 =&gt; 포지셔닝, 애니메이션, 3D, 마우스 오버 등 다양한 효과가 추가 됨.</li>
+</ul>
+</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-1-9/" data-id="cjlpu2w090059usn20fiydesq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-1-9/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-1-9/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="blog-ENGLISH-The-Article-Book" class="article article-type-blog" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -408,7 +579,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/07/ENGLISH-The-Article-Book/" data-id="cjlofcg4b0064fcn27q5kut27" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/07/ENGLISH-The-Article-Book/" data-id="cjlpu2w1l0063usn2acnuqjo6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -665,7 +836,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/04/17/600W-GRAMMAR-Complements/" data-id="cjlofcg2l004hfcn2np788f8m" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/04/17/600W-GRAMMAR-Complements/" data-id="cjlpu2vyr0049usn2fyjdxjnp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -877,7 +1048,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/04/02/600W-GRAMMAR-Clause-Reduction/" data-id="cjlofcg2i004efcn23hujmb65" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/04/02/600W-GRAMMAR-Clause-Reduction/" data-id="cjlpu2vyw004cusn2d8rexphb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1149,7 +1320,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/03/23/600W-READING-UNIT-4-Cultures-in-Contact/" data-id="cjlofcg2v004sfcn2vftt0grw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/03/23/600W-READING-UNIT-4-Cultures-in-Contact/" data-id="cjlpu2vzc004nusn21ahovle3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1374,7 +1545,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/03/20/600W-WRITING-ANIMAL-VOCABULARY/" data-id="cjlofcg2s004ofcn207ekmd4w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/03/20/600W-WRITING-ANIMAL-VOCABULARY/" data-id="cjlpu2vzs004xusn21vg6hprm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1585,7 +1756,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Agreement-with-Nouns/" data-id="cjlofcg2e004afcn2vblqe5wk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Agreement-with-Nouns/" data-id="cjlpu2w1g005zusn2gfxmrqn3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1808,7 +1979,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Articles/" data-id="cjlofcg280043fcn2e1zo30x3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Articles/" data-id="cjlpu2vyi0045usn2q9p4ggtg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2010,7 +2181,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/03/07/600W-READING-UNIT-2-Parents-and-Children/" data-id="cjlofcg2p004lfcn2vuc9bfc0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/03/07/600W-READING-UNIT-2-Parents-and-Children/" data-id="cjlpu2vz1004gusn2dztwuxbz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2836,7 +3007,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/03/05/600W-WRITING-Prepositions/" data-id="cjlofcg2y004vfcn28fnav9m1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/03/05/600W-WRITING-Prepositions/" data-id="cjlpu2vzg004qusn222f97ip1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2914,137 +3085,6 @@ ga('send', 'pageview');
 
 
 
-    <article id="blog-500E-READING-Vocabulary" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/04/500E-READING-Vocabulary/">[500E][READING] Vocabulary</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/04/500E-READING-Vocabulary/">
-            <time datetime="2017-03-03T22:02:01.000Z" itemprop="datePublished">2017-03-04</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/500E/">500E</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/reading/">reading</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/03/04/500E-READING-Vocabulary/" data-id="cjlofcg0t002jfcn2xvgz16nt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/03/04/500E-READING-Vocabulary/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/03/04/500E-READING-Vocabulary/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/18/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/20/">Next &raquo;</a>
     </nav>
@@ -3058,6 +3098,15 @@ ga('send', 'pageview');
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
+                            <p class="item-title"><a href="/2018/09/06/Note-입트영-2018-09-06/" class="title">[Note] 입트영 2018/09/06</a></p>
+                            <p class="item-date"><time datetime="2018-09-06T00:25:31.000Z" itemprop="datePublished">2018-09-06</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -3095,15 +3144,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
-                            <p class="item-title"><a href="/2018/08/30/Note-입트영-2018-08-30/" class="title">[Note] 입트영 2018/08/30</a></p>
-                            <p class="item-date"><time datetime="2018-08-29T23:06:20.000Z" itemprop="datePublished">2018-08-30</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -3113,7 +3153,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">232</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">233</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -3122,7 +3162,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">46</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">46</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -3131,7 +3171,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">233</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">234</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
         </div>
     </div>
 
