@@ -147,7 +147,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                249
+                250
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -182,6 +182,193 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="blog-Book-Deep-Javascript-4-9" class="article article-type-blog" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/06/29/Book-Deep-Javascript-4-9/">[Book Summary] 속깊은 Javascript 4/9</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/29/Book-Deep-Javascript-4-9/">
+            <time datetime="2017-06-29T05:35:43.000Z" itemprop="datePublished">2017-06-29</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/programming/">programming</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <img src="/2017/06/29/Book-Deep-Javascript-4-9/cover.jpg"> 
+<h1 id="Chapter-4-프로토타입과-객체지향-그리고-상속"><a href="#Chapter-4-프로토타입과-객체지향-그리고-상속" class="headerlink" title="Chapter 4. 프로토타입과 객체지향, 그리고 상속"></a>Chapter 4. 프로토타입과 객체지향, 그리고 상속</h1><h2 id="4-1-프로토타입을-통한-객체지향"><a href="#4-1-프로토타입을-통한-객체지향" class="headerlink" title="4.1. 프로토타입을 통한 객체지향"></a>4.1. 프로토타입을 통한 객체지향</h2><h3 id="4-1-1-프로토타입의-정의"><a href="#4-1-1-프로토타입의-정의" class="headerlink" title="4.1.1. 프로토타입의 정의"></a>4.1.1. 프로토타입의 정의</h3><blockquote>
+<p>프로토타입이란 Javascript가 제공하는 객체 지향을 지원하기 위한 방법이다. Java의 상속과는 다르게 동적으로 부모 객체의 수정이 가능하다.</p>
+</blockquote>
+<h3 id="4-1-2-자바스크립트와-자바의-객체-생성-비교"><a href="#4-1-2-자바스크립트와-자바의-객체-생성-비교" class="headerlink" title="4.1.2. 자바스크립트와 자바의 객체 생성 비교"></a>4.1.2. 자바스크립트와 자바의 객체 생성 비교</h3><figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    String blog;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, String blog)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.blog = blog;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>자바와 비슷하지만 자바스크립트는 function으로 선언한다. 단, ECMAScript 6에서는 class 키워드가 추가되었다.<br><figure class="highlight javascript"><figcaption><span>Javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, blog</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.blog = blog;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-1-3-this의-이해"><a href="#4-1-3-this의-이해" class="headerlink" title="4.1.3. this의 이해"></a>4.1.3. this의 이해</h3><p>자바스크립트에서의 this 가 무엇을 참조하는지는 <strong>“호출 방법”</strong> 에 따라서 변경이 된다. (스코프가 아님)</p>
+<figure class="highlight javascript"><figcaption><span>this in javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, blog</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.blog = blog;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="“일반-함수-내에서의-this는-Window-객체를-참조한다-”"><a href="#“일반-함수-내에서의-this는-Window-객체를-참조한다-”" class="headerlink" title="“일반 함수 내에서의 this는 Window 객체를 참조한다.”"></a>“일반 함수 내에서의 this는 Window 객체를 참조한다.”</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(); <span class="comment">// Window &#123;...&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="“맴버-함수-내에서의-this는-해당-함수를-포함하는-객체를-참조한다-”"><a href="#“맴버-함수-내에서의-this는-해당-함수를-포함하는-객체를-참조한다-”" class="headerlink" title="“맴버 함수 내에서의 this는 해당 함수를 포함하는 객체를 참조한다.”"></a>“맴버 함수 내에서의 this는 해당 함수를 포함하는 객체를 참조한다.”</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    foo : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.foo(); <span class="comment">// Object &#123;...&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="“call-과-apply-는-첫-번째-파라미터로-this를-넘길-수-있다-”"><a href="#“call-과-apply-는-첫-번째-파라미터로-this를-넘길-수-있다-”" class="headerlink" title="“call()과 apply()는 첫 번째 파라미터로 this를 넘길 수 있다.”"></a>“call()과 apply()는 첫 번째 파라미터로 this를 넘길 수 있다.”</h4><p><code>call()</code>과 <code>apply()</code>를 이용하여 함수를 호출하면, 해당 함수 내에서의 <code>this</code>를 바꿀 수 있다. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>, <span class="keyword">this</span>.bar);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    bar : <span class="string">"bar"</span></span><br><span class="line">&#125;;</span><br><span class="line">foo.call(obj); <span class="comment">// bar</span></span><br></pre></td></tr></table></figure>
+<p>위와 같이 <code>obj</code>객체를 파라미터로 넘겨주어 <code>foo</code> 함수의 실행 컨텍스트를 바꿀 수 있다. <code>call</code>의 파라미터가 없거나, 파라미터로 <code>undefined</code>나 <code>null</code> 을 주면 함수 내부에서의 <code>this</code>는 Window 객체를 가르킨다. 일반적으로 함수에서는 내부적으로 <code>call</code>을 파라미터 없이 호출하게 되고, 그 때의 <code>this</code>는 <code>Window</code> 객체를 가르키게 된다고 한다. <code>call</code>과 <code>apply</code>의 차이는 파라미터를 객체로 줄수 있는지의 차이이다.</p>
+<h3 id="4-1-4-new-키워드"><a href="#4-1-4-new-키워드" class="headerlink" title="4.1.4. new 키워드"></a>4.1.4. new 키워드</h3><p><code>new</code> 키워드의 파라미터로 함수를 넘기면, 그 내부 동작이 표준에서 정의한대로 동작하는데 그 표준을 이 책에서 설명한다. 만약 아래의 코드를 <code>new</code>가 아니라 그냥 다음과 같이 호출해 버리면, <code>this</code>가 <code>Window</code>을 참조하기 때문에 글로벌 변수 두개를 생성하는 웃긴 결과가 될것이다.</p>
+<figure class="highlight javascript"><figcaption><span>Javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, blog</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.blog = blog;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person(<span class="string">"my name"</span>,<span class="string">"my blog"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.name); <span class="comment">// my name</span></span><br></pre></td></tr></table></figure>
+<p>하지만, <code>new Person(&quot;my name&quot;,&quot;my blog&quot;)</code> 으로 호출 함으로써 내부적으로 다음의 절차를 따르게 된다. 책의 설명이 이해가 안되서 직접 찾아 봄. <a href="&quot;http://www.ecma-international.org/ecma-262/5.1/#sec-11.2.2&quot;">참고: ecma-internal</a></p>
+<ol>
+<li>new는 몇가지 체크 후, 내부 함수인 [[Construct]]를 호출한다.</li>
+<li>[[Construct]]는 다음의 절차를 따른다.<ol>
+<li>새로운 object인 obj생성한다.</li>
+<li>파라미터인 함수 F의 prototype을 obj에 설정한다.</li>
+<li>F의 내부 함수인 [[Call]]을 호출 하는데, 이때 obj와 파라미터를 넘겨 obj를 초기화 시킨다. (예제에서의 obj.name와 obj.blog가 셋팅되는 과정)</li>
+<li>obj를 리턴한다.</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-1-5-프로토타입에-대한-표준-정의"><a href="#4-1-5-프로토타입에-대한-표준-정의" class="headerlink" title="4.1.5. 프로토타입에 대한 표준 정의"></a>4.1.5. 프로토타입에 대한 표준 정의</h3><blockquote>
+<p>prototype은 다른 객체들과 공유되는 속성을 제공하는 객체이다. </p>
+</blockquote>
+<figure class="highlight javascript"><figcaption><span>prototype</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, blog</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.blog = blog;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 프로토타입과 생성자 함수는 서로 링크되어 있다.</span></span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype); <span class="comment">// Object &#123;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype.constructor); <span class="comment">// function Person() &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>프로토타입의 정의와 특성에 대해서는 <a href="&quot;http://www.nextree.co.kr/p7323/&quot;">이 곳</a> 에 더 잘나와 있다.</p>
+<h3 id="4-1-6-프로토타입의-사용-예"><a href="#4-1-6-프로토타입의-사용-예" class="headerlink" title="4.1.6. 프로토타입의 사용 예"></a>4.1.6. 프로토타입의 사용 예</h3><p>이 장에서는 프로토타입의 실제 동작 방식을 예제로 설명한다.</p>
+<h4 id="“객체-생성-후에도-prototype-수정이-가능하다”"><a href="#“객체-생성-후에도-prototype-수정이-가능하다”" class="headerlink" title="“객체 생성 후에도 prototype 수정이 가능하다”"></a>“객체 생성 후에도 prototype 수정이 가능하다”</h4><p>다른 언어를 다루던 사람은 객체를 생성할 때, 객체를 찍어 낸다고 생각하기 때문에 한번 찍어낸 객체는 그대로 동작하야 한다고 믿을 수 있다. prototype과 같은 공유 객체를 생각하기 어려울 것이다. 그러나 자바스크립트에서는 그 이후 prototype을 얼마든지 수정이 가능하고, 그럼 각 객체의 기능에도 영향을 받을 수 있다. </p>
+<figure class="highlight javascript"><figcaption><span>use of the prototype</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 생성자 함수</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">bar</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.bar = bar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 프로토타입에 함수 추가</span></span><br><span class="line">Foo.prototype.getBar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.bar;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 객체 생성</span></span><br><span class="line"><span class="keyword">var</span> foo1 = <span class="keyword">new</span> Foo(<span class="string">"bar"</span>);</span><br><span class="line"><span class="keyword">var</span> foo2 = <span class="keyword">new</span> Foo(<span class="string">"bar"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(foo1.getBar()); <span class="comment">// bar</span></span><br><span class="line"><span class="built_in">console</span>.log(foo2.getBar()); <span class="comment">// bar</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 프로토타입 함수 변경</span></span><br><span class="line">Foo.prototype.getBar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"new "</span> + <span class="keyword">this</span>.bar;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(foo1.getBar()); <span class="comment">// new bar</span></span><br><span class="line"><span class="built_in">console</span>.log(foo2.getBar()); <span class="comment">// new bar</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 프로토타입에 변수 추가</span></span><br><span class="line">Foo.prototype.abc = <span class="string">"abc"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(foo1.abc); <span class="comment">// abc</span></span><br><span class="line"><span class="built_in">console</span>.log(foo2.abc); <span class="comment">// abc</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-1-7-프로토타입과-생성자"><a href="#4-1-7-프로토타입과-생성자" class="headerlink" title="4.1.7. 프로토타입과 생성자"></a>4.1.7. 프로토타입과 생성자</h3><p>이 책에서 가장 난해한 부분 중 하나이다. 용어가 부터가 통일 되지 않는다. “constructor”, “생성자”, “생성자 함수”, “프로토타입의 constructor 속성”, “객체의 constructor 속성”은 모두 잘 구분되어야 하는데 마구 섞어 있다. 나름대로 이해한 바를 정리해 본다.</p>
+<h4 id="“function-키워드로-contructor-속성이-만들어-진다-”"><a href="#“function-키워드로-contructor-속성이-만들어-진다-”" class="headerlink" title="“function 키워드로 contructor 속성이 만들어 진다.”"></a>“function 키워드로 contructor 속성이 만들어 진다.”</h4><p>위 예제에서 <code>Foo.protoype.constructor</code>는 <code>funtion Foo</code>에 의해서 만들어진다. 책에서 설명하는 MakeConstructor는 아마도 이 과정일 것이다. 두개의 객체가 생성되는데 하나는 <strong>Foo 함수 객체</strong> 이고 다른 하나는 <strong>Foo의 prototype 객체</strong> 이다. 상호 참조를 가지고 있으므로 접근이 가능하다. </p>
+<img src="/2017/06/29/Book-Deep-Javascript-4-9/proto1.png" title="constructor and prototype">
+<h4 id="“new-생성자-함수-구문으로-새로운-객체를-만든다-”"><a href="#“new-생성자-함수-구문으로-새로운-객체를-만든다-”" class="headerlink" title="“new + 생성자 함수 구문으로 새로운 객체를 만든다.”"></a>“new + 생성자 함수 구문으로 새로운 객체를 만든다.”</h4><p><code>new Foo()</code>를 이용하면, 맴버 변수들의 초기화를 위해서 생성자 함수를 한번 실행 하고 새로운 객체를 만든다. 새로운 객체는 <code>Foo의 prototype 객체</code>에 대해서 내부링크(implicit prototype link)를 가지게 된다. 그림에서 보이는 <strong>proto</strong>가 그 것이다. <strong>proto</strong> 속성은 만들어진 객체의 내부 속성인 [[Prototype]]에 대한 getter 함수라고 하며, 표준이 아니다. </p>
+<p>프로토타입 객체는 다른 프로토타입 객체의 링크를 가지며, <code>Object()</code>이 프로토타입 객체 처럼 최상위에 있는 객체의 내부 프로토타입 링크가 null이다. 이 것을 가르켜 “프로토타입 체인”이라고 한다.  </p>
+<img src="/2017/06/29/Book-Deep-Javascript-4-9/proto2.png" title="new object">
+<h3 id="4-1-8-객체-내의-속성-탐색-순서"><a href="#4-1-8-객체-내의-속성-탐색-순서" class="headerlink" title="4.1.8. 객체 내의 속성 탐색 순서"></a>4.1.8. 객체 내의 속성 탐색 순서</h3><p>위에서 처럼 new 로 객체가 된 후 그 객체의 속성 중 하나에 접근하면, 프로토타입 체인을 따라가면서 해당 속성이 있는지 검사를 하게 된다. 이 방법으로 프로토타입 객체는 공유 객체가 되는 것이며, 이미 new로 만들어진 객체라 하더라도 프로토타입 객체에 동적으로 추가한 함수나 변수를 사용할 수 있는 것이다.</p>
+<h3 id="“for-in을-사용하면-프로토타입-객체에-있는-속성까지-모두-순회-한다-”"><a href="#“for-in을-사용하면-프로토타입-객체에-있는-속성까지-모두-순회-한다-”" class="headerlink" title="“for-in을 사용하면 프로토타입 객체에 있는 속성까지 모두 순회 한다.”"></a>“for-in을 사용하면 프로토타입 객체에 있는 속성까지 모두 순회 한다.”</h3><p>위와 같은 이유로 때문에 for 문 내에 <code>hasOwnProperty()</code> 함수를 사용한다. 이 함수는 특정 속성이 객체 자신의 속성인지 아닌지를 검사해 준다. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (prop <span class="keyword">in</span> foo) &#123;</span><br><span class="line">    <span class="comment">// 객체의 </span></span><br><span class="line">    <span class="keyword">if</span>(foo.hasOwnProperty(prop)) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-1-9-프로토타입의-장단점"><a href="#4-1-9-프로토타입의-장단점" class="headerlink" title="4.1.9. 프로토타입의 장단점"></a>4.1.9. 프로토타입의 장단점</h3><p>프로토타입은 결국 여러 객체 들이 공유하는 것이며, 프로토타입을 사용하지 않고도 객체 내부에 모두 구현이 가능하다. 객체가 많을 경우에는 <strong>“메모리 낭비”</strong> 가 생기게 된다. </p>
+<p>하지만, 프로토타입의 사용은 <strong>“탐색 시간의 증가”</strong>를 초래하게 된다. 한두번이야 상관없겠지만, 접근 횟수가 많을 경우에는 많은 시간이 걸릴 수 있다.</p>
+<h2 id="4-2-자바스크립트에서의-상속-활용"><a href="#4-2-자바스크립트에서의-상속-활용" class="headerlink" title="4.2. 자바스크립트에서의 상속 활용"></a>4.2. 자바스크립트에서의 상속 활용</h2><p>자바스크립트의 프로토타입을 활용하여 다른 언어처럼 “상속” 구현하기 위한 방법에는 여러가지가 있다. 기존 방법(?)의 문제점과 새로운 방식이 책에서 소개된다.</p>
+<h3 id="4-2-1-기존-상속-구현-방법"><a href="#4-2-1-기존-상속-구현-방법" class="headerlink" title="4.2.1. 기존 상속 구현 방법"></a>4.2.1. 기존 상속 구현 방법</h3><h4 id="초창기-자바스크립트의-상속-구현-방법"><a href="#초창기-자바스크립트의-상속-구현-방법" class="headerlink" title="초창기 자바스크립트의 상속 구현 방법"></a>초창기 자바스크립트의 상속 구현 방법</h4><p>초창기 자바스크립트의 상속 구현 방법은 부모 함수 객체에 자식 함수 객체에 필요한 속성만 추가 하여 리턴하는 방식이었다. 하지만 instanceof가 제대로 동작하지 않는 문제가 있었다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"parent"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> obj = <span class="keyword">new</span> Parent();</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"Child"</span>;</span><br><span class="line">  <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> child = <span class="keyword">new</span> Child();</span><br><span class="line"><span class="comment">// instanceof가 제대로 동작하지 않는 문제가 있다.</span></span><br><span class="line"><span class="built_in">console</span>.log(child <span class="keyword">instanceof</span> Child); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(child <span class="keyword">instanceof</span> Parent); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="조금-개선된-상속-구현-방법"><a href="#조금-개선된-상속-구현-방법" class="headerlink" title="조금 개선된 상속 구현 방법"></a>조금 개선된 상속 구현 방법</h4><p>다음 코드와 같이 자식 함수의 프로토타입 객체를 Parent()로 생성된 객체로 넣으면 <code>instanceof</code> 가 제대로 동작한다. 그러나 <code>constructor</code>의 링크가 깨지는 문제가 발생한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"parent"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"Child"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이렇게 생성된 Parent 객체를 Child의 prototype 객체로 만드는 방식이었다. </span></span><br><span class="line">Child.prototype = <span class="keyword">new</span> Parent();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 마침내 instanceof 가 잘 동작한다.</span></span><br><span class="line"><span class="keyword">var</span> child = <span class="keyword">new</span> Child();</span><br><span class="line"><span class="built_in">console</span>.log(child <span class="keyword">instanceof</span> Child); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(child <span class="keyword">instanceof</span> Parent); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 하지만 생성자 함수가 Parent()로 바뀌는 문제가 존재한다..</span></span><br><span class="line"><span class="built_in">console</span>.log(child.constructor); <span class="comment">// function Parent()</span></span><br></pre></td></tr></table></figure>
+<p>내부의 링크가 깨진다던지 하는 문제가 발생한다. 또한 <code>new</code> 키워드 자체가 자바스크립트 답지 않다는 주장이 많이 반영되어 <code>Object.create</code> 함수를 만들어 내게 된다.</p>
+<h3 id="4-2-2-instanceof-동작-원리"><a href="#4-2-2-instanceof-동작-원리" class="headerlink" title="4.2.2. instanceof 동작 원리"></a>4.2.2. instanceof 동작 원리</h3><p>이 책에서는 길게 설명하고 있지만, 구글링을 통해 찾은 것은 간단하다. 좌측 객체의 포로토타입이 우측 객체의 프로토타입 체인에 속해 있는지 검색해보는 것이다.</p>
+<h3 id="4-2-3-Object-create-함수"><a href="#4-2-3-Object-create-함수" class="headerlink" title="4.2.3. Object.create 함수"></a>4.2.3. Object.create 함수</h3><p>IE9 이상부터 지원되는 함수이며, 더글라스 크락포드가 주장한 이 함수의 기본 형태는 다음과 같다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    F.prototype = o;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>o</code>를 통해서 생성할 객체의 prototype을 받아서 새로 만든 함수의 prototype으로 설정한다. </p>
+<h3 id="4-2-6-Object-create와-new-키워드의-조합"><a href="#4-2-6-Object-create와-new-키워드의-조합" class="headerlink" title="4.2.6. Object.create와 new 키워드의 조합"></a>4.2.6. Object.create와 new 키워드의 조합</h3><p>둘의 조합으로 드디어 원하는 상속이 가능하게 된다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"parent"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"Child"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Child 함수 객체의 prototype 을 직접 만들어 준다.</span></span><br><span class="line"><span class="comment">// 리턴된 함수는 constructor 속성으로 Child 함수를 가지고,</span></span><br><span class="line"><span class="comment">// prototype 속성으로 Parent 함수의 prototype을 가진다.</span></span><br><span class="line">Child.prototype = <span class="built_in">Object</span>.create(Parent.prototype, &#123;</span><br><span class="line">  <span class="keyword">constructor</span>: &#123;</span><br><span class="line">    value: Child</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 마침내 instanceof 가 잘 동작한다.</span></span><br><span class="line"><span class="keyword">var</span> child = <span class="keyword">new</span> Child();</span><br><span class="line"><span class="built_in">console</span>.log(child <span class="keyword">instanceof</span> Child); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(child <span class="keyword">instanceof</span> Parent); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 생성자 함수도 잘 연결되어 있다.</span></span><br><span class="line"><span class="built_in">console</span>.log(child.constructor); <span class="comment">// function Child()</span></span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-4-9/" data-id="cjlvjejnv005fgwn2w8mp129i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-4-9/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-4-9/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-Book-Deep-Javascript-3-9" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -2241,229 +2428,6 @@ ga('send', 'pageview');
 
 
 
-    <article id="blog-600W-GRAMMAR-Articles" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/13/600W-GRAMMAR-Articles/">[600W][GRAMMAR] Articles</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/13/600W-GRAMMAR-Articles/">
-            <time datetime="2017-03-13T13:42:34.000Z" itemprop="datePublished">2017-03-13</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/600W/">600W</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/Grammar/">Grammar</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="A-The"><a href="#A-The" class="headerlink" title="A, The"></a>A, The</h2><ul>
-<li>Unspecific : Speaker 혹은 Listener가 알지 못할 때, 알 필요가 없을 때.</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>General</th>
-<th>Unspecific</th>
-<th>Specific</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Singular</td>
-<td>a/an, (1)</td>
-<td>a/an, (2)</td>
-<td>the, (3)</td>
-</tr>
-<tr>
-<td>Plural</td>
-<td>x, (4)</td>
-<td>some/x, (5)</td>
-<td>the, (6)</td>
-</tr>
-<tr>
-<td>Uncountable</td>
-<td>x, (7)</td>
-<td>some/x, (8)</td>
-<td>the, (9)</td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>A banana is yellow</li>
-<li>I ate a banana.</li>
-<li>Thank you for the banana.</li>
-<li>Bananas are yellow.</li>
-<li>I ate some(two, a few, several, a lot of) bananas.</li>
-<li>Thank you for the banana.</li>
-<li>Fruit is good for you.</li>
-<li>I ate some(a little, a lot of) fruit.</li>
-<li>Thank you for the fruit.</li>
-</ol>
-<h3 id="The-예외-1-Singular-Generic-countable-noun-의-경우-The가-쓰일-때가-있다"><a href="#The-예외-1-Singular-Generic-countable-noun-의-경우-The가-쓰일-때가-있다" class="headerlink" title="The 예외 : (1: Singular Generic countable noun)의 경우, The가 쓰일 때가 있다."></a>The 예외 : (1: Singular Generic countable noun)의 경우, The가 쓰일 때가 있다.</h3><ol>
-<li>동물의 종 : The blue wale, The elephant</li>
-<li>발명품 : the telephone, the wheel, the refrigerator, the airplane, the computer</li>
-<li>악기 : the piano</li>
-</ol>
-<h2 id="The-Definite-Article"><a href="#The-Definite-Article" class="headerlink" title="The - Definite Article"></a>The - Definite Article</h2><ol>
-<li>대상이 Unique할 때.<ul>
-<li>The sun</li>
-</ul>
-</li>
-<li>Superlatives 앞에.<ul>
-<li>The most significant effect</li>
-</ul>
-</li>
-<li>Ordinals 앞에.<ul>
-<li>The first, The second</li>
-</ul>
-</li>
-<li>noun을 unique나 specifc하게 만들어주는 Modifiers 앞에<ul>
-<li>The main operator</li>
-<li>same, sole, chief, only, single, solitary, main</li>
-</ul>
-</li>
-<li>전체 그룹 중, 특정 파트를 말하는 표현 내에.<ul>
-<li>Each of the experiments</li>
-<li>Half of the population</li>
-</ul>
-</li>
-<li>Modifier를 따라오는 Identifiable noun과 함께.(of가 나오면 95%는 앞쪽 noun에 the가 붙는다.)<ul>
-<li>The effect of an earthquake.</li>
-<li>the cause of the fire.</li>
-</ul>
-</li>
-<li>adjective 앞에, 사람들의 그룹을 표현할 때<ul>
-<li>The poor</li>
-</ul>
-</li>
-<li>기계, 발명품에 대한 a general way로의 사용.<ul>
-<li>The radio</li>
-<li>The train</li>
-</ul>
-</li>
-<li>장소 앞에. Typical하고, Habitual한 Activities를 나타내는 장소.<ul>
-<li>the beach</li>
-<li>the store</li>
-</ul>
-</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Articles/" data-id="cjlvjejke0044gwn2uztr1265" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Articles/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Articles/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/18/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/20/">Next &raquo;</a>
     </nav>
@@ -2477,6 +2441,15 @@ ga('send', 'pageview');
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
+                            <p class="item-title"><a href="/2018/09/11/Note-입트영-2018-09-11/" class="title">[Note] 입트영 2018/09/11</a></p>
+                            <p class="item-date"><time datetime="2018-09-10T23:55:21.000Z" itemprop="datePublished">2018-09-11</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -2514,15 +2487,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
-                            <p class="item-title"><a href="/2018/09/04/Note-입트영-2018-09-04/" class="title">[Note] 입트영 2018/09/04</a></p>
-                            <p class="item-date"><time datetime="2018-09-03T23:59:58.000Z" itemprop="datePublished">2018-09-04</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -2532,7 +2496,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">235</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">236</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -2541,7 +2505,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2550,7 +2514,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">236</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">237</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
         </div>
     </div>
 
