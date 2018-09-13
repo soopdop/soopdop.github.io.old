@@ -147,7 +147,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                250
+                253
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -182,6 +182,589 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="blog-Book-Deep-Javascript-7-9" class="article article-type-blog" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/06/29/Book-Deep-Javascript-7-9/">[Book Summary] 속깊은 Javascript 7/9</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/29/Book-Deep-Javascript-7-9/">
+            <time datetime="2017-06-29T09:35:11.000Z" itemprop="datePublished">2017-06-29</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/programming/">programming</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <img src="/2017/06/29/Book-Deep-Javascript-7-9/cover.jpg">
+<h1 id="Chapter-7-자바스크립트-성능과-사용자-경험-개선"><a href="#Chapter-7-자바스크립트-성능과-사용자-경험-개선" class="headerlink" title="Chapter 7. 자바스크립트 성능과 사용자 경험 개선"></a>Chapter 7. 자바스크립트 성능과 사용자 경험 개선</h1><h2 id="7-1-lt-script-gt-태그위치와-레이지-로드"><a href="#7-1-lt-script-gt-태그위치와-레이지-로드" class="headerlink" title="7.1. &lt;script&gt; 태그위치와 레이지 로드"></a>7.1. <code>&lt;script&gt;</code> 태그위치와 레이지 로드</h2><h3 id="lt-script-gt-태그위치"><a href="#lt-script-gt-태그위치" class="headerlink" title="&lt;script&gt; 태그위치"></a><code>&lt;script&gt;</code> 태그위치</h3><p><code>&lt;script&gt;</code>는 block mode로 작동한다. script가 다 실행 될때까지 화면이 렌더링 되지 않는다. 그 이유는 <code>document.write()</code>로 html을 쓸 수도 있기 때문이라 한다. 따라서 <code>&lt;script&gt;</code> 태그는 html 문서의 가장 아래 쪽에 위치하는 것이 좋다.</p>
+<h3 id="Lazy-Load-For-Script-File"><a href="#Lazy-Load-For-Script-File" class="headerlink" title="Lazy Load For Script File"></a>Lazy Load For Script File</h3><p>위와 같은 blocking현상을 막기 위해서 lazy load를 구현하는 것이다. lazy load의 구현은 구현 방법은 <code>window.attachEvent(&quot;onload&quot;)</code>와 <code>window.addEventListener(&quot;load&quot;)</code>를 이용해서 다음과 같이 구현한다.</p>
+<figure class="highlight javascript"><figcaption><span>Script Lazy Load</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> previousOnload;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.addEventListener) &#123;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">"load"</span>, lazyload);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.attachEvent) &#123;</span><br><span class="line">    <span class="built_in">window</span>.attachEvent(<span class="string">"onload"</span>, lazyload);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.onload) &#123;</span><br><span class="line">    <span class="comment">// addEventListener와 attachEvnet가 없으면 onload로 구현하되,</span></span><br><span class="line">	  <span class="comment">// 이미 등록된 이벤트 핸들러를 백업해두었다가 나중에 같이 호출함.</span></span><br><span class="line">    previousOnload = <span class="built_in">window</span>.onload;</span><br><span class="line">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      previousOnload.call();</span><br><span class="line">      lazyload();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  	<span class="comment">// onload에 등록된 것도 없으면 그냥 할당.</span></span><br><span class="line">    <span class="built_in">window</span>.onload = lazyload; <span class="comment">// this can be overwritten by another JS</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">lazyload</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 새로운 script 태그를 만들고, 속성을 설정</span></span><br><span class="line">    <span class="keyword">var</span> scriptTag = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>),</span><br><span class="line">      headTag = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</span><br><span class="line">    scriptTag.setAttribute(<span class="string">"src"</span>, <span class="string">"./sleep.js"</span>);</span><br><span class="line">    scriptTag.setAttribute(<span class="string">"type"</span>, <span class="string">"text/javascript"</span>);</span><br><span class="line">    scriptTag.setAttribute(<span class="string">"async"</span>, <span class="string">"true"</span>);</span><br><span class="line">    <span class="comment">// way around if there is no head tag</span></span><br><span class="line">    <span class="keyword">if</span> (!headTag) &#123;</span><br><span class="line">      headTag = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>].parentNode;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// DOM에 추가</span></span><br><span class="line">    headTag.appendChild(scriptTag);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>window.onload</code> 를 이용할 수 있지만, 이 방식은 다수의 이벤트 핸들러를 등록하지 못하므로 기존에 등록되어 있던 것을 다 덮어 써버릴 염려가 있다. </p>
+<h3 id="Lazy-Load-For-Image-File"><a href="#Lazy-Load-For-Image-File" class="headerlink" title="Lazy Load For Image File"></a>Lazy Load For Image File</h3><p>우선 다음과 같이 <code>class</code> 명을 주고, <code>src</code>는 <code>data-src</code>로 준다. 중요한 점은 <code>width</code>와 <code>height</code> 속성을 태그에 미리 주어서 자리차지를 하고 있는 것이 미관 좋다. 하지만, 모든 <code>img</code> 태그에 <code>width</code>와 <code>height</code>를 주는 것도 그렇게 좋은 방법은 아닌 것으로 보이므로 상황에 따라 잘 판단해야 할듯.<br><figure class="highlight html"><figcaption><span>lazy load를 위한 img태그</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">width</span>=<span class="string">"640"</span> <span class="attr">height</span>=<span class="string">"480"</span> <span class="attr">class</span>=<span class="string">"lazyload"</span> <span class="attr">data-src</span>=<span class="string">"./large_image.jpg"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">width</span>=<span class="string">"64"</span> <span class="attr">height</span>=<span class="string">"64"</span> <span class="attr">class</span>=<span class="string">"lazyload"</span> <span class="attr">data-src</span>=<span class="string">"./not_important_image.jpg"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>스크립트에서는 각 <code>img</code> 태그의 <code>data-src</code>를 <code>src</code>로 변경해주면 된다. </p>
+<figure class="highlight javascript"><figcaption><span>lazy load를 위한 script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> previousOnload;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.addEventListener) &#123;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">"load"</span>, lazyloadImages);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.attachEvent) &#123;</span><br><span class="line">    <span class="built_in">window</span>.attachEvent(<span class="string">"onload"</span>, lazyloadImages);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.onload) &#123;</span><br><span class="line">    previousOnload = <span class="built_in">window</span>.onload;</span><br><span class="line">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      previousOnload.call();</span><br><span class="line">      lazyloadImages();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">window</span>.onload = lazyloadImages; <span class="comment">// this can be overwritten by another JS</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// lazyload 클래스를 가진 element를 찾아서 data-src를 src로 바꾸어 주면 끝.</span></span><br><span class="line">  <span class="comment">// 단, 이곳에 방어코드와 예외처리는 좀 더 필요할 것 같다.</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">lazyloadImages</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> imgList = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"lazyload"</span>),</span><br><span class="line">      length = imgList.length,</span><br><span class="line">      i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">      imgList[i].src = imgList[i].getAttribute(<span class="string">"data-src"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<h3 id="“Loading”-아이콘-보이기"><a href="#“Loading”-아이콘-보이기" class="headerlink" title="“Loading” 아이콘 보이기"></a>“Loading” 아이콘 보이기</h3><p>돌아가는 모습의 애니메이션을 넣기 위해서는 loading.gif를 준비하고 다음과 같은 css를 모든 <code>img</code>에 적용한다.<br><figure class="highlight css"><figcaption><span>CSS for lazy loading image</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.lazyload</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">"./loading.gif"</span>);</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">64px</span> <span class="number">64px</span>;</span><br><span class="line">  <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">  <span class="attribute">background-position</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>그 후, <code>lzayloadImages()</code>에서는 class를 변경하거나 createElement로 진 <code>img</code>를 만들어서 <code>replaceChild</code> element를 교체 한다.</p>
+<h2 id="7-2-인터넷-환경에서의-HTTP-GET-최적화"><a href="#7-2-인터넷-환경에서의-HTTP-GET-최적화" class="headerlink" title="7.2. 인터넷 환경에서의 HTTP GET 최적화"></a>7.2. 인터넷 환경에서의 HTTP GET 최적화</h2><p>HTTP GET의 횟수를 줄이거나, 다운로드 되는 크기를 줄이는 것이 사용자 경험을 개선하는데 가장 효과적인 방법이라고 한다. </p>
+<h3 id="7-2-1-소스-미니피케이션으로-GET-용량-최소화"><a href="#7-2-1-소스-미니피케이션으로-GET-용량-최소화" class="headerlink" title="7.2.1. 소스 미니피케이션으로 GET 용량 최소화"></a>7.2.1. 소스 미니피케이션으로 GET 용량 최소화</h3><p>minification을 통해서 소스의 다운로드 크기를 크게 줄일 수 있다. 이렇게 해주는 툴은 <a href="&quot;http://yui.github.io/yuicompressor/&quot;">YUI compressor</a>, <a href="&quot;https://developers.google.com/closure/compiler/&quot;">Google Closure complier</a>, <a href="&quot;http://crockford.com/javascript/jsmin&quot;">JSMin</a> 등이 있다</p>
+<h3 id="7-2-2-파일을-압축해서-GET-용량-최소화"><a href="#7-2-2-파일을-압축해서-GET-용량-최소화" class="headerlink" title="7.2.2. 파일을 압축해서 GET 용량 최소화"></a>7.2.2. 파일을 압축해서 GET 용량 최소화</h3><p>더 조사해 봐야 하지만, 서버와 클라이언트는 <a href="&quot;https://developer.mozilla.org/ko/docs/Web/HTTP/Content_negotiation&quot;">Content negotiation</a> 과정을 거쳐서 동일한 URI에 대해서 여러가지 타입의 리소스를 주고 받을 수 있다. </p>
+<img src="/2017/06/29/Book-Deep-Javascript-7-9/HTTPNegoServer.png" title="HTTP Content negotitiation">
+<p>클라이언트는 서버로 요청을 보낼 시 <code>Accept-*</code> 헤더에 원하는 타입을 나열하여 서버로 요청을 보내고, 서버는 <code>Content-*</code>에 컨텐트의 타입을 명시하여 응답하는 방식이다. <code>Accept-Encoding</code>헤더에 gzip 또는 deflate를 넣어서 보내면 서버는 응답에 압축된 데이터를 넣어서 보내준다. </p>
+<p>책에서는 아파치가 압축을 제공하기 위한 설정 방법에 대해서 설명하고 있지만, 딱히 기억해야할 만한 것은 아니다.  </p>
+<h3 id="7-2-3-GET-요청-횟수-최소화-파일-합치기"><a href="#7-2-3-GET-요청-횟수-최소화-파일-합치기" class="headerlink" title="7.2.3. GET 요청 횟수 최소화(파일 합치기)"></a>7.2.3. GET 요청 횟수 최소화(파일 합치기)</h3><p>다운로드 크기를 최소화 하는 방법 외에 요청의 횟수 자체를 줄여 서버의 부담을 덜 수 있다. </p>
+<h3 id="Script-파일-합치기"><a href="#Script-파일-합치기" class="headerlink" title="Script 파일 합치기"></a>Script 파일 합치기</h3><p>다수의 js파일을 로딩할 경우 다수의 <code>&lt;script&gt;</code>를 서버로 요청한다. 이 것을 하나로 줄이기 위해서 서버에 배포하기 전, 추가적인 빌드 과정을 통해서 js파일을 하나로 합치고, 더불어 압축하거나 미니피케이션까지 수행하기도 한다. 이렇게 하는 것에는 장단점이 있다.</p>
+<ol>
+<li>장점<ul>
+<li>요청/응답 횟수의 최소화.</li>
+<li>gzip 등의 압축 처리를 한번에 할 수 있음.</li>
+</ul>
+</li>
+<li>단점<ul>
+<li>추가적인 빌드 과정이 필요함.</li>
+<li>부분 수정이 있을 경우, 캐시 효율이 떨어짐.</li>
+</ul>
+</li>
+</ol>
+<h4 id="주의할-점"><a href="#주의할-점" class="headerlink" title="주의할 점"></a>주의할 점</h4><p>각 js 파일에서 전역 “use strict”를 사용할 경우 문제가 발생할 수 있으니, local strict 모드를 사용하는 것이 좋다.</p>
+<figure class="highlight css"><figcaption><span>CSS for lazy loading image</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="selector-tag">function</span>()&#123;&#125;(</span><br><span class="line">    "<span class="selector-tag">use</span> <span class="selector-tag">strict</span>"</span><br><span class="line">    // 생략</span><br><span class="line">));</span><br></pre></td></tr></table></figure>
+<h3 id="Image-파일-합치기"><a href="#Image-파일-합치기" class="headerlink" title="Image 파일 합치기"></a>Image 파일 합치기</h3><p>Sprite Image를 사용하여 하나의 이미지를 받은 후 잘라서 사용하는 방식이다. 특히 아이콘과 같은 작은 이미지를 많이 사용할 때, 각각을 서버로 요청하는 대신 한번의 요청으로 많은 이미지를 받을 수 있다는 장점이 있다.</p>
+<figure class="highlight html"><figcaption><span>sprite image</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.flag</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">background-image</span>: <span class="selector-tag">url</span>("<span class="selector-tag">flags</span><span class="selector-class">.png</span>");</span></span><br><span class="line"><span class="undefined">    background-size: 20px auto;</span></span><br><span class="line"><span class="undefined">    width: 20px;</span></span><br><span class="line"><span class="undefined">    height: 13px;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.en</span> &#123;</span></span><br><span class="line"><span class="undefined">    background-position: 0px -12px;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.cn</span> &#123;</span></span><br><span class="line"><span class="undefined">    background-position: 0px -23px;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.jp</span> &#123;</span></span><br><span class="line"><span class="undefined">    background-position: 0px -38px;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"flag ko"</span>&gt;</span><span class="tag">&lt;/<span class="name">img</span>&gt;</span>Korean<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"flag en"</span>&gt;</span><span class="tag">&lt;/<span class="name">img</span>&gt;</span>English<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"flag cn"</span>&gt;</span><span class="tag">&lt;/<span class="name">img</span>&gt;</span>Chinese<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"flag jp"</span>&gt;</span><span class="tag">&lt;/<span class="name">img</span>&gt;</span>Japanese<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>위 소스와 같이 <code>img</code>태그에 <code>src</code>를 설정하는 것이 아니라, 스타일에 <code>background-image</code>를 설정하고 각 이미지 마다 <code>background-position</code>을 다르게 설정하여 사용하고 있다.  </p>
+<h3 id="7-2-4-Cache-설정"><a href="#7-2-4-Cache-설정" class="headerlink" title="7.2.4. Cache 설정"></a>7.2.4. Cache 설정</h3><ol>
+<li>Expires 헤더<ul>
+<li>특정 요청의 응답에 Expire time을 지정하면 그 시간이 되기 전까지 브라우저는 cache로부터 데이터를 가져다 쓴다. 하지만 웹페이지 변경 시 업데이트가 되지 않을 수 있는 문제가 있다.</li>
+</ul>
+</li>
+<li>ETag 헤더<ul>
+<li>일종의 해쉬이다. 클라이언트는 특정 요청에 대한 ETag 값을 보내면, 서버도 해당 요청의 최신 ETag와 비교해서 같다면, <code>HTTP 304 Not Modified</code> 응답을 보낸다. 그러면 클라이언트는 cache를 사용한다.   </li>
+</ul>
+</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-7-9/" data-id="cjlztzc3b007l4sn2je7q08hn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-7-9/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-7-9/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="blog-Book-Deep-Javascript-6-9" class="article article-type-blog" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/06/29/Book-Deep-Javascript-6-9/">[Book Summary] 속깊은 Javascript 6/9</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/29/Book-Deep-Javascript-6-9/">
+            <time datetime="2017-06-29T09:35:01.000Z" itemprop="datePublished">2017-06-29</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/programming/">programming</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <img src="/2017/06/29/Book-Deep-Javascript-6-9/cover.jpg"> 
+<h1 id="Chapter-6-브라우저-환경에서의-자바스크립트"><a href="#Chapter-6-브라우저-환경에서의-자바스크립트" class="headerlink" title="Chapter 6. 브라우저 환경에서의 자바스크립트"></a>Chapter 6. 브라우저 환경에서의 자바스크립트</h1><h2 id="6-1-단일-스레드-환경"><a href="#6-1-단일-스레드-환경" class="headerlink" title="6.1. 단일 스레드 환경"></a>6.1. 단일 스레드 환경</h2><p>브라우저 환경의 가장 큰 특징은 Single thread 방식이라는 점이다. 자바스크립트 런타임은 처리해야 하는 요청을 순차적으로 처리하기 위해서 Queue(event queue/task queue, 이 책에서는 스레드 큐라는 용어를 사용하는데 맞는지 모르겠음.)를 사용한다.</p>
+<h3 id="setTimeout-0-의-의미는"><a href="#setTimeout-0-의-의미는" class="headerlink" title="setTimeout(0)의 의미는?"></a>setTimeout(0)의 의미는?</h3><p>setTimeout(0)은  “즉시, 메세지큐에 새로운 메세지를 등록하라”는 뜻이다. 역시 이책은 명확하게 정의하지 않는다. <a href="&quot;&quot;https://stackoverflow.com/questions/33955650/what-is-settimeout-doing-when-set-to-0-milliseconds/33955673&quot;">이곳</a>과 <a href="&quot;http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained/&quot;">이곳</a> 참고하여 setTimeout을 정의하면 다음과 같다.</p>
+<blockquote>
+<p>setTimeout(func,n)은 “n밀리초 후에 func를 큐에 등록하라”는 뜻이다. </p>
+</blockquote>
+<p>이렇게 하면 전담 스레드가 있어야 할 것 같은데.. 정확한 구현은 알 수 없지만 setTimeout 사이에 어떠한 많은 작업들이 들어갈 수 있으므로, 적어도 <strong><em>“메세지를 즉시 큐에 등록하고 n밀리초를 기다리라”</em></strong>는 것은 절대 아니다.</p>
+<p>따라서, setTimeout(0)은 즉시 메세지 큐에 메세지를 등록하지만 큐에 등록된 이전 작업의 시간에 따라서 실행 시점이 결정된다. 위의 정의가 맞다면, <code>setTimeout(func1,1000)</code>, <code>setTimeout(func2,2000)</code>, <code>setTimeout(func3,3000)</code>를 실행 한 뒤 10초 걸리는 작업이 있다면, <code>func1</code>/  <code>func2</code>/<code>func3</code>은 1초 간격이 아니라 몰아서 실행되어야 한다.<br><figure class="highlight javascript"><figcaption><span>setTimeout 실행 시점 테스트</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 우선 setTimeout() 3를 실행한다.</span></span><br><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="string">"func1 실행 시점: "</span> + <span class="built_in">Date</span>.now())&#125;, <span class="number">1000</span>);</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="string">"func2 실행 시점: "</span> + <span class="built_in">Date</span>.now())&#125;, <span class="number">2000</span>);</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="string">"func3 실행 시점: "</span> + <span class="built_in">Date</span>.now())&#125;, <span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 10초 딜레이</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"sleep 시작: "</span> + <span class="built_in">Date</span>.now());</span><br><span class="line"><span class="keyword">var</span> waitUntil = <span class="built_in">Date</span>.now() + <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">Date</span>.now() &lt; waitUntil) &#123;;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"sleep 끝: "</span> + <span class="built_in">Date</span>.now());</span><br></pre></td></tr></table></figure></p>
+<p>결과: “10초 딜레이 후, setTimeout에 등록되었던 함수들은 1초 간격이 아니라, 한꺼번에 실행된다.”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sleep 시작: 1499216887137</span><br><span class="line">sleep 끝: 1499216897137</span><br><span class="line">func1 실행 시점: 1499216897143</span><br><span class="line">func2 실행 시점: 1499216897143</span><br><span class="line">func3 실행 시점: 1499216897144</span><br></pre></td></tr></table></figure></p>
+<h3 id="setInterval-은-어떨까"><a href="#setInterval-은-어떨까" class="headerlink" title="setInterval()은 어떨까?"></a>setInterval()은 어떨까?</h3><p><code>setInterval</code>은 어떻게 정의해야할지 약간 난감하다. 다음 코드가 10초 전의 메세지들을 몰아서 실행하지 않고, 10초간의 sleep 중에는 전혀 메세지가 등록되지 않기 때문이다.</p>
+<figure class="highlight javascript"><figcaption><span>setTimeout 실행 시점 테스트</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">""</span>+(i++)+<span class="string">"번째 실행 시점: "</span> + <span class="built_in">Date</span>.now())</span><br><span class="line">&#125;, <span class="number">2000</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"sleep 시작: "</span> + <span class="built_in">Date</span>.now());</span><br><span class="line"><span class="keyword">var</span> waitUntil = <span class="built_in">Date</span>.now() + <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">Date</span>.now() &lt; waitUntil) &#123;;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"sleep 끝: "</span> + <span class="built_in">Date</span>.now());</span><br></pre></td></tr></table></figure>
+<p><code>setInterval()</code>은 <code>setTimeout()</code>과는 좀 다르게, 이전 <code>func</code>가 실행되지 않고 큐에 쌓여있는 상태면 더이상 큐에 등록하지 않는다. 따라서 다음과 같이 정의할 수 있다.</p>
+<blockquote>
+<p>setInterval(func, n)은 “n밀리초 후에 func를 큐에 등록하라. 그리고 큐에 이전 func가 없을 때 반복하라.”는 뜻이다. </p>
+</blockquote>
+<h3 id="조사-setInterval-과-Recursive-setTimeout-은-어떻게-다를까"><a href="#조사-setInterval-과-Recursive-setTimeout-은-어떻게-다를까" class="headerlink" title="(조사) setInterval()과 Recursive setTimeout()은 어떻게 다를까?"></a>(조사) setInterval()과 Recursive setTimeout()은 어떻게 다를까?</h3><p>둘의 차이를 인지하고 필요한 곳에 사용해야 한다.</p>
+<h4 id="setInterval-의-시간-간격"><a href="#setInterval-의-시간-간격" class="headerlink" title="setInterval()의 시간 간격"></a>setInterval()의 시간 간격</h4><p>시작 시간부터 일정 간격으로 호출하려고 시도한다. 그러나 작업이 길어져서 큐에 이전 작업이 들어있다면 그 시점은 건너 뛰고, 다음 시점에 실행한다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  func(i);</span><br><span class="line">&#125;, <span class="number">100</span>);</span><br></pre></td></tr></table></figure></p>
+<img src="/2017/06/29/Book-Deep-Javascript-6-9/setinterval-interval.png" title="setInterval()의 간격">
+<h4 id="Recurcive-setTimeout-의-시간-간격"><a href="#Recurcive-setTimeout-의-시간-간격" class="headerlink" title="Recurcive setTimeout()의 시간 간격"></a>Recurcive setTimeout()의 시간 간격</h4><p>이 때는 func 안에서 다시 setTimeout()이 호출되는 시점으로부터 에서부터 다시 큐에 넣을 시간을 정한다.  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  func(i);</span><br><span class="line">  setTimeout(run, <span class="number">100</span>);</span><br><span class="line">&#125;, <span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+<img src="/2017/06/29/Book-Deep-Javascript-6-9/settimeout-interval.png" title="Recurcive setTimeout()의 간격">
+<p>( 출처: <a href="https://javascript.info/settimeout-setinterval" target="_blank" rel="noopener">https://javascript.info/settimeout-setinterval</a>, <a href="http://jdm.kr/blog/97" target="_blank" rel="noopener">http://jdm.kr/blog/97</a> )</p>
+<h2 id="6-2-requestAnimationFrame"><a href="#6-2-requestAnimationFrame" class="headerlink" title="6.2. requestAnimationFrame()"></a>6.2. requestAnimationFrame()</h2><p>애니메이션을 그리기 위한 타이밍API이다. <code>setInterval()</code> 과 다른점은 UI를 다시 그려야할 경우가 아니라면 호출되지 않고, 모니터 주파수에 맞게 출력된다고 한다. 이처럼 성능면에서 좀 더 좋다고 한다.</p>
+<iframe scrolling="no" width="100%" height="300" src="//jsfiddle.net/m29tp6xq/embedded/result,js,html/dark" frameborder="0" allowfullscreen></iframe>
+<h2 id="6-3-DOM과-자바스크립트"><a href="#6-3-DOM과-자바스크립트" class="headerlink" title="6.3. DOM과 자바스크립트"></a>6.3. DOM과 자바스크립트</h2><p>DOM은 ‘Document Object Model’의 약자로 HTML/XML 문서를 트리형태로 다루는 API이다. </p>
+<h3 id="6-3-1-DOM-repaint-amp-reflow"><a href="#6-3-1-DOM-repaint-amp-reflow" class="headerlink" title="6.3.1. DOM repaint &amp; reflow"></a>6.3.1. DOM repaint &amp; reflow</h3><p>이 책의 설명은 역시나 명확하지 않다. DOM repaint와 reflow의 차이는 다음과 같다.</p>
+<ul>
+<li>reflow : DOM node의 레이아웃 수치(높이, 위치)가 변경되어 랜더 트리를 재생성하는 과정이다. 전체 또는 부분 트리를 재생성해야 하므로 그 만큼 성능에 큰 영을 미침. </li>
+<li>repaint : color/visibility 등의 스타일이 바뀔 때 다시 그리는 과정. reflow보다는 성능에 영향을 덜 미침.</li>
+</ul>
+<p>이 <a href="&quot;https://www.slideshare.net/myposter_techtalks/how-browsers-work-74804349&quot;">슬라이드</a>를 보면 브라우저가 어떻게 랜더링을 하는지 잘 알수 있다. 요약하자면, 그림에서와 같이 브라우저는 렌더링을 위해서 DOM tree와 CSSOM tree 를 통해서 <strong>Render tree</strong>를 만들고, <strong>layout</strong>을 재구성한 뒤, <strong>painting</strong>을 하게 된다. 여기서의 <strong>layout</strong>이 reflow이다.</p>
+<img src="/2017/06/29/Book-Deep-Javascript-6-9/how_browers_work.png" title="브라우저의 렌더링 과정">
+<p>그리고, 크롬 개발자 도구 &gt; performance &gt; call tree를 보면 layout과 paint에 걸리는 시간을 확인할 수 있다.</p>
+<img src="/2017/06/29/Book-Deep-Javascript-6-9/call_tree.png" title="크롬 개발자 도구에서 본 call tree">
+<h4 id="Reflow를-최소화-하는-몇가지-방법"><a href="#Reflow를-최소화-하는-몇가지-방법" class="headerlink" title="Reflow를 최소화 하는 몇가지 방법"></a>Reflow를 최소화 하는 몇가지 방법</h4><p>몇가지 방법으로 reflow를 최소화 할 수 있다 한다.</p>
+<ol>
+<li><code>position:relative</code> 컨터에너 안에 <code>position:absolute</code> 엘리멘트를 넣어서 reflow 영역 최소화. </li>
+<li>태그명을 선택자로 스타일을 정의하는 것 보다 class나 id를 기반으로 스타일을 적용하는 것이 성능이 좋다.</li>
+<li>여러 개의 element를 추가 할때는 하나하나 추가하지 말고 아니라 <code>DocumentFragment</code>를 이용하는 것이 좋다.<ul>
+<li><code>createDocumentFragment()</code> 을 이용해서 가상의 DOM tree를 구성한 뒤, 최종적으로 <code>appendChild()</code>로 실제 DOM tree에 추가하는 것이다.</li>
+</ul>
+</li>
+<li>엘리멘트를 <code>display:none</code> 상태로 두고 조작한다.</li>
+<li><code>offsetWidth</code>, <code>clientHeight</code> 등에 접근할 경우 reflow가 일어난다. 구글에서 <strong>“layout thrashing”</strong> 을 검색하면 많은 정보가 있다.  </li>
+</ol>
+<h3 id="6-3-3-DOM-탐색-횟수-최소화를-통한-성능-개선"><a href="#6-3-3-DOM-탐색-횟수-최소화를-통한-성능-개선" class="headerlink" title="6.3.3. DOM 탐색 횟수 최소화를 통한 성능 개선"></a>6.3.3. DOM 탐색 횟수 최소화를 통한 성능 개선</h3><p>memoization과 cache 등을 활용해서 getElementById를 최소화 한다. </p>
+<h2 id="6-4-웹-워커"><a href="#6-4-웹-워커" class="headerlink" title="6.4. 웹 워커"></a>6.4. 웹 워커</h2><h3 id="Web-Worker"><a href="#Web-Worker" class="headerlink" title="Web Worker"></a>Web Worker</h3><blockquote>
+<p>Single thread 기반인 브라우저 환경을 개선하고자 도입된 개념이다.</p>
+</blockquote>
+<p>낮은 버전의 브라우저는 지원하지 않는다.</p>
+<h3 id="SharedWorker"><a href="#SharedWorker" class="headerlink" title="SharedWorker"></a>SharedWorker</h3><blockquote>
+<p>다른 윈도우, iframe, web worker 등 다른 컨텍스트에서도 접근이 가능한 워커이다.</p>
+</blockquote>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-6-9/" data-id="cjlztzc3i007r4sn2zwwvkjbb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-6-9/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-6-9/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="blog-Book-Deep-Javascript-5-9" class="article article-type-blog" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/06/29/Book-Deep-Javascript-5-9/">[Book Summary] 속깊은 Javascript 5/9</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/29/Book-Deep-Javascript-5-9/">
+            <time datetime="2017-06-29T09:34:55.000Z" itemprop="datePublished">2017-06-29</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/programming/">programming</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <img src="/2017/06/29/Book-Deep-Javascript-5-9/cover.jpg"> 
+<h1 id="Chapter-5-디자인-패턴-실용"><a href="#Chapter-5-디자인-패턴-실용" class="headerlink" title="Chapter 5. 디자인 패턴 실용"></a>Chapter 5. 디자인 패턴 실용</h1><p>이 책에서는 자주 볼 수있는 유용한 패턴을 몇가지 소개하고 있다.</p>
+<h2 id="5-2-모듈-패턴"><a href="#5-2-모듈-패턴" class="headerlink" title="5.2. 모듈 패턴"></a>5.2. 모듈 패턴</h2><blockquote>
+<p>소스를 모듈 단위로 관리하기 위해서 쓰이는 패턴이다. 대표적인 예로 jQuery의 <code>$</code>를 들 수 있다.</p>
+</blockquote>
+<figure class="highlight javascript"><figcaption><span>기본 틀</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">window</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> myLibrary = &#123;</span><br><span class="line">        method1 : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">        method2 : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">window</span>.myLibrary = myLibrary <span class="comment">// 글로벌 변수로 등록.</span></span><br><span class="line">&#125;(<span class="built_in">window</span>));</span><br></pre></td></tr></table></figure>
+<p>위와 같이 <code>window</code> 에 등록하는 방법, 아래와 같이 리턴을 받아서 할당하는 방법이 있다.</p>
+<figure class="highlight javascript"><figcaption><span>리턴 받아서 글로벌 변수에 할당하기</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myLibrary = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        method1 : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">        method2 : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<h2 id="5-2-이벤트-델리게이션-패턴"><a href="#5-2-이벤트-델리게이션-패턴" class="headerlink" title="5.2. 이벤트 델리게이션 패턴"></a>5.2. 이벤트 델리게이션 패턴</h2><p>이 책에서는 정의를 제대로 내리지 않고 유용한 상황을 먼저 설명하고 있다. 아래는 내가 정의한 이벤트 델리게이션이다.</p>
+<blockquote>
+<p>“이벤트 델리게이션 패턴이란 다수의 element에 각각에 event handler를 할당하는 것이 아니라, 그 것을 감싸는 부모 element에 하나의 event handler만 할당하여 처리하는 방식이다. 이 때, 조건문을 통해서 각 element의 이벤트를 처리한다.” </p>
+</blockquote>
+<h3 id="조사-이벤트-버블링과-캡쳐링"><a href="#조사-이벤트-버블링과-캡쳐링" class="headerlink" title="(조사) 이벤트 버블링과 캡쳐링"></a>(조사) 이벤트 버블링과 캡쳐링</h3><p>이벤트 버블링과 캡쳐링은 이벤트가 전파되는 방향을 개발자가 설정하는 것이 아니다. 이미 브라우저는 특정 순서로 이벤트를 전파하고 있다. 이 때, 개발자가 부모와 자식 element에 각각 이벤트 핸들러를 등록해 두었을 경우, 브라우저가 전파하는 순서대로 그 이벤트 핸들러가 호출된다. 같은 element에 <code>addEventListener(event, func1, true)</code>, <code>addEventListener(event, func2, false)</code>로 capturing과 bubbling되는 이벤트를 처리할 수 있는 것은 w3c의 표준에 의해서 브라우저가 이미 두개의 흐름을 만들어 두었기 때문이다. 따라서 위와 같이 하나의 element에 capturing과 bubbling 이벤트 핸들러를 등록해 놓을 수 있고, 그렇이 하면 capturing으로 설정한 이벤트 핸들러인 func1이 먼저 호출된다. 그 이유는 다음에서 설명된다. </p>
+<h4 id="조사-왜-버블링인가"><a href="#조사-왜-버블링인가" class="headerlink" title="(조사) 왜 버블링인가?"></a>(조사) 왜 버블링인가?</h4><p>책에서는 자식 element로부터 부모 element로 이벤트가 전파되는 것을 버블링이라고 설명한다. 이 설명은 그냥 외우라는 것 그 이상 그 이하도 아니다. 한참을 찾은 끝에 <a href="https://www.kirupa.com/html5/event_capturing_bubbling_javascript.htm" target="_blank" rel="noopener">이 곳</a>에서 버블이라고 부르는 이유를 깨달을 수 있었다. 가장 헷갈렸던 부분은 bubble은 위로 올라가는데, 레이어의 순서를 기준으로 볼때 자식은 위쪽에 있기에 반대라고 생각했다. 하지만, 그 것 보다는 Tree를 생각해야 한다. HTML과 BODY를 최상위에 놓고 아래로 자식 element들을 트리 형태로 나열 한 그림을 놓고 볼때, 이벤트 버블링이 무엇인지 직관적으로 이해할 수 있다. 그 트리에서 가장 자식이 되는 element부터 최상위 부모까지 전달되며 버블처럼 올라가는 모습이 이벤트 버블링이다.   </p>
+<h4 id="조사-왜-캡쳐링인가"><a href="#조사-왜-캡쳐링인가" class="headerlink" title="(조사) 왜 캡쳐링인가?"></a>(조사) 왜 캡쳐링인가?</h4><p>열심히 검색해 봤으나 딱히 훌륭한 이유를 찾지는 못했다. 다만, 이벤트가 target으로부터 시작되는 버블링과는 달리, 어딘가로부터 시작된 이벤트가 여러 element를 거쳐 최종적으로 이벤트가 target으로 오게 되는 것으로 이해해 볼 수 있다. 즉 이벤트가 발생한 target element로부터 생겨난 버블이 뽀글뽀글 올라가는 것과는 정반대로, 최종적으로 target element로 가는 event를 그 조상(window,html,body)들이 가로채(capturing) 수 있다고 이해하면 될 것같다.  </p>
+<h4 id="조사-이벤트-캡처링과-버블링은-어떻게-동작하는가"><a href="#조사-이벤트-캡처링과-버블링은-어떻게-동작하는가" class="headerlink" title="(조사) 이벤트 캡처링과 버블링은 어떻게 동작하는가?"></a>(조사) 이벤트 캡처링과 버블링은 어떻게 동작하는가?</h4><p>넷스케이프와 마이크로소프트가 각각 capturing과 bubbling방식 만을 지원했다. 하지만 W3C 표준에서는 두가지를 다 지원하도록 만들었다. 첫번째 단계에서는 capturing방식으로 이벤트를 전파하고, target에 도착한 뒤, bubbling방식으로 다시 이벤트를 전파한다. </p>
+<img src="/2017/06/29/Book-Deep-Javascript-5-9/eventflow.png" title="Event flow">
+<p>아래 소스와 같이 capturing과 bubbling 둘 다를 처리하도록 만들고 테스트 해 보면, 전체 순서를 파악할 수 있다.    </p>
+<figure class="highlight html"><figcaption><span>이벤트 캡처링과 버블링</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  body * &#123;</span></span><br><span class="line"><span class="undefined">    margin: 10px;</span></span><br><span class="line"><span class="undefined">    border: 1px solid blue;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span>FORM</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>DIV</span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>P<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">for</span>(<span class="keyword">let</span> elem <span class="keyword">of</span> <span class="built_in">document</span>.querySelectorAll(<span class="string">'*'</span>)) &#123;</span></span><br><span class="line"><span class="javascript">    elem.addEventListener(<span class="string">"click"</span>, e =&gt; alert(<span class="string">`Capturing: <span class="subst">$&#123;elem.tagName&#125;</span>`</span>), <span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">    elem.addEventListener(<span class="string">"click"</span>, e =&gt; alert(<span class="string">`Bubbling: <span class="subst">$&#123;elem.tagName&#125;</span>`</span>));</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="이벤트-델리게이션-예제"><a href="#이벤트-델리게이션-예제" class="headerlink" title="이벤트 델리게이션 예제"></a>이벤트 델리게이션 예제</h4><iframe scrolling="no" width="100%" height="300" src="//jsfiddle.net/sa0e8L8q/embedded/js,html,result/dark" frameborder="0" allowfullscreen></iframe>
+<h4 id="그-밖에-이벤트-처리를-위해서-알아야-할-함수"><a href="#그-밖에-이벤트-처리를-위해서-알아야-할-함수" class="headerlink" title="그 밖에 이벤트 처리를 위해서 알아야 할 함수"></a>그 밖에 이벤트 처리를 위해서 알아야 할 함수</h4><h5 id="e-stopPropagation"><a href="#e-stopPropagation" class="headerlink" title="e.stopPropagation()"></a>e.stopPropagation()</h5><p>위 예제에서 stopPropagation 함수는 그다지 쓸모가 없다. 다음과 같은 경우에 사용한다. 부모 element인 <code>controlPanel</code>에 클릭이나 드래그를 할 수 있도록 만든다고 가정한다. 이 때, <code>controlPanel</code>에 이벤트 핸들러를 할당한다면, 그 자식인 play 버튼을 눌러도 이벤트 버블링에 의해서 부모 element인 <code>controlPanel</code>의 핸들러가 호출될 것이다. 이러한 상황을 막기 위해서 <code>stopPropagation()</code>을  사용한다.</p>
+<h5 id="e-stopImmediatePropagation"><a href="#e-stopImmediatePropagation" class="headerlink" title="e.stopImmediatePropagation()"></a>e.stopImmediatePropagation()</h5><p>만약 하나의 target element에 두개 이상의 이벤트 핸들러가 할당되어 있을 경우, 할당한 순서대로 호출된다. 그런데 <code>stopPropagation()</code>으로는 하위나 상위 element로의 이벤트 전달은 막을 수 있어도, 같은 엘리멘트에 등록되어있는 이벤트 핸들러의 호출은 막지 못한다. 이 때, 사용하는 것이  <code>stopImmediatePropagation()</code>이다.</p>
+<iframe scrolling="no" width="100%" height="300" src="//jsfiddle.net/8jg05urm/embedded/js,html,result/dark" frameborder="0" allowfullscreen></iframe>
+<h5 id="e-preventDefault"><a href="#e-preventDefault" class="headerlink" title="e.preventDefault()"></a>e.preventDefault()</h5><p>기본적으로 처리하는 이벤트를 막는다. 예를 들면, <code>&lt;a&gt;</code>의 경우 클릭하면 특정 url로 이동하게 되어있다. <code>&lt;a&gt;</code>가 다른 동작을 하도록 만들려면  <code>preventDefault()</code> 를 사용해야 한다.</p>
+<h2 id="5-3-프락시-패턴"><a href="#5-3-프락시-패턴" class="headerlink" title="5.3. 프락시 패턴"></a>5.3. 프락시 패턴</h2><p>이 책은 직접적인 정의를 내리지 않고, <strong>“X란 일반적으로 이런 것은 이런 곳에 쓰이는데, 이러한 것을 X라 한다.”</strong>는 패턴을 사용한다–; 자꾸 인터넷을 찾아봐야 하게 만드는 책이라는 생각이 든다. Javascript에서는 Proxy를 객체로 구현하여 사용하며, 다음의 Proxy 객체에 대한 나의 정의이다. </p>
+<blockquote>
+<p>Javascript에서의 Proxy 객체는 특정 객체들의 인터페이스로써 이용되는 객체이다.</p>
+</blockquote>
+<p>약간의 데코레이터 패턴과 그 모양새과 목적면에서 섞여 있는 듯하다. 다음과 같은 목적으로 사용할 수 있다.</p>
+<ol>
+<li>델리게이션 패턴 조합에 사용 </li>
+<li>캐시 기능 구현에 사용</li>
+<li>http 요청의 제어에 사용</li>
+<li>래퍼 기능 구현에 사용</li>
+</ol>
+<h3 id="“델리게이션-패턴-조합에-사용”"><a href="#“델리게이션-패턴-조합에-사용”" class="headerlink" title="“델리게이션 패턴 조합에 사용”"></a>“델리게이션 패턴 조합에 사용”</h3><p>델리게이션 패턴을 구현할 때는 안쪽에 <code>if</code> 문을 사용해서 event와 target에 따른 분기를 해주는 것이 일반적인데, proxy 객체를 구현해서 좀 더 깔끔하게 만들 수 있다. 그리고 아래의 예제와 같이 구현하는 이유는 더 명확한 모듈화 가 가능하다는 이유에 인 것 같다. <code>eventHandler</code>는 이벤트를 처리해주는 역할만 하고, <code>proxy</code>는 중계자 역할, <code>controllerObj</code> 는 실제로 동작하는 루틴을 가진 객체이다. </p>
+<iframe scrolling="no" width="100%" height="300" src="//jsfiddle.net/jy6g3btz/embedded/js,html,result/dark" frameborder="0" allowfullscreen></iframe>
+<h3 id="“캐시-기능-구현에-사용”"><a href="#“캐시-기능-구현에-사용”" class="headerlink" title="“캐시 기능 구현에 사용”"></a>“캐시 기능 구현에 사용”</h3><p>성능에 영향을 미치는 작업을 수행하는 객체에 대한 proxy객체를 만들어 캐시 기능을 구현할 때 쓰인다. 다음은 직접 작성한 예제. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> phoneBook = &#123;</span><br><span class="line">  searchUserByName(user) &#123;</span><br><span class="line">    <span class="comment">// 성능에 영향을 미치는 작업</span></span><br><span class="line">    <span class="keyword">return</span> userInfo;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> proxyPhoneBookForCache = &#123;</span><br><span class="line">  cache :  &#123;&#125;,</span><br><span class="line">  searchUserByName : <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (cache.hasOwnProperty(value)) &#123;</span><br><span class="line">      <span class="keyword">return</span> cache[value];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      cache[value] = phoneBook.searchUserByName(value);</span><br><span class="line">      <span class="keyword">return</span> cache[value];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="http-요청의-제어에-사용"><a href="#http-요청의-제어에-사용" class="headerlink" title="http 요청의 제어에 사용"></a>http 요청의 제어에 사용</h3><p>proxy를 이용하여 http요청을 한꺼번에 모아서 보내거나, 한번의 요청을 여러번의 요청으로 나누어 보내는 것이</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="5-4-데코레이터-패턴"><a href="#5-4-데코레이터-패턴" class="headerlink" title="5.4. 데코레이터 패턴"></a>5.4. 데코레이터 패턴</h2><blockquote>
+<p>데코레이터란 특정 객체에 추가적인 기능을 동적으로 추가하는 패턴이다. </p>
+</blockquote>
+<h3 id="form-validation을-위한-데코레이터"><a href="#form-validation을-위한-데코레이터" class="headerlink" title="form validation을 위한 데코레이터"></a>form validation을 위한 데코레이터</h3><p>아래의 예제가 decorator pattern인지는 잘 모르겠다. 오히려 인터넷에서 찾은 <a href="http://robdodson.me/javascript-design-patterns-decorator/" target="_blank" rel="noopener">js pattern decorator</a>가 조금 더 명확한 것으로 보이나 확실하지는 않. 위 블로그에서는 기본 validator 객체에 <code>decorate()</code>를 통해서 필요한 기능을 사용하겠다고 동적으로 선언했다. 그런데 이 예제에서는 <code>decorate()</code>가 미리 정해진 규칙을 추가하는 용도로 쓰이기 때문에 좀 이상하다. 그래도 validator를 모듈화 하는데는 유용할 것으로 보인다.    </p>
+<iframe scrolling="no" width="100%" height="300" src="//jsfiddle.net/nkwegfxy/embedded/js,html,result/dark" frameborder="0" allowfullscreen></iframe>
+<h3 id="객체-기반-데코레이터"><a href="#객체-기반-데코레이터" class="headerlink" title="객체 기반 데코레이터"></a>객체 기반 데코레이터</h3><p>자바를 기반으로 한 데코레이터 패턴은 다음 링크에 잘 나와있다(<a href="http://jusungpark.tistory.com/9" target="_blank" rel="noopener">http://jusungpark.tistory.com/9</a>) 아래의 예제에서도 <code>Computer</code> 객체를 <code>decorate()</code>에 통과 시켜서 <strong>*꾸며진 Computer</strong>를 만들어 낸다. <code>Decorator</code> 객체는 각종 부품에 대한 정보를 관리하는 객체이며, 각 <code>Computer</code>객체는 <code>Decorator</code> 객체로 부터 부품 정보를 이용한다. 이 패턴의 좋은 점은 특정 객체에서 부품 리스트를 관리한다는 것이고, 부품의 가격이 변한다 해도 그 것에 대한 레퍼런스를 가진 <code>Computer</code> 객체는 항상 최신 정보를 가질 수 있다는 것이다. 하지만, 그렇게 하려면, 굳이 들어있는 totlal price를 저장하는 부분을 없애야 할 것으로 보인. </p>
+<iframe scrolling="no" width="100%" height="300" src="//jsfiddle.net/ujvaa6q7/embedded/js,result/dark" frameborder="0" allowfullscreen></iframe>
+<h3 id="함수-기반-데코레이터"><a href="#함수-기반-데코레이터" class="headerlink" title="함수 기반 데코레이터"></a>함수 기반 데코레이터</h3><p>객체가 가진 각 함수들을 꾸민다. before, after에 기능을 넣어 각 함수의 시작과 끝 시간을 보여준다. </p>
+<iframe scrolling="no" width="100%" height="300" src="//jsfiddle.net/nmd7dfg2/embedded/js,result/dark" frameborder="0" allowfullscreen></iframe>
+<h2 id="5-5-init-time-branching-패턴"><a href="#5-5-init-time-branching-패턴" class="headerlink" title="5.5. init-time branching 패턴"></a>5.5. init-time branching 패턴</h2><blockquote>
+<p>init-time branching이란 초기화 단계에서 분기하여 같은 함수를 환경에 따르게 다르게 정의하는 것을 의미한다. </p>
+</blockquote>
+<h3 id="addEventHandler와-removeEventHandler의-표준-호환성-지원"><a href="#addEventHandler와-removeEventHandler의-표준-호환성-지원" class="headerlink" title="addEventHandler와 removeEventHandler의 표준 호환성 지원"></a>addEventHandler와 removeEventHandler의 표준 호환성 지원</h3><p>IE8 이하에서는 <code>addEventListener</code>가 없다. 따라서 다음과 같이 <code>attachEvent</code>를 통해서 구현할 수 있으며, 인터넷을 검색해 보면 관련하여 많은 정보가 나온다.</p>
+<figure class="highlight javascript"><figcaption><span>표준 호환을 위한 이벤트 핸들러 함수 정의</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!Element.prototype.addEventListener) &#123;</span><br><span class="line">        <span class="keyword">if</span> (Element.prototype.attachEvent) &#123;</span><br><span class="line">            Element.prototype.addEventListener = <span class="function"><span class="keyword">function</span> (<span class="params">type, fn</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.attachEvent(<span class="string">"on"</span> + type, fn);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Element.prototype.addEventListener = <span class="function"><span class="keyword">function</span> (<span class="params">type, fn</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">this</span>[<span class="string">"on"</span> + type] = fn;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!Element.prototype.removeEventListener) &#123;</span><br><span class="line">        <span class="keyword">if</span> (Element.prototype.detachEvent) &#123;</span><br><span class="line">            Element.prototype.removeEventListener = <span class="function"><span class="keyword">function</span> (<span class="params">type, fn</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.detachEvent(<span class="string">"on"</span> + type, fn);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Element.prototype.removeEventListener = <span class="function"><span class="keyword">function</span> (<span class="params">type</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">this</span>[<span class="string">"on"</span> + type] = <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<h3 id="XMLHttpRequest-객체-호환성-지원"><a href="#XMLHttpRequest-객체-호환성-지원" class="headerlink" title="XMLHttpRequest 객체 호환성 지원"></a>XMLHttpRequest 객체 호환성 지원</h3><p>과거의 IE는 <code>XMLHttpRequest</code> 표준 함수가 없어서 <code>ActiveXObject</code>를 이용해야 했다. 이를 대비하여 브라우저에 맞는 <code>getXHR()</code>을 리턴하는 패턴이다. </p>
+<figure class="highlight javascript"><figcaption><span>XMLHttpRequest 객체 호환성 지원</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getXHR</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(<span class="string">"MSXML2.XMLHTTP.6.0"</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(<span class="string">"MSXML2.XMLHTTP.3.0"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            alert(<span class="string">"This browser does not support XMLHttpRequest."</span>); <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-6-Self-defining-function-패턴"><a href="#5-6-Self-defining-function-패턴" class="headerlink" title="5.6. Self-defining function 패턴"></a>5.6. Self-defining function 패턴</h2><blockquote>
+<p>어떤 코드를 최초 한번만 실행되도록 하는 패턴을 말한다.</p>
+</blockquote>
+<p>다음과 같은 코드로 함수 내부에서 자기 자신을 가리키는 참조 변수를 새로운 함수로 교체하는 방식으로 패턴을 구현한다. <strong>“처음에만 어떤 것을 초기화”</strong> 하거나, <strong>“중복 호출되지 않도록 막는 기능”</strong>을 구현할 때 유용하게 쓸 수 있다 글로벌 변수가 아닌 클로저를 사용할 수 있다.<br><figure class="highlight javascript"><figcaption><span>Self-defining</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 글로벌 func 선언</span></span><br><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"The first."</span>);</span><br><span class="line">    <span class="comment">// 한번 호출 뒤 글로벌 func가 변경됨.</span></span><br><span class="line">    func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"The time after first."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">func(); <span class="comment">// The first</span></span><br><span class="line">func(); <span class="comment">// The time after first </span></span><br><span class="line">func(); <span class="comment">// The time after first</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="5-7-메모이제이션-Memoization-패턴"><a href="#5-7-메모이제이션-Memoization-패턴" class="headerlink" title="5.7. 메모이제이션(Memoization) 패턴"></a>5.7. 메모이제이션(Memoization) 패턴</h2><blockquote>
+<p>처리 시간이 필요한 작업을 “메모”해 두었다가, 나중에 사용하는 패턴.</p>
+</blockquote>
+<p>즉, 메모리를 소모하는 대신 속도를 빠르게 하는 방법이라할 수 있다.</p>
+<h3 id="캐쉬-구현"><a href="#캐쉬-구현" class="headerlink" title="캐쉬 구현"></a>캐쉬 구현</h3><figure class="highlight javascript"><figcaption><span>Memoization패턴을 이용한 cache 구</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">searchItem</span> (<span class="params">id</span>) </span>&#123; </span><br><span class="line">        <span class="comment">// 이미 캐시에 있는 것이면 그냥 리턴한다.</span></span><br><span class="line">        <span class="keyword">if</span>(searchItem.cache.hasOwnProperty(id)) &#123;</span><br><span class="line">            <span class="keyword">return</span> searchItem.cache[id];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 캐시에 없으면 이 곳에서 http 서버로 부터 받아온다.   </span></span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="comment">// 캐시 저장 공간</span></span><br><span class="line">    searchItem.cache = &#123;&#125;;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<h3 id="피보나치-구현"><a href="#피보나치-구현" class="headerlink" title="피보나치 구현"></a>피보나치 구현</h3><p>일반적으로 피보나치는 재귀함수로 구현한다. 아래와 같은 콜 트리가 만들어지게 된다. 하지만, 메모이제이션을 사용하면, 이미 한번 구한 값에 대해서는 또 계산을 하지 않기 때문에 훨씬 빠르다.</p>
+<img src="/2017/06/29/Book-Deep-Javascript-5-9/fibonacci.jpg">
+<figure class="highlight javascript"><figcaption><span>Memoization패턴을 이용한 fibonacci 구현</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fibonacci = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> memo = [<span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line">  <span class="keyword">var</span> fib = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 부분 결과를 저장해 둔다.</span></span><br><span class="line">      <span class="keyword">var</span> result = memo[n];</span><br><span class="line">      <span class="comment">// 부분 결과가 없을 때만 다시 호출한다. </span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> result !== <span class="string">'number'</span>) &#123;</span><br><span class="line">        result = fib(n - <span class="number">1</span>) + fib(n - <span class="number">2</span>);</span><br><span class="line">        memo[n] = result;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">  <span class="keyword">return</span> fib;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<h3 id="메모이제이션을-위해-프로토타입-사용"><a href="#메모이제이션을-위해-프로토타입-사용" class="headerlink" title="메모이제이션을 위해 프로토타입 사용"></a>메모이제이션을 위해 프로토타입 사용</h3><p>아래와 같이 구현하면 메모이제이션을 일반화할 수 있으며, 그 것을 켜기 위해서 <code>memoize()</code>를 호출한다.</p>
+<figure class="highlight javascript"><figcaption><span>Memoization패턴 구현을 위해 포로토타입 사용</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">Function</span>.prototype.memoize = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 맴버함수 안에서의 this는 그 맴버를 가진 객체이다. 즉, 여기서는 fibonacci 함수.</span></span><br><span class="line">  <span class="comment">// memo는 클로저로 유지되는 변수. 그 안에 파라미터를 인덱스로 하여 부분 결과 데이터를 저장한다.     </span></span><br><span class="line">  <span class="keyword">var</span> _this = <span class="keyword">this</span>,</span><br><span class="line">    memo = &#123;&#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> argsString = <span class="built_in">JSON</span>.stringify(<span class="built_in">arguments</span>),</span><br><span class="line">      returnValue;</span><br><span class="line">    <span class="keyword">if</span> (memo.hasOwnProperty(argsString)) &#123;</span><br><span class="line">      <span class="comment">// 이미 저장한 값이면 바로 리턴.</span></span><br><span class="line">      <span class="keyword">return</span> memo[argsString];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 없는 값이면 fibonacci.apply() 후 저장하고 리턴.</span></span><br><span class="line">      returnValue = _this.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">      memo[argsString] = returnValue;</span><br><span class="line">      <span class="keyword">return</span> returnValue;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">0</span> || n === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fibonacciMemo = fibonacci.memoize();</span><br></pre></td></tr></table></figure>
+<h2 id="5-8-Self-invoking-constructor-패턴"><a href="#5-8-Self-invoking-constructor-패턴" class="headerlink" title="5.8. Self-invoking constructor 패턴"></a>5.8. Self-invoking constructor 패턴</h2><blockquote>
+<p>실수로 new 키워드를 생략하더라도, 그 것을 붙여서 호출해주는 방어적인 패턴</p>
+</blockquote>
+<p>앞 장에서 확인 했듯이 그냥 호출한 함수와 <code>new</code>의 파라미터로 호출된 함수 안에서 <code>this</code>가 가르키는 것은 다르다. 따라서, 생성자 함수를 <code>new</code> 없이 호출하면 전혀 의도 하지 않은 결과를 얻을 수 있다. 따라서 다음과 같이 내부에서 <code>new</code>를 호출하도록 처리한다. </p>
+<figure class="highlight javascript"><figcaption><span>self-invoking constructor pattern</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Employee</span>(<span class="params">name, manMonth</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Employee)) &#123;</span><br><span class="line">      <span class="comment">// new 없이 호출 했을 때의 this는 window이다.</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Employee(name, manMonth);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// new로 호출 했을 때의 this는 새로 만들어진 객체이다.</span></span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.manMonth = manMonth;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> unikys = Employee(<span class="string">"Unikys"</span>, <span class="number">1</span>),</span><br><span class="line">    world = <span class="keyword">new</span> Employee(<span class="string">"World"</span>, <span class="number">2</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(unikys);</span><br><span class="line">  <span class="built_in">console</span>.log(world);</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<p><code>new</code> 없이 호출 했을 때, 경고 메세지를 출력해 주면 좋을 것 같다.</p>
+<h2 id="5-9-콜백-패턴"><a href="#5-9-콜백-패턴" class="headerlink" title="5.9. 콜백 패턴"></a>5.9. 콜백 패턴</h2><blockquote>
+<p>함수의 파라미터로에 해당 함수의 호출이 끝나고 나서 처리할 함수를 넘겨주는 패턴.</p>
+</blockquote>
+<p>많이 쓰는 패턴으로 설명은 생략한다. 아래는 XMLHttpRequest를 jquery의 ajax함수 처럼 구현한 예제이다.</p>
+<figure class="highlight javascript"><figcaption><span>callback</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">method, url, data, callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    xhr.open(method, url);</span><br><span class="line">    xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">        callback.call(<span class="keyword">this</span>, xhr.responseText);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    xhr.send(data);</span><br><span class="line">  &#125;</span><br><span class="line">  ajax(<span class="string">"POST"</span>, <span class="string">"/login"</span>, <span class="string">"id=hello&amp;password=world"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">responseText</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (responseText === <span class="string">"Success"</span>) &#123;</span><br><span class="line">      alert(<span class="string">"Success to login!"</span>);</span><br><span class="line">      ajax(<span class="string">"GET"</span>, <span class="string">"/userInfo"</span>, <span class="string">"id=hello"</span>, displayUserInfo);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      alert(<span class="string">"Failed to login"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">displayUserInfo</span>(<span class="params">responseText</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"userInfo"</span>).innerHTML = responseText;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<h2 id="5-10-커링-Currying-패턴"><a href="#5-10-커링-Currying-패턴" class="headerlink" title="5.10. 커링(Currying) 패턴"></a>5.10. 커링(Currying) 패턴</h2><blockquote>
+<p>어떤 함수의 파라미터를 일부를 미리 채워두고, 나머지 파라미터만 입력 받는 새로운 함수를 만드는 패턴.</p>
+</blockquote>
+<p>참고로 커링은 수학자 하스켈 커리(Haskell Curry)로 부터 유래되었다고 한다.</p>
+<h4 id="간단한-커링"><a href="#간단한-커링" class="headerlink" title="간단한 커링"></a>간단한 커링</h4><p>흔히 봤던 함수 저너레이터는 커링 패턴이라 볼 수 있다.</p>
+<figure class="highlight javascript"><figcaption><span>simple currying</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 원래의 함수</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 커링 함수</span></span><br><span class="line">    <span class="keyword">var</span> makeAdder = <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">y</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> sum(x, y);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// sum을 커링해서 adderFour가 나왔다.</span></span><br><span class="line">    <span class="keyword">var</span> adderFour = makeAdder(<span class="number">4</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(adderFour(<span class="number">1</span>)); <span class="comment">// === 5</span></span><br><span class="line">    <span class="built_in">console</span>.log(adderFour(<span class="number">5</span>)); <span class="comment">// === 9</span></span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<h4 id="프로토타입을-이용한-일반화"><a href="#프로토타입을-이용한-일반화" class="headerlink" title="프로토타입을 이용한 일반화"></a>프로토타입을 이용한 일반화</h4><figure class="highlight javascript"><figcaption><span>generalization of currying</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 함수의 파라미터를 미리 설졍하는, 즉 currying을 해주는 함수.</span></span><br><span class="line">  <span class="built_in">Function</span>.prototype.curry = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 파타미터가 0이면 그냥 this(원래 함수)를 리턴한다.</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// arguments를 클로저 변수에 함수, 파라미터를 저장한다.</span></span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span>,</span><br><span class="line">      args = <span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 저장해둔 파라미터들과 새로 받은 파라미터를 더해서 위에서 저장한 함수를 호출하는 클로저 함수를 리턴한다. </span></span><br><span class="line">      <span class="comment">// 함수를 실행하는게 아니라 리턴한다.</span></span><br><span class="line">      <span class="keyword">return</span> _this.apply(<span class="keyword">this</span>, args.concat(<span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 원래의 함수</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 원래의 함수에 커링을 적용한 함수를 리턴 받음.</span></span><br><span class="line">  <span class="keyword">var</span> adderFourCurry = sum.curry(<span class="number">4</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(adderFourCurry(<span class="number">5</span>)); <span class="comment">// === 9</span></span><br><span class="line">  <span class="built_in">console</span>.log(adderFourCurry(<span class="number">10</span>)); <span class="comment">// === 14</span></span><br><span class="line">  <span class="comment">// Function 프로토타입으로 일반화 하였으므로 이것도 가능함.</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sum4</span>(<span class="params">x, y, z, w</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y + z + w;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> adderCurry = sum4.curry(<span class="number">5</span>, <span class="number">1</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(adderCurry(<span class="number">2</span>, <span class="number">3</span>)); <span class="comment">// === 11</span></span><br><span class="line">&#125;());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="단위-변환-사용"><a href="#단위-변환-사용" class="headerlink" title="단위 변환 사용"></a>단위 변환 사용</h4><p>다음과 같이 단위 변환을 위한 함수를 생성하는 것은 함수 저너레이터의 유용한 예제인듯 하다.</p>
+<figure class="highlight javascript"><figcaption><span>unit conversion using currying</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 위 예제와 같은 방법 사용.</span></span><br><span class="line">  <span class="built_in">Function</span>.prototype.curry = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span>,</span><br><span class="line">      args = <span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> _this.apply(<span class="keyword">this</span>, args.concat(<span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 유닛 변환에 관한 파라미터들을 받고, 마지막으로 변환을 위한 input을 받는다.</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">unitConvert</span>(<span class="params">fromUnit, toUnit, factor, input</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;input&#125;</span> <span class="subst">$&#123;fromUnit&#125;</span> === <span class="subst">$&#123;(input*factor).toFixed(<span class="number">2</span>)&#125;</span> <span class="subst">$&#123;toUnit&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 커링을 통해서 앞쪽의 3개의 파라미터를 채운 함수들을 리턴한다.</span></span><br><span class="line">  <span class="keyword">var</span> cm2inch = unitConvert.curry(<span class="string">'cm'</span>, <span class="string">'inch'</span>, <span class="number">0.393701</span>),</span><br><span class="line">    metersquare2pyoung = unitConvert.curry(<span class="string">'m^2'</span>, <span class="string">'pyoung'</span>, <span class="number">0.3025</span>),</span><br><span class="line">    kg2lb = unitConvert.curry(<span class="string">'kg'</span>, <span class="string">'lb'</span>, <span class="number">2.204623</span>),</span><br><span class="line">    kmph2mph = unitConvert.curry(<span class="string">'km/h'</span>, <span class="string">'mph'</span>, <span class="number">0.621371</span>);</span><br><span class="line">  <span class="comment">// 결과.</span></span><br><span class="line">  <span class="built_in">console</span>.log(cm2inch(<span class="number">10</span>)); <span class="comment">// 10 cm === 3.94 inch</span></span><br><span class="line">  <span class="built_in">console</span>.log(metersquare2pyoung(<span class="number">30</span>)); <span class="comment">// 30 m^2 === 9.07 pyoung</span></span><br><span class="line">  <span class="built_in">console</span>.log(kg2lb(<span class="number">50</span>)); <span class="comment">// 50 kg === 110.23 lb</span></span><br><span class="line">  <span class="built_in">console</span>.log(kmph2mph(<span class="number">100</span>)); <span class="comment">// 100 km/h === 62.14 mph</span></span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<h4 id="XMLHttpRequest에-응용"><a href="#XMLHttpRequest에-응용" class="headerlink" title="XMLHttpRequest에 응용"></a>XMLHttpRequest에 응용</h4><p>커링을 이용해서 ajax함수를 get, put, post 등에 맞게 만들어서 사용할 수 있다.</p>
+<figure class="highlight javascript"><figcaption><span>unit conversion</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 역시 똑같은 방법.</span></span><br><span class="line">  <span class="built_in">Function</span>.prototype.curry = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">arguments</span>.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">var</span> _this = <span class="keyword">this</span>,</span><br><span class="line">        args = <span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _this.apply(<span class="keyword">this</span>, args.concat(<span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>)));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ajax 함수 가장 앞의 파라미터로 method를 받는다.</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">method, url, data, callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    xhr.open(method, url);</span><br><span class="line">    xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">        callback.call(<span class="keyword">this</span>, xhr.responseText);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    xhr.send(data);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 특정 method를 가진 ajax함수들을 생성할 수 있다.</span></span><br><span class="line">  <span class="keyword">var</span> ajaxGet = ajax.curry(<span class="string">"GET"</span>),</span><br><span class="line">    ajaxPost = ajax.curry(<span class="string">"POST"</span>),</span><br><span class="line">    ajaxPut = ajax.curry(<span class="string">"PUT"</span>),</span><br><span class="line">    ajaxDelete = ajax.curry(<span class="string">"DELETE"</span>);</span><br><span class="line">  ajaxGet(<span class="string">"/data"</span>, <span class="literal">null</span>, <span class="function"><span class="keyword">function</span>(<span class="params">responseText</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(responseText);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;());    </span><br></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-5-9/" data-id="cjlztzc36007h4sn2pq9073qs" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-5-9/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-5-9/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="blog-Book-Deep-Javascript-4-9" class="article article-type-blog" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -291,7 +874,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-4-9/" data-id="cjlvjejnv005fgwn2w8mp129i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-4-9/" data-id="cjlztzc33007e4sn2o54sukar" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -509,7 +1092,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/27/Book-Deep-Javascript-3-9/" data-id="cjlvjejoy005tgwn2slhqy3s1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/27/Book-Deep-Javascript-3-9/" data-id="cjlztzc4100854sn29i473hik" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -698,7 +1281,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-2-9/" data-id="cjlvjejn00051gwn2qnpyk33r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-2-9/" data-id="cjlztzc2r00734sn2hufzu8p3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -869,7 +1452,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-1-9/" data-id="cjlvjejm6004tgwn2rrnd8by4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-1-9/" data-id="cjlztzc30007b4sn24ks5qf8w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1173,7 +1756,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/07/ENGLISH-The-Article-Book/" data-id="cjlvjejpd0060gwn2kibvkylf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/07/ENGLISH-The-Article-Book/" data-id="cjlztzc3s007y4sn2bfutvscr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1430,7 +2013,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/04/17/600W-GRAMMAR-Complements/" data-id="cjlvjejkw004bgwn2zkqmsmr1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/04/17/600W-GRAMMAR-Complements/" data-id="cjlztzc2a006p4sn2v4ivmvw1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1642,7 +2225,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/04/02/600W-GRAMMAR-Clause-Reduction/" data-id="cjlvjejko0048gwn2wtvnr2cc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/04/02/600W-GRAMMAR-Clause-Reduction/" data-id="cjlztzc26006l4sn2xg8uu7yv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1720,716 +2303,8 @@ ga('send', 'pageview');
 
 
 
-    <article id="blog-600W-READING-UNIT-4-Cultures-in-Contact" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/23/600W-READING-UNIT-4-Cultures-in-Contact/">[600W][READING] UNIT 4 - Cultures in Contact</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/23/600W-READING-UNIT-4-Cultures-in-Contact/">
-            <time datetime="2017-03-23T07:34:36.000Z" itemprop="datePublished">2017-03-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/600W/">600W</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/Reading/">Reading</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Voca"><a href="#Voca" class="headerlink" title="Voca"></a>Voca</h2><ol>
-<li>abhorrent<ul>
-<li>def: causing disgust and loathing</li>
-<li>exam: Eating something we are not accustomed to may seem <strong>abhorrent</strong> to us.  </li>
-<li>syn: repugnant objectionable repulsive detestable hateful distasteful disgusting despicable loathsome execrable offensive revolting </li>
-</ul>
-</li>
-<li>infancy<ul>
-<li>def: the period of babyhood</li>
-<li>exam: We start acquiring our culture <strong>in infancy</strong>.</li>
-<li>syn: babyhood childhood early years youth immaturity early life formative years inception beginning minority nonage outset start incunabulum pupilage</li>
-</ul>
-</li>
-<li>mode<ul>
-<li>def: the way in which something occurs or is done</li>
-<li>exam: When faced with values, customs, and <strong>modes</strong> of thinking different from our own, …</li>
-<li>syn: style manner method means approach type way kind genre fashion form course rule sort condition mechanism posture procedure process quality situation status system technique tone book channels custom plan practiceUS practiseUK state vein wise modus nuts and bolts</li>
-</ul>
-</li>
-<li>standardized<ul>
-<li>def: caused something to become a standard</li>
-<li>exam: As a result, our behavior is more <strong>standardized</strong> and predictable than many individuals realize or want to admit. </li>
-<li>syn: patterned regulated graded uniform consistent</li>
-</ul>
-</li>
-<li>bewildered<ul>
-<li>def: very confused</li>
-<li>exam: we may feel <strong>bewildered</strong> or puzzled.</li>
-<li>syn:confused puzzled dazed bemused befuddled taken aback disconcerted panicky baffled disoriented astonished awed mystified perplexed rattled shocked startled stunned surprised addled appalled astounded dazzled dizzy dumbfounded flabbergasted floored flustered lost misled muddled reeling staggered stumped stupefied thrown agape aghast agog awe-struck bowled over dumbstruck flipped out giddy in a dither punchy shook up speechless thunderstruck uncertain unglued</li>
-</ul>
-</li>
-<li>legacy<ul>
-<li>def: something handed down from a predecessor</li>
-<li>exam: Much of human behavior is determined by our social <strong>legacy</strong>.</li>
-<li>syn:bequest inheritance heirloom heritage birthright gift money estate tradition devise endowment throwback</li>
-</ul>
-</li>
-<li>restrict<ul>
-<li>def: to put a limit on something</li>
-<li>exam: We usually <strong>restrict</strong> ourselves <strong>to</strong> eating what our culture dictates.</li>
-<li>syn: limit confine put a ceiling on curb cheque(UK) check(US) control contain hamper hold back constrain impede inhibit keep a tight rein on constrict cramp decrease define diminish narrow reduce regulate restrain shorten bind bound chain circumscribe contract delimit delimitate demarcate encircle enclose handicap inclose moderate modify qualify shrink surround temper tether tie bottle up come down on cool down demark hang up hem in hold down keep within bounds keep within limits pin down prelimit put away put on ice send up shut in</li>
-</ul>
-</li>
-<li>undergo<ul>
-<li>def: to experience or be subjected to something</li>
-<li>exam: we <strong>undergo</strong> many of the same types of experiences.</li>
-<li>syn: experience feel suffer endure undertake go through submit to bear have meet with see sustain withstand abide bow defer encounter know share stand support tolerate weather yield bear up put up with</li>
-</ul>
-</li>
-<li>aloof (adj.)<ul>
-<li>def: cold and uninterested</li>
-<li>exam: Someone may think someone seem <strong>aloof</strong> and unfriendly.</li>
-<li>syn: remote standoffish reserved indifferent distant detached unfriendly cold unapproachable proud snooty lofty haughty unresponsive unsympathetic above apart casual chilly cold fish cool forbidding hard-boiled hard-hearted incurious laid back lone wolf loner offish on ice putting on airs secluded solitary stuck up supercilious thick-skinned unconcerned uninterested unsociable uppity withdrawn</li>
-</ul>
-</li>
-<li>collide<ul>
-<li>def: hit with force when moving</li>
-<li>exam: They <strong>collied with</strong> those of another culture.</li>
-<li>syn: hit strike crash bump bump into run into run over ram go into plow into rear-end slam into bang break up shatter sideswipe smash beat clash conflict crunch disagree fragment jolt pulveriseUK pulverizeUS scrap splinter fender-bend meet head-on pile up wrack up</li>
-</ul>
-</li>
-<li>invade<ul>
-<li>def: to enter a region in order to occupy it</li>
-<li>exam: If Arabs or Latin Americans <strong>invade</strong> their personal bubble, …</li>
-<li>syn: attack march into occupy enter conquer assault annex overrun breach infect infest loot penetrate pillage plunder raid ravage storm violate access assail burglarize crash entrench foray infringe interfere maraud meddle overspread permeate pervade trespass burst in descend upon fall on go in inroad make inroads muscle in overswarm swarm over</li>
-</ul>
-</li>
-<li>reject<ul>
-<li>def: to dismiss something because you don’t like it</li>
-<li>exam: We do not necessarily have to <strong>reject</strong> our own when interacting cross culturally.</li>
-<li>syn: refuse rebuff decline snub throw out discard disallow eliminate deny dismiss renounce repudiate scrap spurn turn down veto burn cashier chuck despise disbelieve discount discredit disdain exclude jettison jilt kill nix repel reprobate repulse scoff scorn scout second shed shun slough cast aside cast off cast out give thumbs down to not buy pass by pass on pass up put down shoot down throw away</li>
-</ul>
-</li>
-<li>code<ul>
-<li>def: a system of figures to substitute for other words</li>
-<li>exam: One way cultures differ is in touch <strong>codes</strong> and rules for personal space.</li>
-<li>syn: system policy convention regulations rules laws protocol canon procedure law rule charter constitution custom discipline method regulation codex digest ethics etiquette manners maxim</li>
-</ul>
-</li>
-<li>dilemma<ul>
-<li>def: a situation where a difficult choice must be made</li>
-<li>exam: If cultural rules we live by collide with those of another culture, then we are faced with <strong>a dilemma</strong>.</li>
-<li>syn: quandary tight spot Catch-22 predicament impasse problem catch crisis difficulty embarrassment mess plight puzzle bind box corner fix hole hooker jam mire perplexity pickle scrape spot strait double bind tight corner</li>
-</ul>
-</li>
-<li>jerk<ul>
-<li>def: a quick, sudden movement</li>
-<li>exam: Someone did not <strong>jerk</strong> his hand away from his Arab host.</li>
-<li>syn: yank pull wrench haul tug bounce bump fling flop hurtle jolt lug snatch thrust twitch wiggle wriggle wring dance flick flip grab hook pluck quake quiver seize shiver shrug sling snag throw tweak vellicate whisk wrest</li>
-</ul>
-</li>
-<li>ritual<ul>
-<li>def: an action coming from a habit</li>
-<li>exam: Woman used both the Bangladeshi and Swedish rituals for saying good-bye.</li>
-<li>syn: rite ceremony service formal procedure sacrament formality ceremonial tradition act custom habit liturgy observance practiceUS practiseUK procedure routine stereotype Sacrament communion convention form ordinance prescription protocol solemnity usage red tape</li>
-</ul>
-</li>
-<li>grief<ul>
-<li>def: deep sorrow caused by someone’s death</li>
-<li>exam: She fell into a period of <strong>grief</strong> and felt alone.</li>
-<li>exam: They were able to share their common joys and griefs.</li>
-<li>syn: sorrow heartache anguish angst pain misery unhappiness woe mental suffering agony bereavement despair discomfort gloom heartbreak melancholy mourning regret remorse sadness trouble worry affliction care dejection depression desolation despondency disquiet distress dole dolor grievance harassment infelicity lamentation malaise mortification mournfulness purgatory rue torture trial tribulation vexation wretchedness bemoaning bewailing deploring lamenting repining</li>
-</ul>
-</li>
-<li>neglected<ul>
-<li>def: not receiving proper care</li>
-<li>exam: I <strong>neglected</strong> to mention about that.  </li>
-<li>syn: deserted abandoned unkempt uncared for mistreated ignored unloved slighted decayed overlooked spurned undervalued unused unwanted affronted declined deferred depreciated despised deteriorated disdained dismissed disregarded evaded forgotten lapsed omitted postponed scorned shunned underestimated cast aside passed over tossed aside unconsidered unheeded unwatched</li>
-</ul>
-</li>
-<li>prejudice<ul>
-<li>def: preconceived opinion which is not based in fact</li>
-<li>exam: Even tough Mary Fischer had many <strong>prejudice against</strong> immigrants, …</li>
-<li>syn: bias preconception prejudgment predisposition partiality information; intolerance animosity bigotry chauvinism discrimination enmity injustice racism sexism xenophobia ageism antipathy apartheid aversion contemptuousness detriment disgust dislike displeasure illiberality mindset narrow-mindedness pique prepossession repugnance revulsion slant spleen tilt twist umbrage unfairness warp bad opinion disrelish foregone conclusion jaundiced eye misjudgment one-sidedness preconceived notion</li>
-</ul>
-</li>
-<li>vulnerable<ul>
-<li>def: able to harmed or attacked</li>
-<li>exam: She felt <strong>vulnerable</strong>. Something is <strong>vulnerable to</strong> attack.</li>
-<li>syn: susceptible weak defenceless(UK) defenseless(US) helpless exposed in danger at risk accessible liable ready sensitive unsafe assailable naked on the line on the spot out on a limb sitting duck sucker tender thin-skinned unguarded unprotected wide open</li>
-</ul>
-</li>
-<li>harmony<ul>
-<li>def: agreement</li>
-<li>exam: They <strong>live in harmony with</strong> others.</li>
-<li>syn: agreement accord concord synchronisationUK synchronizationUS congruence coordination coherence balance correspondence conformity consistency integration integrity togetherness tune unity articulation chime concordance conformance congruity consonance fitness form oneness order parallelism proportion regularity suitability symmetry</li>
-</ul>
-</li>
-<li>preconceived<ul>
-<li>def: formed before having proper evidence</li>
-<li>exam: She realized that her <strong>preconceived notions</strong> about them were wrong. </li>
-<li>syn: fixed defined rigid inflexible predetermined set prejudiced biasedUS biassedUK tainted bitter coloredUS colouredUK disapproving distorted grudging prepossessed warped yellow bigoted cynical envious hostile intolerant jealous one-sided opprobrious partial partisan resentful scepticalUK skepticalUS spiteful suspicious tendentious unfair unfriendly unindifferent</li>
-</ul>
-</li>
-<li>restore<ul>
-<li>def: to bring back or reinstate</li>
-<li>exam: The new government has promised to <strong>restore</strong> peace.</li>
-<li>syn: reinstate reestablish bring back return give back fix make new build up improve modernizeUS moderniseUK rebuild reconstruct recover refurbish rehabilitate reinforce renew renovate repair replace rescue revitaliseUK revitalizeUS revive strengthen cure heal mend reanimate recall recondition reconstitute redeem refresh reimpose reintroduce rejuvenate retouch revivify update make healthy make restitution reerect set to rights touch up win back hand back put back send back</li>
-</ul>
-</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/03/23/600W-READING-UNIT-4-Cultures-in-Contact/" data-id="cjlvjejnd0057gwn2t4s1tw2o" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/03/23/600W-READING-UNIT-4-Cultures-in-Contact/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/03/23/600W-READING-UNIT-4-Cultures-in-Contact/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="blog-600W-WRITING-ANIMAL-VOCABULARY" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/20/600W-WRITING-ANIMAL-VOCABULARY/">[600W][WRITING] Animal Vocabulary</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/20/600W-WRITING-ANIMAL-VOCABULARY/">
-            <time datetime="2017-03-19T15:19:32.000Z" itemprop="datePublished">2017-03-20</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/600W/">600W</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/writing/">writing</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Baby"><a href="#Baby" class="headerlink" title="Baby"></a>Baby</h2><ol>
-<li>kitten - 새끼 고양이</li>
-<li>puppy - 새끼 개</li>
-<li>kid - 새끼 염소(goat)</li>
-<li>foal - 망아지, 새끼 당나귀</li>
-<li>calf - 송아지</li>
-<li>cub - 곰, 사자, 여우 새끼</li>
-<li>chick - 병아리</li>
-</ol>
-<h2 id="group"><a href="#group" class="headerlink" title="group"></a>group</h2><ol>
-<li>pride - 사자 무리</li>
-<li>flock - 양, 염소, 새 떼</li>
-<li>murder - 까마귀 떼</li>
-<li>school - 물고기, 해양동물의 떼</li>
-<li>pack - (함께 사냥을 하거나 하기 위해 모인 동물들) 무리</li>
-<li>herd - 소, 사슴, 양, (함께 살고 함께 먹이를 먹는 동종 짐승의) 떼 </li>
-<li>swarm - 벌, 곤충의 떼</li>
-</ol>
-<h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><ol>
-<li>reptile - 파충류</li>
-<li>mammal - 포유류</li>
-<li>fish - 어류</li>
-<li>crustacean - 갑각류</li>
-<li>insect - 곤충류</li>
-<li>bird - 새</li>
-<li>amphibian - 양서류</li>
-</ol>
-<h2 id="movement"><a href="#movement" class="headerlink" title="movement"></a>movement</h2><ol>
-<li>gallop - (말 등이) 전속력으로 달리다.</li>
-<li>fly - 날다</li>
-<li>swim - 수영하다</li>
-<li>crawl - 기어가다.</li>
-<li>slither - (뱀이) 매끄럽게 스르르 나가아다.</li>
-<li>hop - 깡총 깡총 뛰다.</li>
-<li>run - 뛰다.</li>
-</ol>
-<h2 id="sound"><a href="#sound" class="headerlink" title="sound"></a>sound</h2><ol>
-<li>hiss - (뱀이) 쉬익 소리를 내다.</li>
-<li>bark - (개, 여우가) 짖다.</li>
-<li>purr - (고양이가) 가르랑 거리다.</li>
-<li>buzz - (벌이) 윙윙 거리다.</li>
-<li>growl - (개가) 으르렁 거리다.</li>
-<li>roar - (큰 짐승이) 포효하다.</li>
-<li>hoot - (부엉이가) 부엉 부엉.</li>
-<li>sing - (새가) 지저귀다.</li>
-<li>howl - (개나 늑대가) 길게 울다.</li>
-</ol>
-<h2 id="cover"><a href="#cover" class="headerlink" title="cover"></a>cover</h2><ol>
-<li>shell - 단단한 껍질</li>
-<li>feather - (새의) 깃털</li>
-<li>fur - 털</li>
-<li>scales - 비늘</li>
-<li>skin - 피부, 동물가죽, 뱀의 허물.</li>
-</ol>
-<h2 id="something-on-the-head"><a href="#something-on-the-head" class="headerlink" title="something on the head"></a>something on the head</h2><ol>
-<li>antler - (사슴의) 가지있는 뿔</li>
-<li>antenna - 더듬이</li>
-<li>tusk - 코끼리 엄니</li>
-<li>whiskers - (고양이, 쥐의) 수염</li>
-<li>snout - (돼지,개의) 주둥이</li>
-<li>horn - (소,양들의) 뿔</li>
-<li>beak - (새의) 부리</li>
-</ol>
-<h2 id="limb"><a href="#limb" class="headerlink" title="limb"></a>limb</h2><ol>
-<li>talon - (맹금류의) 발톱</li>
-<li>paw - (발톱이 달린 동물의) 발</li>
-<li>hoof - 발굽</li>
-<li>fin - 지느러미</li>
-<li>wing - (새,곤충의) 날개</li>
-<li>claw - (동물, 새의) 발톱, (게의) 집게발</li>
-</ol>
-<h2 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h2><ol>
-<li>hunt - 사냥하다</li>
-<li>migrate - (새/동물)이 계절에 따라 이동하다. </li>
-<li>hibernate - 동면하다.</li>
-<li>lay - (새/곤충/어류)가 알을 낳다.</li>
-<li>procreate - 새끼를 낳다.</li>
-<li>graze - 풀을 뜯어 먹다.</li>
-<li>wag - 개가 꼬리를 흔들다.</li>
-</ol>
-<h2 id="habitat"><a href="#habitat" class="headerlink" title="habitat"></a>habitat</h2><ol>
-<li>wild - 야생</li>
-<li>domestic - 사육의<ul>
-<li>domesticate - 사육하다.</li>
-</ul>
-</li>
-<li>tame - 야생에서 잡혀 길들여진.</li>
-<li>feral - 사육되다가 야생으로 돌아간.</li>
-</ol>
-<h2 id="what-they-eat"><a href="#what-they-eat" class="headerlink" title="what they eat"></a>what they eat</h2><ol>
-<li>herbivore - 초식 동물</li>
-<li>omnivore - 잡식 동물</li>
-<li>carnivore - 육식 동물</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/03/20/600W-WRITING-ANIMAL-VOCABULARY/" data-id="cjlvjejlk004igwn2upzu3885" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/03/20/600W-WRITING-ANIMAL-VOCABULARY/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/03/20/600W-WRITING-ANIMAL-VOCABULARY/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="blog-600W-GRAMMAR-Agreement-with-Nouns" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/13/600W-GRAMMAR-Agreement-with-Nouns/">[600W][GRAMMAR] Agreement with Nouns</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/13/600W-GRAMMAR-Agreement-with-Nouns/">
-            <time datetime="2017-03-13T14:22:36.000Z" itemprop="datePublished">2017-03-13</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/600W/">600W</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/Grammar/">Grammar</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Noncount-Nouns-singular-verb"><a href="#Noncount-Nouns-singular-verb" class="headerlink" title="Noncount Nouns : singular verb"></a>Noncount Nouns : singular verb</h2><ol>
-<li>Mass Nouns (물질 명사?)<ul>
-<li>equipment</li>
-<li>furniture</li>
-<li>grass</li>
-<li>homework</li>
-<li>machinery</li>
-<li>money</li>
-<li>traffic</li>
-<li>vocabulary</li>
-</ul>
-</li>
-<li>Abstract Nouns (추상 명사)<ul>
-<li>advice</li>
-<li>behavior</li>
-<li>education</li>
-<li>information</li>
-<li>knowledge</li>
-<li>research</li>
-<li>transportation</li>
-<li>violence</li>
-</ul>
-</li>
-</ol>
-<h2 id="Collective-Nouns-singular-verb"><a href="#Collective-Nouns-singular-verb" class="headerlink" title="Collective Nouns : singular verb"></a>Collective Nouns : singular verb</h2><ol>
-<li>audience</li>
-<li>class</li>
-<li>committee</li>
-<li>family</li>
-<li>flock (떼)</li>
-<li>group</li>
-<li>herd (떼)</li>
-<li>the public</li>
-<li>swarm</li>
-<li>team</li>
-</ol>
-<h2 id="Nouns-Derived-from-Adjectives-plural-verb"><a href="#Nouns-Derived-from-Adjectives-plural-verb" class="headerlink" title="Nouns Derived from Adjectives : plural verb"></a>Nouns Derived from Adjectives : plural verb</h2><ol>
-<li>The young</li>
-<li>The rich</li>
-<li>The homeless</li>
-</ol>
-<h2 id="Fractions-Percentages-and-Quantifiers-all-of-a-lot-of"><a href="#Fractions-Percentages-and-Quantifiers-all-of-a-lot-of" class="headerlink" title="Fractions, Percentages, and Quantifiers(all of, a lot of)"></a>Fractions, Percentages, and Quantifiers(all of, a lot of)</h2><ul>
-<li>뒤따라 오는 noun이나 clause에 따라 결정된다.</li>
-</ul>
-<ol>
-<li>Singular verb<ul>
-<li>A singular noun : Fifty percent of the <strong>book</strong> is about portry.</li>
-<li>A noun clause : Half of <strong>what he says</strong> is not true.</li>
-<li>a noncount noun : All (of) our <strong>information</strong> is up-to-date.</li>
-</ul>
-</li>
-<li>Plural verb<ul>
-<li>One-fourth of the <strong>students</strong> have computers.</li>
-<li>All (of) the <strong>computers</strong> need to be checked.</li>
-</ul>
-</li>
-<li>Collective noun일 경우, 의미에 따라 둘다 사용 가능.<ul>
-<li>Al lot of my family <strong>live/lives</strong> in Pennsylvania.</li>
-</ul>
-</li>
-<li>each, every, and every one <ul>
-<li>singular verb</li>
-<li>Each book has a code number.</li>
-</ul>
-</li>
-<li>A number of <ul>
-<li>Always plural verb</li>
-<li>A number of students are taking the TOEFL exam today.</li>
-</ul>
-</li>
-<li>The number of <ul>
-<li>Always singular verb</li>
-<li>The number of students taking the exam is 175.</li>
-</ul>
-</li>
-<li>None of<ul>
-<li>singular verb</li>
-</ul>
-</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Agreement-with-Nouns/" data-id="cjlvjejmm004wgwn2rk124fu5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Agreement-with-Nouns/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Agreement-with-Nouns/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/18/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/20/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/18/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/20/">Next &raquo;</a>
     </nav>
 </section>
             
@@ -2441,6 +2316,33 @@ ga('send', 'pageview');
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
+                            <p class="item-title"><a href="/2018/09/13/Note-입트영-2018-09-13/" class="title">[Note] 입트영 2018/09/13</a></p>
+                            <p class="item-date"><time datetime="2018-09-13T00:01:41.000Z" itemprop="datePublished">2018-09-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/09/12/Note-영어-스피킹-기적의-7법칙/" class="title">[Note] 영어 스피킹 기적의 7법칙</a></p>
+                            <p class="item-date"><time datetime="2018-09-12T00:37:59.000Z" itemprop="datePublished">2018-09-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
+                            <p class="item-title"><a href="/2018/09/12/Note-입트영-2018-09-12/" class="title">[Note] 입트영 2018/09/12</a></p>
+                            <p class="item-date"><time datetime="2018-09-12T00:12:39.000Z" itemprop="datePublished">2018-09-12</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -2460,33 +2362,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
-                            <p class="item-title"><a href="/2018/09/07/Note-입트영-2018-09-07/" class="title">[Note] 입트영 2018/09/07</a></p>
-                            <p class="item-date"><time datetime="2018-09-07T05:47:05.000Z" itemprop="datePublished">2018-09-07</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
-                            <p class="item-title"><a href="/2018/09/06/Note-입트영-2018-09-06/" class="title">[Note] 입트영 2018/09/06</a></p>
-                            <p class="item-date"><time datetime="2018-09-06T00:25:31.000Z" itemprop="datePublished">2018-09-06</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
-                            <p class="item-title"><a href="/2018/09/05/Note-입트영-2018-09-05/" class="title">[Note] 입트영 2018/09/05</a></p>
-                            <p class="item-date"><time datetime="2018-09-05T00:17:28.000Z" itemprop="datePublished">2018-09-05</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -2496,7 +2371,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">236</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">238</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -2505,7 +2380,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2514,7 +2389,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">237</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">239</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
         </div>
     </div>
 
