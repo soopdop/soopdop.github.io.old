@@ -147,7 +147,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                255
+                256
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -182,6 +182,144 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="blog-TIP-How-to-see-log-in-jsfiddle" class="article article-type-blog" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/07/03/TIP-How-to-see-log-in-jsfiddle/">[TIP] How to see console log in the JsFiddle : Firebug</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/03/TIP-How-to-see-log-in-jsfiddle/">
+            <time datetime="2017-07-03T06:07:10.000Z" itemprop="datePublished">2017-07-03</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/programming/">programming</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <img src="/2017/07/03/TIP-How-to-see-log-in-jsfiddle/Firebug_logo.png" title="Firebug logo">
+<h2 id="How-to-see-logs-in-the-output-window"><a href="#How-to-see-logs-in-the-output-window" class="headerlink" title="How to see logs in the output window"></a>How to see logs in the output window</h2><ol>
+<li>Click “External Resources” in the left side bar.</li>
+<li>Add this link there.<br><a href="https://getfirebug.com/firebug-lite-debug.js" target="_blank" rel="noopener">https://getfirebug.com/firebug-lite-debug.js</a></li>
+<li>Run code. Then the button with a bug will be shown in the output window.</li>
+</ol>
+<h2 id="What-is-the-Firebug"><a href="#What-is-the-Firebug" class="headerlink" title="What is the Firebug"></a>What is the Firebug</h2><p>This is a debugging tool for Firefox environment, but I think it’s not commonly used these days. This is because <strong>chrome developer tool</strong> is even better. However, Firebug is still being developed. (<a href="http://getfirebug.com/" target="_blank" rel="noopener">http://getfirebug.com/</a>)</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/07/03/TIP-How-to-see-log-in-jsfiddle/" data-id="cjm6zh5gp00nul4n2lndpxhm6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/07/03/TIP-How-to-see-log-in-jsfiddle/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/07/03/TIP-How-to-see-log-in-jsfiddle/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="blog-Book-Deep-Javascript-9-9" class="article article-type-blog" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -284,7 +422,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-9-9/" data-id="cjm5kh91000ahksn2hktbwr2m" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-9-9/" data-id="cjm6zh4pa0077l4n2zfb096i9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -452,7 +590,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-8-9/" data-id="cjm5kh90e00a0ksn2g7ld79uz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-8-9/" data-id="cjm6zh4pl007el4n2ylofl5sj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -628,7 +766,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-7-9/" data-id="cjm5kh90p00a7ksn2exisoetm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-7-9/" data-id="cjm6zh4pe007al4n2nxykx6x5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -812,7 +950,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-6-9/" data-id="cjm5kh908009wksn2tv9x0pc0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-6-9/" data-id="cjm6zh4or006wl4n2g8hhrekd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1035,7 +1173,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-5-9/" data-id="cjm5kh90h00a2ksn2wcpsl3o3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-5-9/" data-id="cjm6zh4pq007hl4n2qibpijwq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1222,7 +1360,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-4-9/" data-id="cjm5kh907009vksn2cqdg67yo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-4-9/" data-id="cjm6zh4ox0070l4n2d3ubvpbn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1440,7 +1578,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/27/Book-Deep-Javascript-3-9/" data-id="cjm5kh900009rksn2iawjxjik" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/27/Book-Deep-Javascript-3-9/" data-id="cjm6zh4p20073l4n2jcnlnomf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1629,7 +1767,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-2-9/" data-id="cjm5kh905009uksn2w9cfemk2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-2-9/" data-id="cjm6zh4on006tl4n2vh94td7x" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1800,7 +1938,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-1-9/" data-id="cjm5kh8zv009pksn20iem1mlg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-1-9/" data-id="cjm6zh4nu006fl4n2xj5r2uke" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1878,310 +2016,6 @@ ga('send', 'pageview');
 
 
 
-    <article id="blog-ENGLISH-The-Article-Book" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/06/07/ENGLISH-The-Article-Book/">[ENGLISH] The Article Book</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/06/07/ENGLISH-The-Article-Book/">
-            <time datetime="2017-06-07T00:49:08.000Z" itemprop="datePublished">2017-06-07</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/Grammar/">Grammar</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Summary-of-the-Article-Book"><a href="#Summary-of-the-Article-Book" class="headerlink" title="Summary of the Article Book"></a>Summary of the Article Book</h2><p>Remembering everything is almost impossible. Practice is the most important!</p>
-<h4 id="Rule-1-Use-“a”-when-a-singular-count-noun-is-indefinite-and-the-article-is-followed-by-a-consonant-sound"><a href="#Rule-1-Use-“a”-when-a-singular-count-noun-is-indefinite-and-the-article-is-followed-by-a-consonant-sound" class="headerlink" title="Rule 1, Use “a” when a singular count noun is indefinite and the article is followed by a consonant sound."></a>Rule 1, Use <strong><em>“a”</em></strong> when a singular count noun is indefinite and the article is followed by a consonant sound.</h4><ol>
-<li>Note<ul>
-<li><strong>Indefinite</strong> 는 알려지지 않았거나, 이해되지 않았거나, 언급되지 않은 것들을 뜻한다. </li>
-</ul>
-</li>
-<li>Examples<ul>
-<li>Do you have <strong>a</strong> pen?</li>
-<li>There is <strong>a</strong> dirt road at the north end of this town.</li>
-<li>Mr. Green bought <strong>a</strong> used car.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-2-use-“an”-when-a-singular-count-noun-is-indefinite-and-the-article-is-followed-by-a-vowel-sound"><a href="#Rule-2-use-“an”-when-a-singular-count-noun-is-indefinite-and-the-article-is-followed-by-a-vowel-sound" class="headerlink" title="Rule 2, use “an” when a singular count noun is indefinite and the article is followed by a vowel sound."></a>Rule 2, use <strong><em>“an”</em></strong> when a singular count noun is indefinite and the article is followed by a vowel sound.</h4><ol>
-<li>Note<ul>
-<li>글자가 아니라 소리가 <strong>“a”</strong> 나 <strong>“an”</strong> 를 써야할지를 결정한다.</li>
-</ul>
-</li>
-<li>Examples<ul>
-<li>Do you have <strong>an</strong> umbrella?</li>
-<li>Is there <strong>an</strong> eraser in your desk?</li>
-<li>He is <strong>an</strong> honorable man.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-3-Do-not-use-“a”-or-“an”-with-plural-nouns"><a href="#Rule-3-Do-not-use-“a”-or-“an”-with-plural-nouns" class="headerlink" title="Rule 3, Do not use “a” or “an” with plural nouns."></a>Rule 3, Do not use <strong><em>“a”</em></strong> or <strong><em>“an”</em></strong> with plural nouns.</h4><p>예제 생략.</p>
-<h4 id="Rule-4-Do-not-use-“a”-or-“an”-with-non-count-nouns"><a href="#Rule-4-Do-not-use-“a”-or-“an”-with-non-count-nouns" class="headerlink" title="Rule 4, Do not use “a” or “an” with non-count nouns."></a>Rule 4, Do not use <strong><em>“a”</em></strong> or <strong><em>“an”</em></strong> with non-count nouns.</h4><ol>
-<li>Common non-count nouns.<ul>
-<li>milk, oxygen, air, pepper, money, food, tea, air, coffee, water, meat</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-5-Do-not-use-“the”-with-indefinite-nouns"><a href="#Rule-5-Do-not-use-“the”-with-indefinite-nouns" class="headerlink" title="Rule 5, Do not use “the” with indefinite nouns."></a>Rule 5, Do not use <strong><em>“the”</em></strong> with indefinite nouns.</h4><ol>
-<li>Note<ul>
-<li>indefinite nouns는 일반적인 것을 말함.</li>
-</ul>
-</li>
-<li>Example<ul>
-<li>She likes to drink <del>the</del> milk.</li>
-<li>Do you have <del>the</del> brothers and sisters?</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-6-Do-not-use-the-there-“be-”"><a href="#Rule-6-Do-not-use-the-there-“be-”" class="headerlink" title="Rule 6, Do not use the there + “be.”"></a>Rule 6, Do not use <del>the</del> there + “be.”</h4><ol>
-<li>Note<ul>
-<li>There be 다음에 나오는 것은 모두 indefinite 이다.</li>
-</ul>
-</li>
-<li>Example<ul>
-<li>There is <del>the</del> a pen on the table.</li>
-<li>There were <del>the</del> planes in the sky.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-7-Use-“a”-for-single-letters-and-numbers-that-begin-with-“a”-consonant-sound"><a href="#Rule-7-Use-“a”-for-single-letters-and-numbers-that-begin-with-“a”-consonant-sound" class="headerlink" title="Rule 7, Use “a” for single letters and numbers that begin with “a” consonant sound."></a>Rule 7, Use <strong><em>“a”</em></strong> for single letters and numbers that begin with <strong>“a”</strong> consonant sound.</h4><ol>
-<li>Note <ul>
-<li>한글자나 숫자 앞에 a를 쓰라는 것.</li>
-</ul>
-</li>
-<li>Example<ul>
-<li>John got <strong><em>a</em></strong> “B” his history test.</li>
-<li>The professor wrote <strong>a</strong> “2” on the board.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-8-Use-“an”-for-letters-and-numbers-that-begin-with-a-vowel-sound"><a href="#Rule-8-Use-“an”-for-letters-and-numbers-that-begin-with-a-vowel-sound" class="headerlink" title="Rule 8, Use “an” for letters and numbers that begin with a vowel sound."></a>Rule 8, Use <strong><em>“an”</em></strong> for letters and numbers that begin with a vowel sound.</h4><ol>
-<li>Note<ul>
-<li>그리고 그 때, 발음을 고려하여 an을 써야 한다.</li>
-</ul>
-</li>
-<li>Example<ul>
-<li>Mary got <strong>an</strong> “A” on her geology test.</li>
-<li>The math teacher wrote <strong>an</strong> “8” on the board.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-9-Use-“a”-to-mean-“for-each”-or-“per”-when-the-noun-begins-with-a-consonant-sound"><a href="#Rule-9-Use-“a”-to-mean-“for-each”-or-“per”-when-the-noun-begins-with-a-consonant-sound" class="headerlink" title="Rule 9, Use “a” to mean “for each” or “per” when the noun begins with a consonant sound."></a>Rule 9, Use <strong><em>“a”</em></strong> to mean “for each” or “per” when the noun begins with a consonant sound.</h4><ol>
-<li>Note <ul>
-<li>각각을 뜻하는 a</li>
-</ul>
-</li>
-<li>Example<ul>
-<li>Eggs are only 79 cents <strong>a</strong> dozen.</li>
-<li>My car gets 26 miles <strong>a</strong> gallon.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-10-Use-“a”-to-mean-“for-each”-or-“per”-when-the-noun-begins-with-a-vowel-sound"><a href="#Rule-10-Use-“a”-to-mean-“for-each”-or-“per”-when-the-noun-begins-with-a-vowel-sound" class="headerlink" title="Rule 10, Use “a” to mean “for each” or “per” when the noun begins with a vowel sound."></a>Rule 10, Use <strong><em>“a”</em></strong> to mean “for each” or “per” when the noun begins with a vowel sound.</h4><ol>
-<li>Note<ul>
-<li>그리고 그 때 또한, 발음을 고려하여 an을 쓴다.</li>
-</ul>
-</li>
-<li>Example<ul>
-<li>An airliner can travel more than 600 miles <strong>an</strong> hour.</li>
-<li>This perfume costs 300 dollars <strong>an</strong> ounce.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-11-Use-“the”-with-in-the-morning-in-“the”-afternoon-and-in-“the”-evening"><a href="#Rule-11-Use-“the”-with-in-the-morning-in-“the”-afternoon-and-in-“the”-evening" class="headerlink" title="Rule 11, Use “the” with in the morning, in “the” afternoon, and in “the” evening."></a>Rule 11, Use <strong><em>“the”</em></strong> with in the morning, in <strong><em>“the”</em></strong> afternoon, and in <strong><em>“the”</em></strong> evening.</h4><ol>
-<li>Note<ul>
-<li>그냥 그렇다. morning/afternoon/evening 앞에 the를 쓴다.</li>
-</ul>
-</li>
-<li>Example<ul>
-<li>In <strong>the</strong> morning, I usually have fruit, cereal, and milk.</li>
-<li>Classes are held in <strong>the</strong> afternoon.</li>
-<li>Professor Smith studies in <strong>the</strong> evening.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-12-Do-not-use-an-article-for-“at-night”"><a href="#Rule-12-Do-not-use-an-article-for-“at-night”" class="headerlink" title="Rule 12, Do not use an article for “at night”."></a>Rule 12, Do not use an article for <strong><em>“at night”</em></strong>.</h4><ol>
-<li>Note<ul>
-<li>at night는 그냥 at night이다.</li>
-</ul>
-</li>
-<li>Example<ul>
-<li>I often watch televesion at <del>the</del> night.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-13-Use-“the”-when-the-noun-has-already-been-mentioned"><a href="#Rule-13-Use-“the”-when-the-noun-has-already-been-mentioned" class="headerlink" title="Rule 13, Use “the” when the noun has already been mentioned."></a>Rule 13, Use <strong><em>“the”</em></strong> when the noun has already been mentioned.</h4><ol>
-<li>Note<ul>
-<li>이미 언급된 대상은 the를 쓴다. (특정 대상이기 때문)</li>
-</ul>
-</li>
-<li>Example<ul>
-<li>I saw a dog. <strong>The</strong> dog ran away.</li>
-<li>Some planes appeared. <strong>The</strong> planes landed in a filed.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-14-Use-“the”-when-the-noun-that-follows-is-already-known"><a href="#Rule-14-Use-“the”-when-the-noun-that-follows-is-already-known" class="headerlink" title="Rule 14, Use “the” when the noun that follows is already known."></a>Rule 14, Use <strong><em>“the”</em></strong> when the noun that follows is already known.</h4><ol>
-<li>Note<ul>
-<li>이미 알려진 것, 이해된 것, 명백한 것, 이미 정해진 것(특정한 것)에는 the를 쓴다.</li>
-</ul>
-</li>
-<li>Example<ul>
-<li>Be careful! You’re spilling coffee on <strong>the</strong> floor.</li>
-<li>I picked up my suitcase and <strong>the</strong> handle broke off.</li>
-<li>Don’t light that cigar! You’ll fill <strong>the</strong> house with smoke.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-15-Use-“the”-when-the-noun-is-made-definit-by-a-prepositional-phrase"><a href="#Rule-15-Use-“the”-when-the-noun-is-made-definit-by-a-prepositional-phrase" class="headerlink" title="Rule 15, Use “the” when the noun is made definit by a prepositional phrase."></a>Rule 15, Use <strong><em>“the”</em></strong> when the noun is made definit by a prepositional phrase.</h4><ol>
-<li>Note<ul>
-<li>접속사 구로 인하여 한정(특정)이 되었을 경우, the를 붙인다.</li>
-</ul>
-</li>
-<li>Example<ul>
-<li><strong>The</strong> back of this room is dirty.</li>
-<li><strong>The</strong> prerequisites for this class are algebra and chemistry.</li>
-<li>The man in <strong>the</strong> red shirt is my boss.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-16-Use-“the”-when-the-noun-is-made-definite-by-an-adjective-clause-or-an-adjective-phrase"><a href="#Rule-16-Use-“the”-when-the-noun-is-made-definite-by-an-adjective-clause-or-an-adjective-phrase" class="headerlink" title="Rule 16, Use “the” when the noun is made definite by an adjective clause or an adjective phrase."></a>Rule 16, Use <strong><em>“the”</em></strong> when the noun is made definite by an adjective clause or an adjective phrase.</h4><ol>
-<li>Note<ul>
-<li>형용사 구나 형용사 절로 인해 한정될 경우에도 the를 붙인다</li>
-</ul>
-</li>
-<li>Example<ul>
-<li><strong>The</strong> teacher <strong>that we had last semester</strong> was especially good.</li>
-<li><strong>The</strong> man <strong>that hired me yesterday</strong> left the company today.</li>
-<li><strong>The</strong> car <strong>which the Smiths bought</strong> gets 50 miles a gallon.</li>
-<li><strong>The</strong> town <strong>where I grew up</strong> is now a big city.</li>
-<li><strong>The</strong> man <strong>she married</strong> was poor.</li>
-<li><strong>The</strong> woman <strong>standing by the door</strong> is my sister.</li>
-<li><strong>The</strong> teenagers <strong>living next door</strong> play loud music late at night.</li>
-<li><strong>The</strong> man <strong>arrested by the police</strong> went to jail.</li>
-<li><strong>The</strong> house <strong>destroyed by the fire</strong> was mine.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Rule-17"><a href="#Rule-17" class="headerlink" title="Rule 17,"></a>Rule 17,</h4>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/06/07/ENGLISH-The-Article-Book/" data-id="cjm5kh91300akksn2vked94nh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/06/07/ENGLISH-The-Article-Book/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/06/07/ENGLISH-The-Article-Book/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/18/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/20/">Next &raquo;</a>
     </nav>
@@ -2195,6 +2029,15 @@ ga('send', 'pageview');
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
+                            <p class="item-title"><a href="/2018/09/18/Note-입트영-2018-09-18/" class="title">[Note] 입트영 2018/09/18</a></p>
+                            <p class="item-date"><time datetime="2018-09-17T23:47:06.000Z" itemprop="datePublished">2018-09-18</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -2232,15 +2075,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
-                            <p class="item-title"><a href="/2018/09/12/Note-입트영-2018-09-12/" class="title">[Note] 입트영 2018/09/12</a></p>
-                            <p class="item-date"><time datetime="2018-09-12T00:12:39.000Z" itemprop="datePublished">2018-09-12</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -2250,7 +2084,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">240</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">241</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -2259,7 +2093,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2268,7 +2102,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">241</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">242</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
         </div>
     </div>
 
