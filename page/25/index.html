@@ -147,7 +147,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                314
+                315
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -182,6 +182,186 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="blog-Book-Deep-Javascript-9-9" class="article article-type-blog" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/06/29/Book-Deep-Javascript-9-9/">[Book Summary] 속깊은 Javascript 9/9</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/29/Book-Deep-Javascript-9-9/">
+            <time datetime="2017-06-29T09:35:38.000Z" itemprop="datePublished">2017-06-29</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/programming/">programming</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <img src="/2017/06/29/Book-Deep-Javascript-9-9/cover.jpg"> 
+<h1 id="Chapter-9-자바스크립트-표준"><a href="#Chapter-9-자바스크립트-표준" class="headerlink" title="Chapter 9. 자바스크립트 표준"></a>Chapter 9. 자바스크립트 표준</h1><h2 id="9-1-ECMAScript-6-표준"><a href="#9-1-ECMAScript-6-표준" class="headerlink" title="9.1. ECMAScript 6 표준"></a>9.1. ECMAScript 6 표준</h2><p>2015년 6월에 발표된 ECMAScript 6(ES6)은 ECMAScript 2015라고도 불린다. ES6과 ES 2015가 같기 때문에 조금 헷갈린다. 기존의 표준에 추가적인 기능들과 조금 더 나은 프로그래밍 언어의 모습을 얹어 놓았다. 개인적으로는 vue.js 2를 이용해서 개발할때 필요하므로 자세히 정리한다.</p>
+<h3 id="9-1-1-변수-상수-선언-키워드-let-const"><a href="#9-1-1-변수-상수-선언-키워드-let-const" class="headerlink" title="9.1.1. 변수, 상수 선언 키워드(let, const)"></a>9.1.1. 변수, 상수 선언 키워드(let, const)</h3><h4 id="“const는-이전에-없었던-‘상수’를-선언하는-기능이다-”"><a href="#“const는-이전에-없었던-‘상수’를-선언하는-기능이다-”" class="headerlink" title="“const는 이전에 없었던 ‘상수’를 선언하는 기능이다.”"></a>“const는 이전에 없었던 ‘상수’를 선언하는 기능이다.”</h4><p>같은 변수를 const로 선언 후 다시 정의 하면 에러가 발생한다. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">a = <span class="number">2</span>; <span class="comment">// 에러! 상수 변경 불가.</span></span><br></pre></td></tr></table></figure>
+<h4 id="“let은-“변수”를-선언하는데-var와는-조금-다르다-”"><a href="#“let은-“변수”를-선언하는데-var와는-조금-다르다-”" class="headerlink" title="“let은 “변수”를 선언하는데 var와는 조금 다르다.”"></a>“let은 “변수”를 선언하는데 var와는 조금 다르다.”</h4><p>var 와 다른 점은 다음 두가지이다.</p>
+<ol>
+<li>중복 선언이 불가능하다.</li>
+<li>다른 언어 처럼 중괄호를 이용한 블록 개념을 가지고 있다.</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">a = <span class="number">2</span>; <span class="comment">// 에러! 상수 변경 불가.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span>; <span class="comment">//에러! 중복 선언 불가.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i) <span class="comment">// 에러! i는 이미 사라짐.</span></span><br></pre></td></tr></table></figure>
+<h3 id="9-1-2-함수-화살표-표현식"><a href="#9-1-2-함수-화살표-표현식" class="headerlink" title="9.1.2. 함수 화살표 표현식"></a>9.1.2. 함수 화살표 표현식</h3><p>ES6에서는 익명 함수를 표현할 때 간단히 표현할 수 있는 화살표 표현식이 추가되었다.</p>
+<h4 id="“화살표-표현식이-생겼다-”"><a href="#“화살표-표현식이-생겼다-”" class="headerlink" title="“화살표 표현식이 생겼다.”"></a>“화살표 표현식이 생겼다.”</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> func;</span><br><span class="line">func = <span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123;alert(msg);&#125;</span><br><span class="line">func = <span class="function">(<span class="params">msg</span>) =&gt;</span> alert(msg);  <span class="comment">// 이 둘은 동일하다.</span></span><br></pre></td></tr></table></figure>
+<h4 id="“콜백-함수에서의-this가-달라졌다-”"><a href="#“콜백-함수에서의-this가-달라졌다-”" class="headerlink" title="“콜백 함수에서의 this가 달라졌다.”"></a>“콜백 함수에서의 this가 달라졌다.”</h4><p>기존의 익명함수는 <code>setTimeout</code>에 넘긴 익명함수의 컨텍스트가 global이었으나, 화살표 표현식을 통한 컨텍스트는 기존에 호출한 것이 유지되도록 바뀌었다. 이제 더이상 <code>_this</code>를 저장하지 않아도 될것 같다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">"global"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.a = <span class="string">"local"</span>;</span><br><span class="line">  <span class="comment">// 기존의 this </span></span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"1. a is "</span> + <span class="keyword">this</span>.a); <span class="comment">// 1. a is global</span></span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">  <span class="comment">// this를 저장해서 사용하기</span></span><br><span class="line">  <span class="keyword">var</span> _this = <span class="keyword">this</span>;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"2. a is "</span> + _this.a); <span class="comment">// 1. a is local</span></span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">  <span class="comment">// 새로운 화살표 표현식 내에서의 this</span></span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"3. a is "</span> + <span class="keyword">this</span>.a), <span class="number">100</span>); <span class="comment">// 1. a is local</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure></p>
+<h4 id="“IIFE-Invoke-Immediate-Function-Express-도-간단해졌다-”"><a href="#“IIFE-Invoke-Immediate-Function-Express-도-간단해졌다-”" class="headerlink" title="“IIFE(Invoke Immediate Function Express)도 간단해졌다.”"></a>“IIFE(Invoke Immediate Function Express)도 간단해졌다.”</h4><p>괄호로 전체를 묶는 방법은 좀 달라졌으니, 주의 요망<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 기존 방법</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"msg"</span>);</span><br><span class="line">&#125;());</span><br><span class="line"><span class="comment">// 새로운 방법</span></span><br><span class="line">(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    alert(<span class="string">"msg"</span>);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<h3 id="9-1-3-클래스-class-키워드"><a href="#9-1-3-클래스-class-키워드" class="headerlink" title="9.1.3. 클래스(class) 키워드"></a>9.1.3. 클래스(class) 키워드</h3><p>새로 추가된 <code>class</code>는 진짜 class이다. <code>constructor()</code>에 생성자를 구현하고, <code>extends</code> 키워드로 서브클래스를 구현할 수 있으며, <code>super</code> 키워드를 이용할 수도 있다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">"Car"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  getName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SUV</span> <span class="keyword">extends</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123; <span class="comment">// 생성자 함수</span></span><br><span class="line">    <span class="keyword">super</span>(name); <span class="comment">// super 키워드 이용</span></span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">"SUV"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  getName() &#123; <span class="comment">// 함수 오버라이딩</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.getName() + <span class="string">" is "</span> + <span class="keyword">this</span>.type; <span class="comment">// super키워드 이용</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> suv = <span class="keyword">new</span> SUV(<span class="string">"My car"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(suv.getName()); <span class="comment">// My car is SUV</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="9-1-4-객체-표현식-기능-확대"><a href="#9-1-4-객체-표현식-기능-확대" class="headerlink" title="9.1.4. 객체 표현식 기능 확대"></a>9.1.4. 객체 표현식 기능 확대</h3><p>좀 더 향상된 방법의 객체 표현식이 만들어졌다.</p>
+<h4 id="“속성명과-변수명이-같을-때는-한번만-써도-된다-”"><a href="#“속성명과-변수명이-같을-때는-한번만-써도-된다-”" class="headerlink" title="“속성명과 변수명이 같을 때는 한번만 써도 된다.”"></a>“속성명과 변수명이 같을 때는 한번만 써도 된다.”</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>,</span><br><span class="line">  b = <span class="number">2</span>,</span><br><span class="line">  c = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 기존의 방법</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: a,</span><br><span class="line">  b: b,</span><br><span class="line">  c: c</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 새로운 방법</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a,</span><br><span class="line">  b,</span><br><span class="line">  c</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(obj); <span class="comment">// Object &#123;a=1, b=2, c=3&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="“객체-표현식에-계산식이-들어갈-수-도-있다-”"><a href="#“객체-표현식에-계산식이-들어갈-수-도-있다-”" class="headerlink" title="“객체 표현식에 계산식이 들어갈 수 도 있다.”"></a>“객체 표현식에 계산식이 들어갈 수 도 있다.”</h4><p>계산식을 이용해서 객체를 선언하고 싶을 때, 기존에는 빈 객체 선언 후 코드로 추가 해야 했지만 그 부분이 개선되었다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 기존의 방법</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> bar = &#123;&#125;;</span><br><span class="line">bar[<span class="string">"bar"</span> + ++foo] = foo;</span><br><span class="line">bar[<span class="string">"bar"</span> + ++foo] = foo;</span><br><span class="line">bar[<span class="string">"bar"</span> + ++foo] = foo;</span><br><span class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// Object &#123;bar2=2, bar3=3, bar4=4&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 새로운 방법</span></span><br><span class="line"><span class="keyword">let</span> newBar = &#123;</span><br><span class="line">  [<span class="string">"bar"</span> + ++foo]: foo, [<span class="string">"bar"</span> + ++foo]: foo, [<span class="string">"bar"</span> + ++foo]: foo</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(newBar); <span class="comment">// Object &#123;bar2=2, bar3=3, bar4=4&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="“function-키워드를-생략할-수-있고-getter-setter-정의가-단순해졌다-”"><a href="#“function-키워드를-생략할-수-있고-getter-setter-정의가-단순해졌다-”" class="headerlink" title="“function 키워드를 생략할 수 있고, getter/setter 정의가 단순해졌다.”"></a>“function 키워드를 생략할 수 있고, getter/setter 정의가 단순해졌다.”</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// function 키워드를 써야 하는 기존의 방법</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  func: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">"msg"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// funciton 키워드를 생략할 수 있는 새로운 방법</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  func() &#123;</span><br><span class="line">    alert(<span class="string">"msg"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// getter, setter를 설정을 위한 기존의 방법</span></span><br><span class="line"><span class="comment">// obj.name에 접근하면 호출되는 함수들이다.</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">"name"</span>, &#123;</span><br><span class="line">  get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._name;</span><br><span class="line">  &#125;,</span><br><span class="line">  set: <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>._name = name;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// getter, setter를 설정을 위한 새로운 방법</span></span><br><span class="line">obj = &#123;</span><br><span class="line">  _name: <span class="string">"my name"</span>,</span><br><span class="line">  get name() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._name;</span><br><span class="line">  &#125;,</span><br><span class="line">  set name(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>._name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="9-1-5-템플릿-문자열-표현식"><a href="#9-1-5-템플릿-문자열-표현식" class="headerlink" title="9.1.5. 템플릿 문자열 표현식"></a>9.1.5. 템플릿 문자열 표현식</h3><p>템플릿 문자열 표현식은 <code>` </code>(역따옴표)를 이용한다. 아래의 예제와 같이 더 이상 <code>+</code> 로 문자열을 연결해서 붙일 필요도 없고, 멀티라인 문자열도 지원한다.  </p>
+<h4 id="문자열-템플릿-기본"><a href="#문자열-템플릿-기본" class="headerlink" title="문자열 템플릿 기본"></a>문자열 템플릿 기본</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = <span class="string">"bar"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 템플릿 문자열</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;foo&#125;</span> <span class="subst">$&#123;foo.toUpperCase()&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 멀티라인 지원</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`foo</span></span><br><span class="line"><span class="string">bar`</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="Tagged-template"><a href="#Tagged-template" class="headerlink" title="Tagged template"></a>Tagged template</h4><p>책에서는 이 용어를 사용하지 않는다. 하지만, <a href="&quot;http://hacks.mozilla.or.kr/2015/08/es6-in-depth-template-strings-2/&quot;">이곳</a>으로 그리고 <a href="&quot;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals&quot;">MDN</a>으로 부터 정식 명칭과 더 명확한 정보를 얻을 수 있었다. </p>
+<p>Tagged template 이란, 템플릿 문자열 앞에 어떤 함수의 이름을 붙이는 것이다. 이렇게 함으로써, 문자열을 가공하는 방법을 제공한다. 이를 활용하여 다국어를 지원, 이스케이핑, 템플릿 언어 등에 응용할 수 있다.</p>
+<p>Tag는 함수로 구현하며 다음과 같이 템플릿 문자열 앞에 붙여준다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myTag</span> (<span class="params">strings, values</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"안녕?"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> name = myTag <span class="string">`Hello?`</span>;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// 안녕?</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="9-1-6-Destructing"><a href="#9-1-6-Destructing" class="headerlink" title="9.1.6. Destructing"></a>9.1.6. Destructing</h3><p>객체를 역으로 여러 개의 변수에 할당하는 것을 의미한다. 좌측값(lvalue)에 <code>[]</code>이나 <code>{}</code>가 있으면 Destructing이라고 보면 된다.</p>
+<h4 id="“배열을-Destucting-한다-”"><a href="#“배열을-Destucting-한다-”" class="headerlink" title="“배열을 Destucting 한다.”"></a>“배열을 Destucting 한다.”</h4><p>배열의 값을 순서대로 변수에 할당한다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="comment">// 각각의 변수에 myArray의 값들을 할당함. 여기서 3은 버려진다.</span></span><br><span class="line"><span class="keyword">var</span> [a, b, , c, d] = myArray;</span><br><span class="line"><span class="comment">// swap 예제. lvalue에 쓰인 []은 destructing</span></span><br><span class="line">[a, b] = [b, a];</span><br></pre></td></tr></table></figure></p>
+<h4 id="“객체-Destructing-한다-”"><a href="#“객체-Destructing-한다-”" class="headerlink" title="“객체 Destructing 한다.”"></a>“객체 Destructing 한다.”</h4><p>객체의 value(키 빼고)를 각각의 변수에 할당한다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 객체의 경우, 객체의 속성명으로 변수로 만든다.</span></span><br><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">	bar : <span class="string">"I'm bar"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> &#123;</span><br><span class="line">  bar</span><br><span class="line">&#125; = foo;</span><br><span class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// I'm bar</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="“깊이가-있는-객체를-Destructing-한다-”"><a href="#“깊이가-있는-객체를-Destructing-한다-”" class="headerlink" title="“깊이가 있는 객체를 Destructing 한다.”"></a>“깊이가 있는 객체를 Destructing 한다.”</h4><p>깊이가 있는 객체의 경우, 객체로 받을 수도, 내부 객체를 풀어서 받을지 표현식으로 결정할 수 있다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">  bar: &#123;</span><br><span class="line">    bar1: <span class="string">"I'm bar1"</span>,</span><br><span class="line">    bar2: <span class="string">"I'm bar2"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> &#123;</span><br><span class="line">  bar,</span><br><span class="line">  bar: &#123;</span><br><span class="line">    bar1,</span><br><span class="line">    bar2</span><br><span class="line">  &#125;</span><br><span class="line">&#125; = foo;</span><br><span class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// Object &#123;bar1: "I'm bar1", bar2: "I'm bar2"&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(bar1); <span class="comment">// I'm bar1</span></span><br><span class="line"><span class="built_in">console</span>.log(bar2); <span class="comment">// I'm bar2</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="“Destructing-할-때-기본-값-지정이-가능하다-”"><a href="#“Destructing-할-때-기본-값-지정이-가능하다-”" class="headerlink" title="“Destructing 할 때, 기본 값 지정이 가능하다.”"></a>“Destructing 할 때, 기본 값 지정이 가능하다.”</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">var</span> [a = <span class="number">5</span>, b = <span class="number">6</span>, c = <span class="number">7</span>, d = <span class="number">8</span>] = arr;</span><br><span class="line"><span class="built_in">console</span>.log(a, b, c, d); <span class="comment">// 1 2 7 8</span></span><br></pre></td></tr></table></figure>
+<h4 id="“함수의-파라미터를-받을-때-Destructing-가능하다-”"><a href="#“함수의-파라미터를-받을-때-Destructing-가능하다-”" class="headerlink" title="“함수의 파라미터를 받을 때, Destructing 가능하다.”"></a>“함수의 파라미터를 받을 때, Destructing 가능하다.”</h4><p><code>[]</code>의 의미에 대해서 조금 헷갈리는 부분이 있는데, 어떤 것이 array이고 어떤 것이 destructing인지 잘 구분해야 한다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">[foo,bar]</span>) </span>&#123; <span class="comment">// destructing </span></span><br><span class="line">	<span class="built_in">console</span>.log(foo, bar);</span><br><span class="line">  <span class="keyword">return</span> [bar,foo] <span class="comment">// array</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> [a,b]<span class="comment">/* destructing */</span> = func([<span class="string">"a"</span>,<span class="string">"b"</span>]);  <span class="comment">/* array */</span></span><br><span class="line"><span class="built_in">console</span>.log(a, b);</span><br></pre></td></tr></table></figure></p>
+<h3 id="9-1-7-함수-인자-기능-확대"><a href="#9-1-7-함수-인자-기능-확대" class="headerlink" title="9.1.7. 함수 인자 기능 확대"></a>9.1.7. 함수 인자 기능 확대</h3><p>당연히 있어야할 것이 지금 나오 느낌.</p>
+<h4 id="“가변인자-사용이-가능해-졌다-”"><a href="#“가변인자-사용이-가능해-졌다-”" class="headerlink" title="“가변인자 사용이 가능해 졌다.”"></a>“가변인자 사용이 가능해 졌다.”</h4><p>기존의 방법은 <code>arguments</code>에 <code>Array.prototype.slice()</code>함수를 적용해서 남은 배열을 파라미터를 가져와야 했으나 이제는 <code>...</code> 붙이면 된다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">arg1, ...rest</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(arg1, rest);</span><br><span class="line">&#125;</span><br><span class="line">func(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>); <span class="comment">// 1 [2, 3, 4]</span></span><br></pre></td></tr></table></figure></p>
+<p>반대로, 호출하는 쪽에 <code>...</code>을 붙이면 배열을 펼쳐서 각각의 파라미터로 전달하게 된다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">a, b, c, d</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, c, d, );</span><br><span class="line">&#125;</span><br><span class="line">func(...[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]); <span class="comment">// 1 2 3 4</span></span><br></pre></td></tr></table></figure>
+<h4 id="“함수-인자에-기본값-설정이-가능하다-”"><a href="#“함수-인자에-기본값-설정이-가능하다-”" class="headerlink" title="“함수 인자에 기본값 설정이 가능하다.”"></a>“함수 인자에 기본값 설정이 가능하다.”</h4><p>이전에는 파라미터에 대한 Falsy 체크로 <code>param1 = param1 || &quot;default&quot;</code>을 써야 했지만, 이제는 그러지 않아도 된다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">a = <span class="number">1</span>, b = <span class="number">2</span>, c = <span class="number">3</span></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, c);</span><br><span class="line">&#125;</span><br><span class="line">func(<span class="number">4</span>, <span class="literal">null</span>, <span class="literal">undefined</span>);</span><br></pre></td></tr></table></figure></p>
+<p>주의할 점은 <code>undefined</code>에 대해서만 기본값을 할당하며, <code>null</code>/<code>0</code>/<code>false</code>/<code>&quot;&quot;</code>을 체크하던 기존의 <code>param1 = param1 || &quot;default&quot;</code> 패턴과는 다르다는 것이다.</p>
+<h3 id="9-1-8-iterator와-for-of-기능"><a href="#9-1-8-iterator와-for-of-기능" class="headerlink" title="9.1.8. iterator와 for-of 기능"></a>9.1.8. iterator와 for-of 기능</h3><p>이 부분은 쉽지 않다. 이해해야 할 것이 좀 있다. <code>TODO: 나중에 다시 정리 예정</code> </p>
+<h3 id="9-1-9-Map과-Set-기능-추가"><a href="#9-1-9-Map과-Set-기능-추가" class="headerlink" title="9.1.9. Map과 Set 기능 추가"></a>9.1.9. Map과 Set 기능 추가</h3><p>자바스크립트에는 없었던 유용한 자료구조가 추가되었다. Map과 Set은 각각 필수 함수들을 내장하고 있으며, iterator가 구현되어 있다.</p>
+<h4 id="“Set과-Map-클래스가-추가되었다-”"><a href="#“Set과-Map-클래스가-추가되었다-”" class="headerlink" title="“Set과 Map 클래스가 추가되었다.”"></a>“Set과 Map 클래스가 추가되었다.”</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Map</span></span><br><span class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>().set(<span class="string">"key1"</span>, <span class="string">"value1"</span>).set(<span class="string">"key2"</span>, <span class="string">"value2"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, val] <span class="keyword">of</span> map.entries()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key, val);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Set</span></span><br><span class="line"><span class="keyword">var</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>().add(<span class="string">"value1"</span>).add(<span class="string">"value2"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> val <span class="keyword">of</span> set.values()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="“WeakSet과-WeakMap”은-reference가-없어지면-요소가-삭제된다-”"><a href="#“WeakSet과-WeakMap”은-reference가-없어지면-요소가-삭제된다-”" class="headerlink" title="“WeakSet과 WeakMap”은 reference가 없어지면 요소가 삭제된다.”"></a>“WeakSet과 WeakMap”은 reference가 없어지면 요소가 삭제된다.”</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  data: <span class="string">"foo"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> set = <span class="keyword">new</span> <span class="built_in">WeakSet</span>().add(obj);</span><br><span class="line"><span class="built_in">console</span>.log(set.has(obj)); <span class="comment">// true</span></span><br><span class="line">obj = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.log(set.has(obj)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h3 id="9-1-10-Binary-Octal-표현식-추가"><a href="#9-1-10-Binary-Octal-표현식-추가" class="headerlink" title="9.1.10. Binary/Octal 표현식 추가"></a>9.1.10. Binary/Octal 표현식 추가</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0b11111111</span>); <span class="comment">// 255</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0xFF</span>); <span class="comment">// 255</span></span><br></pre></td></tr></table></figure>
+<h3 id="9-1-11-TypedArray-기능-추가"><a href="#9-1-11-TypedArray-기능-추가" class="headerlink" title="9.1.11. TypedArray 기능 추가"></a>9.1.11. TypedArray 기능 추가</h3><p>Raw 데이터를 만들고 조작할 수 있는 방법을 제공한다. 웹에서도 socket, video, sound와 같은 데이터를 다루기 시작해면서 필요해 졌다. <a href="&quot;https://developer.mozilla.org/ko/docs/Web/JavaScript/Typed_arrays&quot;">MDN</a> 문서에 친절하게도 한글로 잘 설명되어 있다. 버퍼와 뷰 부분으로 나누어져 있는데, 버퍼에 직접 접근할 수 없고, 뷰를 통해서 접근한다. <code>ArrayBuffer()</code> 는 버퍼를 위해 사용하고, <code>Unint32Array()</code>와 같은 생성자는 뷰를 생성하기 위해서 사용한다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arrayBuffer = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(<span class="number">5</span>); <span class="comment">// 5바이트 버퍼 생성</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="keyword">new</span> <span class="built_in">Uint32Array</span>(arrayBuffer, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> ch = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(arrayBuffer, <span class="number">4</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">num[<span class="number">0</span>] = <span class="number">0xFFFFFFFF</span>;</span><br><span class="line">ch[<span class="number">0</span>] = <span class="number">0xFF</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(num); <span class="comment">// Uint32Array [4294967295]</span></span><br><span class="line"><span class="built_in">console</span>.log(ch); <span class="comment">// Uint8Array [255]</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="9-1-12-모듈-기능-표준화"><a href="#9-1-12-모듈-기능-표준화" class="headerlink" title="9.1.12. 모듈 기능 표준화"></a>9.1.12. 모듈 기능 표준화</h3><p>Node.js와 CommonJS로 부터 활성화 되기 시작해서 이번 표준에 정의 되었다. <code>export</code>로 각 파일에서 모듈을 정의하고, <code>import</code>로 사용한다. export는 두 가지 종류가 있는데, <code>named export</code>와 <code>default export</code>이다. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// module.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> bar <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//app.js</span></span><br><span class="line"><span class="keyword">import</span> mybar, &#123;foo&#125; <span class="keyword">from</span> <span class="string">"a.js"</span>;</span><br></pre></td></tr></table></figure>
+<p><code>mybar</code>에는 <code>{}</code>가 필요 없고, <code>default export</code>인 로 설정한 <code>bar</code>가 불려온다. 그 외엔 모두 <code>{}</code> 안에 넣어야 한다. 나머지 정확한 규칙들은 <a href="&quot;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import&quot;">MDN</a> 을 참고하면 된다.    </p>
+<h3 id="9-1-13-프락시-모듈"><a href="#9-1-13-프락시-모듈" class="headerlink" title="9.1.13. 프락시 모듈"></a>9.1.13. 프락시 모듈</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">  bar: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// get할 때 속성 존재 여부 체크와 에러 코드를 리턴해주는 Proxy 객체</span></span><br><span class="line"><span class="keyword">var</span> fooProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(foo, &#123;</span><br><span class="line">  get(foo, name) &#123;</span><br><span class="line">    <span class="keyword">return</span> name <span class="keyword">in</span> foo ? foo[name] : <span class="string">"ERROR 111: 없엉."</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(fooProxy.a); <span class="comment">// ERROR 111: 없엉.</span></span><br><span class="line"><span class="built_in">console</span>.log(fooProxy.bar); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<h3 id="9-1-14-Symbol-모듈"><a href="#9-1-14-Symbol-모듈" class="headerlink" title="9.1.14. Symbol 모듈"></a>9.1.14. Symbol 모듈</h3><p>이 책은 Symbol에 대한 제대로된 정의와 필요성에 대해서 설명하고 있지 않은데다가 예제 또한 유용하지 않은 것이다. 이에 대해서는 <a href="&quot;http://hacks.mozilla.or.kr/&quot;">Hacks Mozillar</a>에 잘 나와있다. Symbol은 유일한 값을 갖는 속성 키를 만드는데 쓰인다. 만약 내가 라이브러리를 만들어서 html의 특정 엘리멘트에 나만의 속성을 추가했다고 가정한다. 그런 속성명은 다른 라이브러리와 충돌할 수 밖에 없다. 이 때 Symbol()을 사용한다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 파라미터로 들어가는 값은 주석이다. 디버깅용 출력에 사용된다.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>(<span class="string">"abcd"</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 매번 생성한 심벌은 다르다.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>() === <span class="built_in">Symbol</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// window에 속성으로 등록한다 해도, 변수명이나 함수명에 대한 충돌을 신경쓰지 않아도 된다.</span></span><br><span class="line"><span class="keyword">var</span> myFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;<span class="built_in">console</span>.log(<span class="string">"myFunc"</span>)&#125;;</span><br><span class="line"><span class="keyword">var</span> myFuncSym = <span class="built_in">Symbol</span>(<span class="string">"myFunc"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 등록과 호출</span></span><br><span class="line"><span class="built_in">window</span>[myFuncSym] = myFunc;</span><br><span class="line"><span class="built_in">window</span>[myFuncSym]();</span><br></pre></td></tr></table></figure></p>
+<h3 id="9-1-15-Promise-모듈"><a href="#9-1-15-Promise-모듈" class="headerlink" title="9.1.15. Promise 모듈"></a>9.1.15. Promise 모듈</h3><p>비동기 함수를 Chaining하기 위한 하나의 방식을 제공한다. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Promise 생성자에는 resolve와 reject를 받는다.</span></span><br><span class="line"><span class="keyword">var</span> asyncFunc = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 여기서 시간이 걸리는 비동기 작업... 예) XMLHttpRequest()</span></span><br><span class="line">  <span class="comment">// 해당 비동기 성공하면 resolve(), 실패하면 reject()이 호출되도록 콜백 구성.</span></span><br><span class="line">  resolve(<span class="string">"success message"</span>);</span><br><span class="line">  reject(<span class="string">"fail message"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">asyncFunc</span><br><span class="line">  .then(<span class="function">(<span class="params">msg</span>) =&gt;</span> &#123; <span class="comment">// resolve()에 의해 호출됨.</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"SUCCESS:"</span> + msg);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">msg</span>) =&gt;</span> &#123; <span class="comment">// reject()에 의해 호출됨.</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"FAIL:"</span> + msg);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-9-9/" data-id="cjs2gdntm0063asn21g9zaz8w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-9-9/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-9-9/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="blog-Book-Deep-Javascript-8-9" class="article article-type-blog" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -272,7 +452,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-8-9/" data-id="cjs06bpjb005v2on2wmrz32uy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-8-9/" data-id="cjs2gdnsd005tasn27u567axm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -448,7 +628,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-7-9/" data-id="cjs06bpj2005o2on2zefj1eic" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-7-9/" data-id="cjs2gdnsm005wasn2gleyvbw6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -632,7 +812,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-6-9/" data-id="cjs06bpix005k2on2kws9r43b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-6-9/" data-id="cjs2gdnrr005masn21x2dh4fn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -855,7 +1035,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-5-9/" data-id="cjs06bpit005h2on2f02dc9bo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-5-9/" data-id="cjs2gdnrj005iasn2wqzphcs0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1042,7 +1222,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-4-9/" data-id="cjs06bpip005d2on2cnmqqifz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/29/Book-Deep-Javascript-4-9/" data-id="cjs2gdnra005easn26ambjs3l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1260,7 +1440,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/27/Book-Deep-Javascript-3-9/" data-id="cjs06bpif00552on2wq6mki4j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/27/Book-Deep-Javascript-3-9/" data-id="cjs2gdnpq004zasn2cvwmpmbr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1449,7 +1629,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-2-9/" data-id="cjs06bpib00522on25t2tturx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-2-9/" data-id="cjs2gdnqp005aasn2j2yyld4v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1620,7 +1800,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-1-9/" data-id="cjs06bphx004u2on24pi7w4ck" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-1-9/" data-id="cjs2gdnqf0057asn2rp5hb5ry" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1924,7 +2104,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/06/07/ENGLISH-The-Article-Book/" data-id="cjs06bpjf005y2on2zcqduxxu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/06/07/ENGLISH-The-Article-Book/" data-id="cjs2gdnt40060asn2h284owrl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2002,263 +2182,6 @@ ga('send', 'pageview');
 
 
 
-    <article id="blog-600W-GRAMMAR-Complements" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/04/17/600W-GRAMMAR-Complements/">[600W][GRAMMAR] Complements</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/04/17/600W-GRAMMAR-Complements/">
-            <time datetime="2017-04-17T07:55:19.000Z" itemprop="datePublished">2017-04-17</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/600W/">600W</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/Grammar/">Grammar</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Verb-Noun-Adjective-Complements"><a href="#Verb-Noun-Adjective-Complements" class="headerlink" title="Verb, Noun, Adjective Complements"></a>Verb, Noun, Adjective Complements</h2><ol>
-<li><strong>Verb + Infinitive</strong><ul>
-<li>appear, attempt, be found, begin, continue, decide, fail, intend, seem, tend, try, want, work<ul>
-<li>The traffic jam caused him to be late.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>Verb + Object + Infinitive</strong><ul>
-<li>advise, allow, cause(시키다?), enable(할수있게 하다), expect, find, force, get, inspire, require, want<ul>
-<li>Good health enabled him to carry out the plan.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>Verb + Gerund</strong><ul>
-<li>begin, be used for(~하는데 사용되다), continue, experience, go, go on(을 계속 하다, involve(수반/필요로하다), keep, keep on, remain(여전히/변함없이 ~있다), remember, spend (time, etc), start, stop<ul>
-<li>My job involves interviewing people.</li>
-<li>Remain standing.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>Verb + Object + Base verb</strong><ul>
-<li>have, help, let, make</li>
-</ul>
-</li>
-<li><strong>Verb + Wh-clause/That-clause</strong><ul>
-<li>explain, know, realize, see, show, understand</li>
-</ul>
-</li>
-<li><strong>Verb + That clause</strong><ul>
-<li>argue, believe, conclude, ensure, feel, find, indicate, know, mean, realize, say, see, show, suggest, suppose, think</li>
-</ul>
-</li>
-<li><strong>Subjunctive Verb + Base verb</strong> (이미 있었던 사실을 말하는 것이 아니라, 주장?의견?설득?)<ul>
-<li>advise, agree, ask, demand, insist, order, prefer, propose, recommend, request, require, stipulate, suggest, urge</li>
-</ul>
-</li>
-<li><strong>Verb + preposition+ Gerund</strong><ul>
-<li>think, plan</li>
-</ul>
-</li>
-<li><strong>Verb + Object + Base form/Gerund</strong><ul>
-<li>see, hear, feel(verbs of perception)</li>
-<li>see someone sing (콘서트에서 노래부르는 것을 다 봤을때)</li>
-<li>see door open (문이 열리는 것은 순간이라 다 본 것임)</li>
-<li>see someone singing (노래 부르고 있는 장면 목격)</li>
-</ul>
-</li>
-<li><strong>Noun + Infinitive</strong><ul>
-<li>ability, capacity, chance, decision, desire, effort, failure, inability, plan, opportunity, power, right, tendency, willingness</li>
-</ul>
-</li>
-<li><strong>Adjective + Infinitive</strong><ul>
-<li>determined, difficult, due, easy, free, hard, important, (im)possible, shocked, (un)able, (un)likely, (un)willing</li>
-</ul>
-</li>
-<li><strong>Noun + That-clause</strong> (생각, 믿음, 결심, 의심, 희망, 추상적인 것?)<ul>
-<li>assumption, belief, conclusion, desire, determination, doubt, hope, idea, notion, possibility, reason, wish</li>
-</ul>
-</li>
-<li><strong>Adjective + That-clause</strong><ul>
-<li>apparent, certain, clear, confident, (im)possible, sure, surprised, true, (un)likely</li>
-</ul>
-</li>
-<li><strong>Subjunctive Noun + That-clause + Base form</strong><ul>
-<li>advice, claim, demand, observation, point, recommendation, suggestion </li>
-</ul>
-</li>
-<li><strong>Subjunctive Adjective + That-clause + Base form</strong><ul>
-<li>essential, important, necessary, vital</li>
-</ul>
-</li>
-<li><strong>Adjective + preposition + Gerund</strong><ul>
-<li>aware of, excited about, angry about/with, capable of, certain of, comfortable about/with, disappointed by/with, fond of(좋아하다), frightened by, guilty of, happy with, in charge of, in favor of(에 찬성하여), independent of, innocent of, likely to, married to, pleased by, sensitive to, similar to, sure of, thankful for, upset with, willing to(기꺼이 ~하다), sick of(~에 신물이 난)<ul>
-<li>be less likely to ~할 가능성이 높다.</li>
-<li>be more likely to ~할 가능성이 낮다.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>Noun + preposition(of) + Gerund</strong><ul>
-<li>chance, cost, idea, means, method, possibility, problem, process, risk, way</li>
-</ul>
-</li>
-<li><strong>Verb + Object + Gerund</strong><ul>
-<li>spend time/money, have difficulty/trouble, have a hard/difficult time, be accustomed to, be used to, look forward to, be opposed to</li>
-<li>have fun/a good time + Gerund</li>
-<li>sit/stand/lie + (expression of place) + Gerund<ul>
-<li>She sat at her desk writing a letter.</li>
-</ul>
-</li>
-<li>find/catch + object + Gerund</li>
-</ul>
-</li>
-</ol>
-<h2 id="Infinitives-of-Purpose"><a href="#Infinitives-of-Purpose" class="headerlink" title="Infinitives of Purpose"></a>Infinitives of Purpose</h2><ol>
-<li>to + Verb<ul>
-<li>in order to Verb</li>
-</ul>
-</li>
-<li>for + noun<ul>
-<li>(예외) be used for가 일반적이고 전형적인 목적을 나타낼 때 쓰인다.</li>
-<li>A saw is used for cutting wood. (주어도 saw이고, 동사도 현재이다.)</li>
-<li>A chain saw was used <strong>to cut</strong> down the old oak tree.</li>
-</ul>
-</li>
-</ol>
-<h2 id="Need-Gerund-Passive를-나타내기-위해서-쓰임"><a href="#Need-Gerund-Passive를-나타내기-위해서-쓰임" class="headerlink" title="Need + Gerund (Passive를 나타내기 위해서 쓰임)"></a>Need + Gerund (Passive를 나타내기 위해서 쓰임)</h2><ul>
-<li>My house needs to be painted.</li>
-<li>My house needs <strong>painting</strong>. (동일한 뜻)</li>
-</ul>
-<h2 id="Causative-Verb-Make-Have-Get"><a href="#Causative-Verb-Make-Have-Get" class="headerlink" title="Causative Verb (Make, Have, Get)"></a>Causative Verb (Make, Have, Get)</h2><ol>
-<li>뜻: “X” causes “Y” to do something.<ul>
-<li>make : 강제로 시킴.</li>
-<li>have : 요청함.</li>
-<li>get : 설득하려 애씀.</li>
-</ul>
-</li>
-<li>수동태 form<ul>
-<li>I had my watch repaired.</li>
-<li>I got my watch repaired.</li>
-</ul>
-</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/04/17/600W-GRAMMAR-Complements/" data-id="cjs06bphm004j2on25bu0frjy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/04/17/600W-GRAMMAR-Complements/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/04/17/600W-GRAMMAR-Complements/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/24/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/26/">Next &raquo;</a>
     </nav>
@@ -2272,6 +2195,15 @@ ga('send', 'pageview');
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
+                            <p class="item-title"><a href="/2019/02/12/Note-입트영-2019-02-12/" class="title">[Note] 입트영 2019/02/12</a></p>
+                            <p class="item-date"><time datetime="2019-02-12T00:57:05.000Z" itemprop="datePublished">2019-02-12</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -2309,15 +2241,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
-                            <p class="item-title"><a href="/2019/02/09/Note-입트영-2019-02-05/" class="title">[Note] 입트영 2019-02-05</a></p>
-                            <p class="item-date"><time datetime="2019-02-08T15:48:41.000Z" itemprop="datePublished">2019-02-09</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -2327,7 +2250,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">300</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">301</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -2336,7 +2259,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2345,7 +2268,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">301</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">302</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
         </div>
     </div>
 
