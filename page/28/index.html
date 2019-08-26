@@ -147,7 +147,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                333
+                339
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -182,6 +182,1357 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-Book-Deep-Javascript-3-9" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/06/27/Book-Deep-Javascript-3-9/">[Book Summary] 속 깊은 Javascript 3/9</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/27/Book-Deep-Javascript-3-9/">
+            <time datetime="2017-06-27T06:57:44.000Z" itemprop="datePublished">2017-06-27</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/programming/">programming</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <img src="/2017/06/27/Book-Deep-Javascript-3-9/cover.jpg"> 
+<h1 id="Chapter-3-자바-스크립트의-변수"><a href="#Chapter-3-자바-스크립트의-변수" class="headerlink" title="Chapter 3. 자바 스크립트의 변수"></a>Chapter 3. 자바 스크립트의 변수</h1><h2 id="3-1-자바스크립트의-기본-형과-typeof"><a href="#3-1-자바스크립트의-기본-형과-typeof" class="headerlink" title="3.1. 자바스크립트의 기본 형과 typeof"></a>3.1. 자바스크립트의 기본 형과 typeof</h2><h3 id="javascript의-기본형"><a href="#javascript의-기본형" class="headerlink" title="javascript의 기본형"></a>javascript의 기본형</h3><p>객체가 아닌 기본적인 키워드로 활용할 수 있는 기본형. </p>
+<ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>undefined</li>
+<li>null</li>
+<li>symbol</li>
+</ul>
+<h3 id="typeof의-결과-목록"><a href="#typeof의-결과-목록" class="headerlink" title="typeof의 결과 목록"></a>typeof의 결과 목록</h3><p>typeof는 문자열을 반환한다.</p>
+<ul>
+<li>“undefined”</li>
+<li>“boolean”</li>
+<li>“number”</li>
+<li>“string”</li>
+<li>“object”</li>
+<li>“function”</li>
+<li>“symbol”</li>
+</ul>
+<h3 id="typeof의-결과-중-특이-한-것"><a href="#typeof의-결과-중-특이-한-것" class="headerlink" title="typeof의 결과 중 특이 한 것"></a>typeof의 결과 중 특이 한 것</h3><p><strong>“typeof null은 object이다.”</strong> 따라서, typeof를 이용해서 object인지 체크한 뒤 어떤 동작을 추가하려면, null 체크를 따로 먼저 해주는 것이 좋다.<br><figure class="highlight javascript"><figcaption><span>object vs function</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(aaa !== <span class="literal">null</span> &amp;&amp; <span class="keyword">typeof</span> aaa === <span class="string">"object"</span>) &#123;</span><br><span class="line">    <span class="comment">// do something with aaa</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-2-new-String-“”-String-“”-그리고-“”"><a href="#3-2-new-String-“”-String-“”-그리고-“”" class="headerlink" title="3.2. new String(“”), String(“”), 그리고 “”"></a>3.2. new String(“”), String(“”), 그리고 “”</h2><p>Javascript의 문자열은 기본형(primitive)과 객체형 두가지 형태로 존재한다. </p>
+<h3 id="“new-String-은-래퍼객체이고-“”과-String-“”-은-기본형이다-”"><a href="#“new-String-은-래퍼객체이고-“”과-String-“”-은-기본형이다-”" class="headerlink" title="“new String()은 래퍼객체이고, “”과 String(“”)은 기본형이다.”"></a>“new String()은 래퍼객체이고, “”과 String(“”)은 기본형이다.”</h3><p>String(“”)은 표준에 정의된 일련의 과정을 통해서 결국 기본형을 리턴한다. </p>
+<figure class="highlight javascript"><figcaption><span>new String('') vs '' vs String('')</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"abc"</span>)); <span class="comment">//object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">String</span>(<span class="string">"abc"</span>)); <span class="comment">// string</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="string">"abc"</span>); <span class="comment">// string</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"abc"</span> === <span class="built_in">String</span>(<span class="string">"abc"</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="“기본형은-레퍼객체나-Object의-인스턴스가-아니다-”"><a href="#“기본형은-레퍼객체나-Object의-인스턴스가-아니다-”" class="headerlink" title="“기본형은 레퍼객체나 Object의 인스턴스가 아니다.”"></a>“기본형은 레퍼객체나 Object의 인스턴스가 아니다.”</h3><figure class="highlight javascript"><figcaption><span>instanceof primitive type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">123</span> <span class="keyword">instanceof</span> <span class="built_in">Number</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">123</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">123</span>) <span class="keyword">instanceof</span> <span class="built_in">Number</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">123</span>) <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"123"</span> <span class="keyword">instanceof</span> <span class="built_in">Number</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"123"</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"123"</span>) <span class="keyword">instanceof</span> <span class="built_in">String</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"123"</span>) <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="“기본형에는-속성을-추가할-수-없다-”"><a href="#“기본형에는-속성을-추가할-수-없다-”" class="headerlink" title="“기본형에는 속성을 추가할 수 없다.”"></a>“기본형에는 속성을 추가할 수 없다.”</h3><p>정확히 말하자면, 기본형의 프로퍼티 접근시 내부적으로 new String(“”)으로 레퍼객체를 만들었다가 바로 사라지기 때문인데, 이 책에서는 그러한 설명이 없다. 설명은 이곳 : <a href="http://noritersand.tistory.com/536" target="_blank" rel="noopener">래퍼 객체</a></p>
+<figure class="highlight javascript"><figcaption><span>래퍼 객체</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="string">"test"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(test.length); <span class="comment">// new String(test).length와 같다.</span></span><br><span class="line">test.abc = <span class="string">"abc"</span>; <span class="comment">// new String(test).abc = "abc"와 같다.</span></span><br><span class="line"><span class="built_in">console</span>.log(test.abc) <span class="comment">// undefined 있을리 없음.</span></span><br></pre></td></tr></table></figure>
+<h3 id="“String-prototype에-함수를-추가하면-기본형에서도-그-함수를-쓸-수-있다-”"><a href="#“String-prototype에-함수를-추가하면-기본형에서도-그-함수를-쓸-수-있다-”" class="headerlink" title="“String.prototype에 함수를 추가하면 기본형에서도 그 함수를 쓸 수 있다.”"></a>“String.prototype에 함수를 추가하면 기본형에서도 그 함수를 쓸 수 있다.”</h3><p>이 또한 프로퍼티 접근시 래퍼 객체를 생성해서 호출하기 때문에 가능한 것이다.</p>
+<figure class="highlight javascript"><figcaption><span>String.prototype에 함수 추가</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.prototype.getLength = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.length;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> test = <span class="string">"test"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(test.getLength()); <span class="comment">// new String(test).getLength()와 같다.</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-3-글로벌-변수"><a href="#3-3-글로벌-변수" class="headerlink" title="3.3. 글로벌 변수"></a>3.3. 글로벌 변수</h2><p>많은 자바스크립트 개발자가 글로벌 변수를 사용한다. 아무 생각 없이 변수를 사용했다면 글로벌 변수이다.</p>
+<h3 id="글로벌-변수를-자제-해야-하는-이유"><a href="#글로벌-변수를-자제-해야-하는-이유" class="headerlink" title="글로벌 변수를 자제 해야 하는 이유"></a>글로벌 변수를 자제 해야 하는 이유</h3><ul>
+<li>소스를 나눠서 관리할 때 각 소스 끼리 충돌 발생 가능성. <ul>
+<li>예: xhr = new XMLHttpRequest()가 여러 소스에 있을 경우</li>
+</ul>
+</li>
+<li>서버의 응답을 기다리는 등의 비동기식 처리 시 문제 발생 가능성.<ul>
+<li>예: xhr을 공유하거나 겹치게 사용하는 경우, 여러 곳에서 다른 xhr.onreadystatechange를 등록하게 되고, 응답이 오기전에 두 번 이상의 요청을 보낸 경우 앞의 응답이 온 것에 대해서 처리하지 못하게 된다.</li>
+</ul>
+</li>
+<li>메모리 관리 차원에서<ul>
+<li>변수들의 레퍼런스 카운터가 0가 되지 않는 이상 가비지 컬렉터가 메모리를 해제하지 않으므로, 잠시 사용할 변수는 로컬 변수로 선언하는 것이 옳다. </li>
+</ul>
+</li>
+</ul>
+<h2 id="3-4-글로벌-변수-정의"><a href="#3-4-글로벌-변수-정의" class="headerlink" title="3.4. 글로벌 변수 정의"></a>3.4. 글로벌 변수 정의</h2><h3 id="글로벌-변수-정의-방법"><a href="#글로벌-변수-정의-방법" class="headerlink" title="글로벌 변수 정의 방법"></a>글로벌 변수 정의 방법</h3><ol>
+<li><code>&lt;script&gt;</code> 안에 <code>var</code> 로 선언한다.</li>
+<li>모든 곳에서 <code>var</code> 없이 선언한다.<ul>
+<li>단, 이 경우 상위 scope를 탐색 해 본 후 없으면 글로벌 변수가 된다.</li>
+</ul>
+</li>
+<li><code>for</code>문에서 <code>i</code>를 잘못 사용하면 오동작의 원인이 된다.</li>
+</ol>
+<h2 id="3-5-Window-객체"><a href="#3-5-Window-객체" class="headerlink" title="3.5. Window 객체"></a>3.5. Window 객체</h2><p>글로벌 영역을 관장하는 “The Global Object”이다. 이 객체는 브라우저가 제공하며 약간 특수한 성질을 가지고 있다. </p>
+<ul>
+<li>new 로 생성할 수 없다.</li>
+<li>함수로 호출할 수 없다.</li>
+<li>프로토타입이 없다.</li>
+</ul>
+<h4 id="“window는-window-window-window이다-”"><a href="#“window는-window-window-window이다-”" class="headerlink" title="“window는 window.window.window이다.”"></a>“window는 window.window.window이다.”</h4><p>window는 재귀적인 형태를 가지고 있다.<br><figure class="highlight javascript"><figcaption><span>window.window</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span> === <span class="built_in">window</span>.window); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="“글로벌-변수에-프로퍼티로-접근이-가능하다-”"><a href="#“글로벌-변수에-프로퍼티로-접근이-가능하다-”" class="headerlink" title="“글로벌 변수에 프로퍼티로 접근이 가능하다.”"></a>“글로벌 변수에 프로퍼티로 접근이 가능하다.”</h4><figure class="highlight javascript"><figcaption><span>the way to access global variables</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<h4 id="“글로벌-변수에-이름으로-접근도-가능하다-”"><a href="#“글로벌-변수에-이름으로-접근도-가능하다-”" class="headerlink" title="“글로벌 변수에 이름으로 접근도 가능하다.”"></a>“글로벌 변수에 이름으로 접근도 가능하다.”</h4><figure class="highlight javascript"><figcaption><span>the way to access global variables</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> a2 = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>[<span class="string">"a"</span> + ++i]); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>[<span class="string">"a"</span> + ++i]); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<h4 id="“글로벌-함수-호출도-같은-방법으로-가능하다-”"><a href="#“글로벌-함수-호출도-같은-방법으로-가능하다-”" class="headerlink" title="“글로벌 함수 호출도 같은 방법으로 가능하다.”"></a>“글로벌 함수 호출도 같은 방법으로 가능하다.”</h4><figure class="highlight javascript"><figcaption><span>the way to call global functions</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"foo"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>[<span class="string">"foo"</span>]()); <span class="comment">// foo</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-6-글로벌-변수-선언-방법과-차이"><a href="#3-6-글로벌-변수-선언-방법과-차이" class="headerlink" title="3.6. 글로벌 변수 선언 방법과 차이"></a>3.6. 글로벌 변수 선언 방법과 차이</h2><p>글로벌 변수를 선언하는데는 몇가지 방법이 있다.</p>
+<ol>
+<li>글로벌 스코프에서 var 키워드를 이용한 선언.</li>
+<li>특정 스코프에서 상위 스코프에 선언되지 않은 변수를 var 선언.</li>
+<li>window 객체에 속성 추가.</li>
+</ol>
+<h3 id="“Hoisting”"><a href="#“Hoisting”" class="headerlink" title="“Hoisting”"></a>“Hoisting”</h3><p>이 책에서 사용한 용어는 아니지만, 자바스크립트는 변수와 함수의 선언을 hoisting(끌어올림) 한다. 즉, 아래 쪽에 선언한 변수와 함수를 위에서 접근할 수 있다는 뜻이다.</p>
+<figure class="highlight javascript"><figcaption><span>Hoisting</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">foo();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(bar); <span class="comment">// undefined</span></span><br><span class="line">    bar = <span class="string">"bar"</span>; <span class="comment">// 지역 변수의 할당, 전역 변수의 선언이 아니다.</span></span><br><span class="line">    <span class="built_in">console</span>.log(bar); <span class="comment">// bar</span></span><br><span class="line">    <span class="keyword">var</span> bar; <span class="comment">// declaration here.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// error!</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-7-var-키워드의-효율적인-사용"><a href="#3-7-var-키워드의-효율적인-사용" class="headerlink" title="3.7. var 키워드의 효율적인 사용"></a>3.7. var 키워드의 효율적인 사용</h2><p>JSLint는 항상 다음을 권하는 메세지를 출력한다. </p>
+<blockquote>
+<p>“모든 변수는 함수의 위쪽에 묶어서 선언해야 한다.”</p>
+</blockquote>
+<p>이렇게 하는 것에는 몇가지 이유가 있다.</p>
+<h3 id="“초기화-실수의-최소화하기-위해서”"><a href="#“초기화-실수의-최소화하기-위해서”" class="headerlink" title="“초기화 실수의 최소화하기 위해서”"></a>“초기화 실수의 최소화하기 위해서”</h3><p>이 책에 나오는 이유는 그다지 명확하지가 않다. 내 생각은 다음과 같다. “선언되지 않은 변수”와 “초기화 되지 않은 변수”는 모두 <code>typeof</code>의 결과로 <code>undefined</code>를 리턴한다. 우리는 때로 이것을 구분해야할 필요가 있다. 소스가 길어지면 “어딘가”에 선언되어 있을지도 모르는 변수를 재선언을 하는 등의 문제를 만들 수 있기 때문이다.</p>
+<h3 id="“변수-관리를-잘-하기-위해서”"><a href="#“변수-관리를-잘-하기-위해서”" class="headerlink" title="“변수 관리를 잘 하기 위해서”"></a>“변수 관리를 잘 하기 위해서”</h3><p>책보다 설명을 잘 할 수 있을 듯 하다. Javascript는 nested 함수를 지원하는데, 변수를 var 없이 할당하면 글로벌 변수가 만들어 지거나 이전 스코프의 변수를 변경하게 된다. 게다가 hoisting까지 지원하기 때문에 변수를 잘 관리 하지 않으면 버그를 만들어 내기 매우 쉬운 환경이다. 따라서 모든 함수의 도입부에 로컬 변수를 잘 선언해 이러한 혼란을 막는데 도움을 줄 수 있다.</p>
+<h3 id="“Minifying이-잘-되도록”"><a href="#“Minifying이-잘-되도록”" class="headerlink" title="“Minifying이 잘 되도록”"></a>“Minifying이 잘 되도록”</h3><p>minifying할 때 소스의 부피를 더 줄일 수 있다 한다.</p>
+<h2 id="3-8-글로벌-변수-최소화하기"><a href="#3-8-글로벌-변수-최소화하기" class="headerlink" title="3.8. 글로벌 변수 최소화하기"></a>3.8. 글로벌 변수 최소화하기</h2><p>다음과 같은 두가지 방법으로 글로벌 변수를 회피할 수 있다.</p>
+<ol>
+<li>클로저 사용하기</li>
+<li>모듈/네임스페이스 패턴 사용하기<ul>
+<li>Jquery의 $처럼, window.$에 모든 것을 넣어 모듈 처럼 이용하는 방법</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-9-변수-사용-방법과-성능"><a href="#3-9-변수-사용-방법과-성능" class="headerlink" title="3.9. 변수 사용 방법과 성능"></a>3.9. 변수 사용 방법과 성능</h2><p><strong>외부 스코프의 변수를 그대로 사용하는 것이 아니라, 지역변수로 한번 참조한 뒤 그 지역변수를 사용하는 것이 성능에 도움이 된다.</strong> 현재의 스코프에 어떤 변수가 없을 때마다, 재귀적으로 상위 스코프로 탐색을 실시하게 되기 때문이다.  </p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/06/27/Book-Deep-Javascript-3-9/" data-id="cjzrymwjk00966on2y136iuso" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/06/27/Book-Deep-Javascript-3-9/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/06/27/Book-Deep-Javascript-3-9/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Book-Deep-Javascript-2-9" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/06/26/Book-Deep-Javascript-2-9/">[Book Summary] 속깊은 Javascript 2/9</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/26/Book-Deep-Javascript-2-9/">
+            <time datetime="2017-06-26T06:10:24.000Z" itemprop="datePublished">2017-06-26</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/programming/">programming</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <img src="/2017/06/26/Book-Deep-Javascript-2-9/cover.jpg"> 
+<h1 id="Chapter-2-자바스크립트의-스코프와-클로저"><a href="#Chapter-2-자바스크립트의-스코프와-클로저" class="headerlink" title="Chapter 2. 자바스크립트의 스코프와 클로저"></a>Chapter 2. 자바스크립트의 스코프와 클로저</h1><h2 id="2-1-스코프란"><a href="#2-1-스코프란" class="headerlink" title="2.1. 스코프란?"></a>2.1. 스코프란?</h2><p>다른 프로그래밍 언어를 다루다가 자바 스크립트를 접하게 된 프로그래머가 반드시 한번 빠지게 되는 함정.<br><blockquote><p>자바 스크립트는 일반적인 프로그래밍 언어의 블록 스코프를 따르지 않는다. </p>
+</blockquote></p>
+<h3 id="2-1-1-스코프의-생성"><a href="#2-1-1-스코프의-생성" class="headerlink" title="2.1.1. 스코프의 생성"></a>2.1.1. 스코프의 생성</h3><p>자바 스크립트에서 스코프를 생성하는 구문은 세가지가 있다.</p>
+<h4 id="function을-이용한-스코프-생성"><a href="#function을-이용한-스코프-생성" class="headerlink" title="function을 이용한 스코프 생성"></a>function을 이용한 스코프 생성</h4><p>foo() 내부에서 선언된 변수를 외부에서 접근할 수 없다.<br><figure class="highlight javascript"><figcaption><span>function을 이용한 scope 생성</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="string">"Can you access me?"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(type <span class="keyword">of</span> b); <span class="comment">//"undefined"</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="catch을-이용한-스코프-생성"><a href="#catch을-이용한-스코프-생성" class="headerlink" title="catch을 이용한 스코프 생성"></a>catch을 이용한 스코프 생성</h4><p>catch의 인자(이 경우에는 err)만 내부 스코프에 포함 된다. 선언된 변수(이 경우에는 test)는 외부 스코프에 포함된다. </p>
+<figure class="highlight javascript"><figcaption><span>catch를 이용한 scope 생성</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> exception(<span class="string">"fake exception"</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">var</span> test = <span class="string">"can you see me?"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(type <span class="keyword">of</span> err); <span class="comment">// "undefined"</span></span><br><span class="line"><span class="built_in">console</span>.log(test); <span class="comment">// "can you see me?"</span></span><br></pre></td></tr></table></figure>
+<h4 id="with을-이용한-스코프-생성"><a href="#with을-이용한-스코프-생성" class="headerlink" title="with을 이용한 스코프 생성"></a>with을 이용한 스코프 생성</h4><p>with 구문도 catch 처럼 인자가 내부 스코프에 포함 된다. </p>
+<figure class="highlight javascript"><figcaption><span>with를 이용한 scope 생성</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span>(&#123;<span class="attr">A</span>: <span class="string">"You can't see me"</span>&#125;) &#123;</span><br><span class="line">    <span class="keyword">var</span> B = <span class="string">"but you can see me"</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(A); <span class="comment">// "You can't see me"</span></span><br><span class="line">    <span class="built_in">console</span>.log(B); <span class="comment">// "but you can see me"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(B); <span class="comment">// "but you can see me"</span></span><br><span class="line"><span class="built_in">console</span>.log(A); <span class="comment">// error!!</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-1-2-스코프의-지속성"><a href="#2-1-2-스코프의-지속성" class="headerlink" title="2.1.2. 스코프의 지속성"></a>2.1.2. 스코프의 지속성</h3><p>다른 언어와 다른 JavaScript 만의 강점 중 하나는, 스코프가 지속 된다는 점이다. 함수가 선언된 곳이 아닌 전혀 다른 곳에서 함수가 호출될 수 있어서, 해당 함수가 참조하는 스코프를 지속할 필요가 있다.</p>
+<h3 id="2-1-3-with-구문"><a href="#2-1-3-with-구문" class="headerlink" title="2.1.3. with 구문"></a>2.1.3. with 구문</h3><p>with 구문은 파라미터로 받은 객체를 스코프 체인에 추가하여 동작한다. 즉, 해당 오브젝트는 블록 안에서 사용되는 변수에 대한 탐색의 대상이 되는 상위 스코프로 추가되는 것이다.</p>
+<figure class="highlight javascript"><figcaption><span>with 의 기본 사용법</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user = &#123;</span><br><span class="line">    name : <span class="string">"sd"</span>,</span><br><span class="line">    age : <span class="string">"20"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span>(user) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name, age); <span class="comment">// sd 20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-4-with를-사용하지-말아야하는-이유"><a href="#2-1-4-with를-사용하지-말아야하는-이유" class="headerlink" title="2.1.4. with를 사용하지 말아야하는 이유"></a>2.1.4. with를 사용하지 말아야하는 이유</h3><h4 id="첫번째-with를-사용한-코드는-모호성을-가진다"><a href="#첫번째-with를-사용한-코드는-모호성을-가진다" class="headerlink" title="첫번째, with를 사용한 코드는 모호성을 가진다."></a>첫번째, with를 사용한 코드는 모호성을 가진다.</h4><p>다음 소스에서 value가 인자의 value인지, obj.value를 의도한 것인지 모호하다.</p>
+<figure class="highlight javascript"><figcaption><span>with 구문의 모호성</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">something</span>(<span class="params">value, obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">with</span>(obj) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(value); <span class="comment">// value?? obj.value??</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="두번째-with는-표준에서의-제외된다"><a href="#두번째-with는-표준에서의-제외된다" class="headerlink" title="두번째, with는 표준에서의 제외된다."></a>두번째, with는 표준에서의 제외된다.</h4><p>위와 같음 모호성으로 인하여 with문 사용을 자제 하라고 권하고 있으며, ECMAScript 6에서는 deprecated될 예정이다.</p>
+<h4 id="세번째-with의-대상-객체는-속성을-추가-할-수-없다"><a href="#세번째-with의-대상-객체는-속성을-추가-할-수-없다" class="headerlink" title="세번째, with의 대상 객체는 속성을 추가 할 수 없다."></a>세번째, with의 대상 객체는 속성을 추가 할 수 없다.</h4><p>with에 style 객체를 사용할 경우, 새로운 속성을 추가할 수 없다.</p>
+<figure class="highlight javascript"><figcaption><span>style 추가 불가</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> (<span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).style) &#123;</span><br><span class="line">    background = <span class="string">"yellow"</span>; <span class="comment">// 이미 존재하는 속성인 경우 OK.</span></span><br><span class="line">    border = <span class="string">"1px soild black"</span>; <span class="comment">// border 속성을 새로 추가하려고 의도한 경우, global 변수로 선언되어 버린다.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-클로저란"><a href="#2-2-클로저란" class="headerlink" title="2.2. 클로저란?"></a>2.2. 클로저란?</h2><p>이 책에서는 클로저를 다음과 같이 정의한다.</p>
+<blockquote>
+<p>“특정 함수가 참조하는 변수들이 선언된 lexical scope는 계속 유지되는데, 그 함수와 스코프를 묶어서 클로저라고 한다.”</p>
+</blockquote>
+<p>사실 좀 와닿지 않고, 이해하기 어렵다. 그래서 다른 곳에서 정의를 찾아 보았다. <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Closures" target="_blank" rel="noopener">MDN 문서</a>는 다음과 같이 정의한다. </p>
+<blockquote>
+<p>“클로저는 독립적인 (자유) 변수 (지역적으로 사용되지만, 둘러싼 범위 안에서 정의된 변수)를 참조하는 함수들이다. 다른 말로 하면, 이 함수들은 그들이 생성된 환경을 ‘기억’한다.”</p>
+</blockquote>
+<p>쉽게 말해서, 클로저는 함수와 함수가 선언된 문법적 환경의 조합이라 할 수 있다.  </p>
+<figure class="highlight javascript"><figcaption><span>가장 간단한 closure 예제</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">counterGenerator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ++count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> counterA = counterGenerator();</span><br><span class="line"><span class="keyword">var</span> counterB = counterGenerator();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(counterA()); <span class="comment">// 1;</span></span><br><span class="line"><span class="built_in">console</span>.log(counterA()); <span class="comment">// 2;</span></span><br><span class="line"><span class="built_in">console</span>.log(counterB()); <span class="comment">// 1;</span></span><br><span class="line"><span class="built_in">console</span>.log(counterB()); <span class="comment">// 2;</span></span><br></pre></td></tr></table></figure>
+<p>위의 예제에서 count 변수의 참조는 리턴된 익명함수 내에서 계속 유지된다. 즉 count 값을 증가 시킬 수 있고, 리턴 받아서 출력해볼 수도 있다.</p>
+<h3 id="2-2-1-클로저-쉽게-이해하기"><a href="#2-2-1-클로저-쉽게-이해하기" class="headerlink" title="2.2.1. 클로저 쉽게 이해하기"></a>2.2.1. 클로저 쉽게 이해하기</h3><h4 id="개인적인-조사-새로운-스코프는-“선언”-시에-생성-되는-것인가-“실행”-시에-생성되는-것인가"><a href="#개인적인-조사-새로운-스코프는-“선언”-시에-생성-되는-것인가-“실행”-시에-생성되는-것인가" class="headerlink" title="[개인적인 조사] 새로운 스코프는 “선언” 시에 생성 되는 것인가? “실행” 시에 생성되는 것인가?"></a>[개인적인 조사] 새로운 스코프는 “선언” 시에 생성 되는 것인가? “실행” 시에 생성되는 것인가?</h4><p>Javascript는 Lexical Scope를 이용한다. 이 것의 의미를 정확하게 파악할 필요가 있다. 자세한 것은 <a href="https://github.com/getify/You-Dont-Know-JS" target="_blank" rel="noopener">“You don’t know JS”</a>를 참고하고, 번역판도 훑어볼 예정.</p>
+<h5 id="a-Lexing"><a href="#a-Lexing" class="headerlink" title="a. Lexing"></a>a. Lexing</h5><p>전통적인 컴파일러는 다음의 세가지 과정을 거쳐 코드를 실행가능한 코드로 바꾼다. <strong>lexing -&gt; parsing -&gt; code-generation</strong>. Lexing이란 string으로 되어있는 코드를 의미 있는 단위로 tokenizing하는 것을 뜻한다. </p>
+<h5 id="b-Lexical-Scope"><a href="#b-Lexical-Scope" class="headerlink" title="b. Lexical Scope"></a>b. Lexical Scope</h5><p>lexical scope라는 것은 lex-time에 정의되는 Scope를 뜻한다. lex-time이란 위에서 말한 lexing 과정을 말하는 것이다. 즉, 어떤 모양의 Scope chain을 가질지 이 때 결정되는 것이다. static scope와 같은 말이며, 반대 되는 개념으로는 dynamic scope가 있다. </p>
+<h5 id="c-Scope-Chain"><a href="#c-Scope-Chain" class="headerlink" title="c. Scope Chain"></a>c. Scope Chain</h5><p>엔진이 코드를 실행 시, 어디서 변수를 찾을지를 말해주는 정보이다. <a href="https://github.com/getify/You-Dont-Know-JS" target="_blank" rel="noopener">“You don’t know JS”</a>에 따르면, 변수를 어디에 저장하고 어디서 찾을 것인가에 대한 룰의 집합이라고 한다.   </p>
+<p>Javascript는 function기반으로 scope를 생성하므로, global scope 를 base로 하여 function과 nested function이 선언될 때마다 하위 Scope를 만들게 된다. 즉, 다음의 코드에서 scope는 3단계가 되며, <code>console.log</code>에서 변수 <code>a</code>를 찾기 위해서 3번의 탐색을 거치게 된다. </p>
+<ol>
+<li>global scope</li>
+<li>foo() scope</li>
+<li>bar() scope</li>
+</ol>
+<figure class="highlight javascript"><figcaption><span>가장 간단한 closure 예제</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">b</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> c = b * <span class="number">2</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(a, b, c, d);</span><br><span class="line">		<span class="keyword">debugger</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	bar(c * <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo( <span class="number">2</span> ); <span class="comment">// 1 2 4 12</span></span><br></pre></td></tr></table></figure>
+<p>scope는 chrome devtools에서 확인할 수 있다. <code>debugger</code> 키워드를 이용해서 함수 내에서 실행을 중단 시킨 후 다음과 같이 scope 항목에서 확인이 가능하다. </p>
+<img src="/2017/06/26/Book-Deep-Javascript-2-9/debugger_scope.png" title="Debugger and Scope">
+<h5 id="d-Dynamic-Scope과의-차이"><a href="#d-Dynamic-Scope과의-차이" class="headerlink" title="d. Dynamic Scope과의 차이"></a>d. Dynamic Scope과의 차이</h5><p>Shell Script나 Perl은 dynamic scope 방식을 사용한다. 신기하게도 다음과 같이 같은 소스로 static과 dynamic scope를 둘다 테스트 해 볼 수 있다.</p>
+<figure class="highlight plain"><figcaption><span>Static Scope vs Dynamic Scope</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ ksh -c &apos;function f1 &#123; typeset a=local; f2; echo $a; &#125;;</span><br><span class="line">  function f2 &#123; echo $a; a=changed; &#125;;</span><br><span class="line">  a=global; f1; echo $a&apos;</span><br><span class="line">global</span><br><span class="line">local</span><br><span class="line">changed</span><br><span class="line"></span><br><span class="line">$ bash --posix -c &apos;function f1 &#123; typeset a=local; f2; echo $a; &#125;;</span><br><span class="line">  function f2 &#123; echo $a; a=changed; &#125;;</span><br><span class="line">  a=global; f1; echo $a&apos;</span><br><span class="line">local</span><br><span class="line">changed</span><br><span class="line">global</span><br></pre></td></tr></table></figure>
+<p>위의 소스에서 아래 bash로 실행한 코드가 dynamic scoping을 따른다. 요약하자면, static scoping을 기반으로 생각할 때는 <code>f1</code>과 <code>f2</code> 함수는 별개로 선언되어 있으므로, <code>f2</code>에서 참조하는 <code>a</code>는 당연히 global에 선언된 a이어야 한다. 하지만, 실행해 보면 f1의 a를 참조하고 있다는 것을 알 수 있다. </p>
+<p> 결론적으로, “Dynamic scoping”은 변수를 탐색할 때, 실제 call이 되는 순서를 기준으로 탐색한다. <strong>즉, call stack을 기준으로 찾는다.</strong> </p>
+<p><a href="https://stackoverflow.com/questions/1047454/what-is-lexical-scope" target="_blank" rel="noopener">Stack Overflow 답변</a>에서도 다음과 같은 C스타일의 코드를 통해서 Dynamic scope를 설명한다.</p>
+<figure class="highlight c"><figcaption><span>Dynamic Scope</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dummy1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">5</span>;</span><br><span class="line">    fun();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dummy2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">10</span>;</span><br><span class="line">    fun();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>dummy1()</code>과 <code>dummy2()</code> 내부에서 호출되는 <code>fun()</code>은 x를 가지고 있지 않으며, 외부 scope를 탐색하게 되는데 각각의 call stack을 따라 탐색을 하면 5와 10이 출력될 것이다. static scope라면 <code>fun()</code>에서 x를 찾을 수 없으므로 위의 문법은 static scope를 사용하는 C언어에서 틀린 문법이다.       </p>
+<h5 id="e-결론"><a href="#e-결론" class="headerlink" title="e. 결론"></a>e. 결론</h5><p>코드를 작성 할 때 그 것의 이미 scope가 정해진다. 이 시점을 author-time이라 한다. 실제적으로는, 컴파일러의 lexing 단계, 즉 lex-time에서 scope가 정해진다. 이러한 이유로 이벤트 핸들러를 <code>for</code> 문 내에서 설정할 때, <code>i</code>를 사용할 경우, 각각 다른 scope와 값을 가진 i가 아닌, 글로벌 변수 i 하나만을 참조하는 것이다.  반대로, dynamic scope의 경우에는 call stack에 따라 바뀌므로 run-time에 결정된다. </p>
+<p>단, scope와 scope chain 정보가 어디에 있으며([[scope]], variableObject, excution context가 뭔지..), 언제 생성되어 그 곳에  어떻게 메모리에 구성되는지 좀더 조사 해야 함.</p>
+<h3 id="2-2-2-클로저의-실제-활용의-예"><a href="#2-2-2-클로저의-실제-활용의-예" class="headerlink" title="2.2.2. 클로저의 실제 활용의 예"></a>2.2.2. 클로저의 실제 활용의 예</h3><h4 id="클로저를-만드는-방법-1-내부-함수를-리턴하여-사용-한다"><a href="#클로저를-만드는-방법-1-내부-함수를-리턴하여-사용-한다" class="headerlink" title="클로저를 만드는 방법 1 - 내부 함수를 리턴하여 사용 한다."></a>클로저를 만드는 방법 1 - 내부 함수를 리턴하여 사용 한다.</h4><figure class="highlight javascript"><figcaption><span>static, local 변수를 가진 카운터</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> counterFactory = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> staticCount = <span class="number">0</span>; </span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> localCount = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            inc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    <span class="keyword">static</span>: ++staticCount,</span><br><span class="line">                    local: ++localCount</span><br><span class="line">                &#125;        </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;(); </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> counterA = counterFactory();</span><br><span class="line"><span class="built_in">console</span>.log(counterA.inc()); <span class="comment">// Object &#123;static: 1, local: 1&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(counterA.inc()); <span class="comment">// Object &#123;static: 2, local: 2&#125;</span></span><br><span class="line"><span class="keyword">var</span> counterB = counterFactory();</span><br><span class="line"><span class="built_in">console</span>.log(counterB.inc()); <span class="comment">// Object &#123;static: 3, local: 1&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(counterB.inc()); <span class="comment">// Object &#123;static: 4, local: 2&#125;</span></span><br></pre></td></tr></table></figure>
+<p>이 때, <strong>IIFE(Immediate Invoke Function Expression)</strong> 패턴을 사용하게 되는데, IIFE 내부에 함수를 구현하여 리턴한다. IIFE를 사용하는 이유는 클로저를 생성하기 위해서이고 (이 경우에는 staticCount를 유지하고 참조하기 위해서),  실제 동작하는 루틴은 리턴하는 함수 안에 안에 들어 있다.</p>
+<h4 id="클로저를-만드는-방법-2-내부-함수를-콜백으로-등록하여-사용한다"><a href="#클로저를-만드는-방법-2-내부-함수를-콜백으로-등록하여-사용한다" class="headerlink" title="클로저를 만드는 방법 2 - 내부 함수를 콜백으로 등록하여 사용한다."></a>클로저를 만드는 방법 2 - 내부 함수를 콜백으로 등록하여 사용한다.</h4><figure class="highlight javascript"><figcaption><span>setTimeout event handler 등록</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> interval = <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">handler</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(++count);</span><br><span class="line">        <span class="keyword">if</span>(count &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">            clearInterval(interval);</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    interval = setInterval(handler, <span class="number">1000</span>);</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-3-클로저의-단점"><a href="#2-2-3-클로저의-단점" class="headerlink" title="2.2.3. 클로저의 단점"></a>2.2.3. 클로저의 단점</h3><p>클로저는 다음과 같은 단점이 있으나, 꼭 필요한 경우에는 사용하는 것이 좋다.</p>
+<ol>
+<li>클로저는 메모리를 소모한다.</li>
+<li>과하게 사용하면 변수의 탐색 시간으로 인해 성능에 영향을 준다.</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-2-9/" data-id="cjzrymwjc00916on2a16x681z" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-2-9/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-2-9/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Book-Deep-Javascript-1-9" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/06/26/Book-Deep-Javascript-1-9/">[Book Summary] 속깊은 Javascript 1/9</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/26/Book-Deep-Javascript-1-9/">
+            <time datetime="2017-06-26T05:32:05.000Z" itemprop="datePublished">2017-06-26</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/programming/">programming</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <img src="/2017/06/26/Book-Deep-Javascript-1-9/cover.jpg"> 
+<h1 id="Chapter-1-웹과-자바-스크립트"><a href="#Chapter-1-웹과-자바-스크립트" class="headerlink" title="Chapter 1. 웹과 자바 스크립트"></a>Chapter 1. 웹과 자바 스크립트</h1><p>이제부터 구매하고 읽은 책에 대해서 정리를 해보려 한다. 앞으로도 보는 책은 짧게나마 요약할 예정이다. 내가 읽은 책을 요약하는 이유는 읽기 시작한 책의 “완독”을 위해서 이기도 하고, 독서의 효과를 높기이 위해서 이기도 하다. 책은 다른 사람의 언어로 씌여진 것이기 때문에 읽고 이해 했다 하더라도, 나의 언어로 바꾸어 재정리 하지 않으면 독서의 효과가 매우 떨어진다. 당연히 시작은 어려울 수 있다. 익숙해 져야 한다. 화이팅. </p>
+<h2 id="1-1-자바스크립트의-어제와-오늘"><a href="#1-1-자바스크립트의-어제와-오늘" class="headerlink" title="1.1. 자바스크립트의 어제와 오늘"></a>1.1. 자바스크립트의 어제와 오늘</h2><p><code>alert</code> 창을 띄워 가며 디버깅 하던 시절이 있었다. 문법에러를 잡아 주지 않았기에 디버깅도 어려웠다. 지금은 다양한 디버깅 툴과 IDE 등의 등장으로 개발 환경이 확연히 달라졌다.</p>
+<h3 id="“자바스크립트와-자바와의-관계는-햄과-햄버거의-관계이다-”"><a href="#“자바스크립트와-자바와의-관계는-햄과-햄버거의-관계이다-”" class="headerlink" title="“자바스크립트와 자바와의 관계는 햄과 햄버거의 관계이다.”"></a>“자바스크립트와 자바와의 관계는 햄과 햄버거의 관계이다.”</h3><p>그럴듯한 비유이다. 둘의 이름은 공통된 부분이 있지만, 그닥 관계있는 음식은 아니다. 자바와 자바스크립트는 무관하다고 하다고 말할 수 있을 정도로 전혀 관련이 없다. 역사적으로는 Netscape가 개발한 Livescript를 Sun Microsystems가 협업하면서 전략적으로 이름을 Javascript로 바꾼 것이다. </p>
+<h2 id="1-2-웹-개발-방법론의-변화"><a href="#1-2-웹-개발-방법론의-변화" class="headerlink" title="1.2. 웹 개발 방법론의 변화"></a>1.2. 웹 개발 방법론의 변화</h2><h3 id="2000년-이전의-웹"><a href="#2000년-이전의-웹" class="headerlink" title="2000년 이전의 웹"></a>2000년 이전의 웹</h3><ul>
+<li>HTML 파일로 제공하는 텍스트 정보가 주를 이룬다.</li>
+<li>대부분 정적인 정보를 제공하는 웹페이지가 주를 이루었다.</li>
+<li>포털이나 이메일 처럼 동적인 페이지를 생성하는 서버는 Perl과 CGI(Common Gateway Interface)를 구현하여 동적인 데이터를 제공.</li>
+</ul>
+<h3 id="2000년-이후의-웹"><a href="#2000년-이후의-웹" class="headerlink" title="2000년 이후의 웹"></a>2000년 이후의 웹</h3><ul>
+<li>다양한 웹 언어가 활성화 되기 시작한다. (ASP, JSP, PHP)</li>
+<li>HTML(클라이언트측 코드)과 PHP(서버측 코드)와 섞어서 코딩했다.<ul>
+<li>서버와 클라이언트 코드가 실행되는 시점이 헷갈려 소스를 읽는데 어려움이 있었다.</li>
+<li>본인이 개발한 소스도 다시 보면 어려웠다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="AJAX의-등장"><a href="#AJAX의-등장" class="headerlink" title="AJAX의 등장"></a>AJAX의 등장</h3><ul>
+<li>구글이 2005년에 공개한 구글맵에서 AJAX(Asynchronous Javascript And XML)를 이용함.</li>
+<li>화면의 리플레시 없이도 서버로부터 받은 정보를 표시할 수 있음.</li>
+<li>DHTML도 활발하게 이용되기 시작했다.</li>
+<li>AJAX를 위한 함수 이름은 XMLHttpRequest()로, HTML을 XML규격에 맞추기 위한 표준화 작업도 진행 됐었다.</li>
+<li>AJAX를 통해서 html 페이지의 일부를 받아서 직접 보여줌.</li>
+</ul>
+<h3 id="JSON-규격의-사용"><a href="#JSON-규격의-사용" class="headerlink" title="JSON 규격의 사용"></a>JSON 규격의 사용</h3><ul>
+<li>AJAX를 통해서 웹페이지의 일부가 아닌 JSON 규격의 텍스트를 받는 방식으로 변경됨. </li>
+<li>웹서비스라고 불리는 API들이 등장하기 시작하면서 JSON이 일반화 되시 시작함. (구글 API)</li>
+<li>개발 프레임워크와 라이브러리들이 등장하기 시작함. (JQuery, Prototype)</li>
+<li>HTML 5 표준화작업으로 넘어가기 시작.</li>
+</ul>
+<h3 id="Javascript와-CSS의-역할-변화"><a href="#Javascript와-CSS의-역할-변화" class="headerlink" title="Javascript와 CSS의 역할 변화"></a>Javascript와 CSS의 역할 변화</h3><ul>
+<li>Javascript<ul>
+<li>웹언어의 보조 수단. =&gt; 데이터 처리와 렌더링을 담당.</li>
+</ul>
+</li>
+<li>CSS<ul>
+<li>폰트, 테두리 등을 바꾸기 위해 사용 =&gt; 포지셔닝, 애니메이션, 3D, 마우스 오버 등 다양한 효과가 추가 됨.</li>
+</ul>
+</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-1-9/" data-id="cjzrymwj7008y6on2zty87pg6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-1-9/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/06/26/Book-Deep-Javascript-1-9/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="blog-ENGLISH-The-Article-Book" class="article article-type-blog" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/06/07/ENGLISH-The-Article-Book/">[ENGLISH] The Article Book</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/07/ENGLISH-The-Article-Book/">
+            <time datetime="2017-06-07T00:49:08.000Z" itemprop="datePublished">2017-06-07</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/English/">English</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/Grammar/">Grammar</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Summary-of-the-Article-Book"><a href="#Summary-of-the-Article-Book" class="headerlink" title="Summary of the Article Book"></a>Summary of the Article Book</h2><p>Remembering everything is almost impossible. Practice is the most important!</p>
+<h4 id="Rule-1-Use-“a”-when-a-singular-count-noun-is-indefinite-and-the-article-is-followed-by-a-consonant-sound"><a href="#Rule-1-Use-“a”-when-a-singular-count-noun-is-indefinite-and-the-article-is-followed-by-a-consonant-sound" class="headerlink" title="Rule 1, Use “a” when a singular count noun is indefinite and the article is followed by a consonant sound."></a>Rule 1, Use <strong><em>“a”</em></strong> when a singular count noun is indefinite and the article is followed by a consonant sound.</h4><ol>
+<li>Note<ul>
+<li><strong>Indefinite</strong> 는 알려지지 않았거나, 이해되지 않았거나, 언급되지 않은 것들을 뜻한다. </li>
+</ul>
+</li>
+<li>Examples<ul>
+<li>Do you have <strong>a</strong> pen?</li>
+<li>There is <strong>a</strong> dirt road at the north end of this town.</li>
+<li>Mr. Green bought <strong>a</strong> used car.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-2-use-“an”-when-a-singular-count-noun-is-indefinite-and-the-article-is-followed-by-a-vowel-sound"><a href="#Rule-2-use-“an”-when-a-singular-count-noun-is-indefinite-and-the-article-is-followed-by-a-vowel-sound" class="headerlink" title="Rule 2, use “an” when a singular count noun is indefinite and the article is followed by a vowel sound."></a>Rule 2, use <strong><em>“an”</em></strong> when a singular count noun is indefinite and the article is followed by a vowel sound.</h4><ol>
+<li>Note<ul>
+<li>글자가 아니라 소리가 <strong>“a”</strong> 나 <strong>“an”</strong> 를 써야할지를 결정한다.</li>
+</ul>
+</li>
+<li>Examples<ul>
+<li>Do you have <strong>an</strong> umbrella?</li>
+<li>Is there <strong>an</strong> eraser in your desk?</li>
+<li>He is <strong>an</strong> honorable man.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-3-Do-not-use-“a”-or-“an”-with-plural-nouns"><a href="#Rule-3-Do-not-use-“a”-or-“an”-with-plural-nouns" class="headerlink" title="Rule 3, Do not use “a” or “an” with plural nouns."></a>Rule 3, Do not use <strong><em>“a”</em></strong> or <strong><em>“an”</em></strong> with plural nouns.</h4><p>예제 생략.</p>
+<h4 id="Rule-4-Do-not-use-“a”-or-“an”-with-non-count-nouns"><a href="#Rule-4-Do-not-use-“a”-or-“an”-with-non-count-nouns" class="headerlink" title="Rule 4, Do not use “a” or “an” with non-count nouns."></a>Rule 4, Do not use <strong><em>“a”</em></strong> or <strong><em>“an”</em></strong> with non-count nouns.</h4><ol>
+<li>Common non-count nouns.<ul>
+<li>milk, oxygen, air, pepper, money, food, tea, air, coffee, water, meat</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-5-Do-not-use-“the”-with-indefinite-nouns"><a href="#Rule-5-Do-not-use-“the”-with-indefinite-nouns" class="headerlink" title="Rule 5, Do not use “the” with indefinite nouns."></a>Rule 5, Do not use <strong><em>“the”</em></strong> with indefinite nouns.</h4><ol>
+<li>Note<ul>
+<li>indefinite nouns는 일반적인 것을 말함.</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>She likes to drink <del>the</del> milk.</li>
+<li>Do you have <del>the</del> brothers and sisters?</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-6-Do-not-use-the-there-“be-”"><a href="#Rule-6-Do-not-use-the-there-“be-”" class="headerlink" title="Rule 6, Do not use the there + “be.”"></a>Rule 6, Do not use <del>the</del> there + “be.”</h4><ol>
+<li>Note<ul>
+<li>There be 다음에 나오는 것은 모두 indefinite 이다.</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>There is <del>the</del> a pen on the table.</li>
+<li>There were <del>the</del> planes in the sky.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-7-Use-“a”-for-single-letters-and-numbers-that-begin-with-“a”-consonant-sound"><a href="#Rule-7-Use-“a”-for-single-letters-and-numbers-that-begin-with-“a”-consonant-sound" class="headerlink" title="Rule 7, Use “a” for single letters and numbers that begin with “a” consonant sound."></a>Rule 7, Use <strong><em>“a”</em></strong> for single letters and numbers that begin with <strong>“a”</strong> consonant sound.</h4><ol>
+<li>Note <ul>
+<li>한글자나 숫자 앞에 a를 쓰라는 것.</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>John got <strong><em>a</em></strong> “B” his history test.</li>
+<li>The professor wrote <strong>a</strong> “2” on the board.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-8-Use-“an”-for-letters-and-numbers-that-begin-with-a-vowel-sound"><a href="#Rule-8-Use-“an”-for-letters-and-numbers-that-begin-with-a-vowel-sound" class="headerlink" title="Rule 8, Use “an” for letters and numbers that begin with a vowel sound."></a>Rule 8, Use <strong><em>“an”</em></strong> for letters and numbers that begin with a vowel sound.</h4><ol>
+<li>Note<ul>
+<li>그리고 그 때, 발음을 고려하여 an을 써야 한다.</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>Mary got <strong>an</strong> “A” on her geology test.</li>
+<li>The math teacher wrote <strong>an</strong> “8” on the board.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-9-Use-“a”-to-mean-“for-each”-or-“per”-when-the-noun-begins-with-a-consonant-sound"><a href="#Rule-9-Use-“a”-to-mean-“for-each”-or-“per”-when-the-noun-begins-with-a-consonant-sound" class="headerlink" title="Rule 9, Use “a” to mean “for each” or “per” when the noun begins with a consonant sound."></a>Rule 9, Use <strong><em>“a”</em></strong> to mean “for each” or “per” when the noun begins with a consonant sound.</h4><ol>
+<li>Note <ul>
+<li>각각을 뜻하는 a</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>Eggs are only 79 cents <strong>a</strong> dozen.</li>
+<li>My car gets 26 miles <strong>a</strong> gallon.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-10-Use-“a”-to-mean-“for-each”-or-“per”-when-the-noun-begins-with-a-vowel-sound"><a href="#Rule-10-Use-“a”-to-mean-“for-each”-or-“per”-when-the-noun-begins-with-a-vowel-sound" class="headerlink" title="Rule 10, Use “a” to mean “for each” or “per” when the noun begins with a vowel sound."></a>Rule 10, Use <strong><em>“a”</em></strong> to mean “for each” or “per” when the noun begins with a vowel sound.</h4><ol>
+<li>Note<ul>
+<li>그리고 그 때 또한, 발음을 고려하여 an을 쓴다.</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>An airliner can travel more than 600 miles <strong>an</strong> hour.</li>
+<li>This perfume costs 300 dollars <strong>an</strong> ounce.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-11-Use-“the”-with-in-the-morning-in-“the”-afternoon-and-in-“the”-evening"><a href="#Rule-11-Use-“the”-with-in-the-morning-in-“the”-afternoon-and-in-“the”-evening" class="headerlink" title="Rule 11, Use “the” with in the morning, in “the” afternoon, and in “the” evening."></a>Rule 11, Use <strong><em>“the”</em></strong> with in the morning, in <strong><em>“the”</em></strong> afternoon, and in <strong><em>“the”</em></strong> evening.</h4><ol>
+<li>Note<ul>
+<li>그냥 그렇다. morning/afternoon/evening 앞에 the를 쓴다.</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>In <strong>the</strong> morning, I usually have fruit, cereal, and milk.</li>
+<li>Classes are held in <strong>the</strong> afternoon.</li>
+<li>Professor Smith studies in <strong>the</strong> evening.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-12-Do-not-use-an-article-for-“at-night”"><a href="#Rule-12-Do-not-use-an-article-for-“at-night”" class="headerlink" title="Rule 12, Do not use an article for “at night”."></a>Rule 12, Do not use an article for <strong><em>“at night”</em></strong>.</h4><ol>
+<li>Note<ul>
+<li>at night는 그냥 at night이다.</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>I often watch televesion at <del>the</del> night.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-13-Use-“the”-when-the-noun-has-already-been-mentioned"><a href="#Rule-13-Use-“the”-when-the-noun-has-already-been-mentioned" class="headerlink" title="Rule 13, Use “the” when the noun has already been mentioned."></a>Rule 13, Use <strong><em>“the”</em></strong> when the noun has already been mentioned.</h4><ol>
+<li>Note<ul>
+<li>이미 언급된 대상은 the를 쓴다. (특정 대상이기 때문)</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>I saw a dog. <strong>The</strong> dog ran away.</li>
+<li>Some planes appeared. <strong>The</strong> planes landed in a filed.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-14-Use-“the”-when-the-noun-that-follows-is-already-known"><a href="#Rule-14-Use-“the”-when-the-noun-that-follows-is-already-known" class="headerlink" title="Rule 14, Use “the” when the noun that follows is already known."></a>Rule 14, Use <strong><em>“the”</em></strong> when the noun that follows is already known.</h4><ol>
+<li>Note<ul>
+<li>이미 알려진 것, 이해된 것, 명백한 것, 이미 정해진 것(특정한 것)에는 the를 쓴다.</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>Be careful! You’re spilling coffee on <strong>the</strong> floor.</li>
+<li>I picked up my suitcase and <strong>the</strong> handle broke off.</li>
+<li>Don’t light that cigar! You’ll fill <strong>the</strong> house with smoke.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-15-Use-“the”-when-the-noun-is-made-definit-by-a-prepositional-phrase"><a href="#Rule-15-Use-“the”-when-the-noun-is-made-definit-by-a-prepositional-phrase" class="headerlink" title="Rule 15, Use “the” when the noun is made definit by a prepositional phrase."></a>Rule 15, Use <strong><em>“the”</em></strong> when the noun is made definit by a prepositional phrase.</h4><ol>
+<li>Note<ul>
+<li>접속사 구로 인하여 한정(특정)이 되었을 경우, the를 붙인다.</li>
+</ul>
+</li>
+<li>Example<ul>
+<li><strong>The</strong> back of this room is dirty.</li>
+<li><strong>The</strong> prerequisites for this class are algebra and chemistry.</li>
+<li>The man in <strong>the</strong> red shirt is my boss.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-16-Use-“the”-when-the-noun-is-made-definite-by-an-adjective-clause-or-an-adjective-phrase"><a href="#Rule-16-Use-“the”-when-the-noun-is-made-definite-by-an-adjective-clause-or-an-adjective-phrase" class="headerlink" title="Rule 16, Use “the” when the noun is made definite by an adjective clause or an adjective phrase."></a>Rule 16, Use <strong><em>“the”</em></strong> when the noun is made definite by an adjective clause or an adjective phrase.</h4><ol>
+<li>Note<ul>
+<li>형용사 구나 형용사 절로 인해 한정될 경우에도 the를 붙인다</li>
+</ul>
+</li>
+<li>Example<ul>
+<li><strong>The</strong> teacher <strong>that we had last semester</strong> was especially good.</li>
+<li><strong>The</strong> man <strong>that hired me yesterday</strong> left the company today.</li>
+<li><strong>The</strong> car <strong>which the Smiths bought</strong> gets 50 miles a gallon.</li>
+<li><strong>The</strong> town <strong>where I grew up</strong> is now a big city.</li>
+<li><strong>The</strong> man <strong>she married</strong> was poor.</li>
+<li><strong>The</strong> woman <strong>standing by the door</strong> is my sister.</li>
+<li><strong>The</strong> teenagers <strong>living next door</strong> play loud music late at night.</li>
+<li><strong>The</strong> man <strong>arrested by the police</strong> went to jail.</li>
+<li><strong>The</strong> house <strong>destroyed by the fire</strong> was mine.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Rule-17"><a href="#Rule-17" class="headerlink" title="Rule 17,"></a>Rule 17,</h4>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/06/07/ENGLISH-The-Article-Book/" data-id="cjzrymwl800a46on2tmac72bx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/06/07/ENGLISH-The-Article-Book/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/06/07/ENGLISH-The-Article-Book/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="blog-600W-GRAMMAR-Complements" class="article article-type-blog" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/04/17/600W-GRAMMAR-Complements/">[600W][GRAMMAR] Complements</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/04/17/600W-GRAMMAR-Complements/">
+            <time datetime="2017-04-17T07:55:19.000Z" itemprop="datePublished">2017-04-17</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/English/">English</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/600W/">600W</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/Grammar/">Grammar</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Verb-Noun-Adjective-Complements"><a href="#Verb-Noun-Adjective-Complements" class="headerlink" title="Verb, Noun, Adjective Complements"></a>Verb, Noun, Adjective Complements</h2><ol>
+<li><strong>Verb + Infinitive</strong><ul>
+<li>appear, attempt, be found, begin, continue, decide, fail, intend, seem, tend, try, want, work<ul>
+<li>The traffic jam caused him to be late.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Verb + Object + Infinitive</strong><ul>
+<li>advise, allow, cause(시키다?), enable(할수있게 하다), expect, find, force, get, inspire, require, want<ul>
+<li>Good health enabled him to carry out the plan.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Verb + Gerund</strong><ul>
+<li>begin, be used for(~하는데 사용되다), continue, experience, go, go on(을 계속 하다, involve(수반/필요로하다), keep, keep on, remain(여전히/변함없이 ~있다), remember, spend (time, etc), start, stop<ul>
+<li>My job involves interviewing people.</li>
+<li>Remain standing.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Verb + Object + Base verb</strong><ul>
+<li>have, help, let, make</li>
+</ul>
+</li>
+<li><strong>Verb + Wh-clause/That-clause</strong><ul>
+<li>explain, know, realize, see, show, understand</li>
+</ul>
+</li>
+<li><strong>Verb + That clause</strong><ul>
+<li>argue, believe, conclude, ensure, feel, find, indicate, know, mean, realize, say, see, show, suggest, suppose, think</li>
+</ul>
+</li>
+<li><strong>Subjunctive Verb + Base verb</strong> (이미 있었던 사실을 말하는 것이 아니라, 주장?의견?설득?)<ul>
+<li>advise, agree, ask, demand, insist, order, prefer, propose, recommend, request, require, stipulate, suggest, urge</li>
+</ul>
+</li>
+<li><strong>Verb + preposition+ Gerund</strong><ul>
+<li>think, plan</li>
+</ul>
+</li>
+<li><strong>Verb + Object + Base form/Gerund</strong><ul>
+<li>see, hear, feel(verbs of perception)</li>
+<li>see someone sing (콘서트에서 노래부르는 것을 다 봤을때)</li>
+<li>see door open (문이 열리는 것은 순간이라 다 본 것임)</li>
+<li>see someone singing (노래 부르고 있는 장면 목격)</li>
+</ul>
+</li>
+<li><strong>Noun + Infinitive</strong><ul>
+<li>ability, capacity, chance, decision, desire, effort, failure, inability, plan, opportunity, power, right, tendency, willingness</li>
+</ul>
+</li>
+<li><strong>Adjective + Infinitive</strong><ul>
+<li>determined, difficult, due, easy, free, hard, important, (im)possible, shocked, (un)able, (un)likely, (un)willing</li>
+</ul>
+</li>
+<li><strong>Noun + That-clause</strong> (생각, 믿음, 결심, 의심, 희망, 추상적인 것?)<ul>
+<li>assumption, belief, conclusion, desire, determination, doubt, hope, idea, notion, possibility, reason, wish</li>
+</ul>
+</li>
+<li><strong>Adjective + That-clause</strong><ul>
+<li>apparent, certain, clear, confident, (im)possible, sure, surprised, true, (un)likely</li>
+</ul>
+</li>
+<li><strong>Subjunctive Noun + That-clause + Base form</strong><ul>
+<li>advice, claim, demand, observation, point, recommendation, suggestion </li>
+</ul>
+</li>
+<li><strong>Subjunctive Adjective + That-clause + Base form</strong><ul>
+<li>essential, important, necessary, vital</li>
+</ul>
+</li>
+<li><strong>Adjective + preposition + Gerund</strong><ul>
+<li>aware of, excited about, angry about/with, capable of, certain of, comfortable about/with, disappointed by/with, fond of(좋아하다), frightened by, guilty of, happy with, in charge of, in favor of(에 찬성하여), independent of, innocent of, likely to, married to, pleased by, sensitive to, similar to, sure of, thankful for, upset with, willing to(기꺼이 ~하다), sick of(~에 신물이 난)<ul>
+<li>be less likely to ~할 가능성이 높다.</li>
+<li>be more likely to ~할 가능성이 낮다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Noun + preposition(of) + Gerund</strong><ul>
+<li>chance, cost, idea, means, method, possibility, problem, process, risk, way</li>
+</ul>
+</li>
+<li><strong>Verb + Object + Gerund</strong><ul>
+<li>spend time/money, have difficulty/trouble, have a hard/difficult time, be accustomed to, be used to, look forward to, be opposed to</li>
+<li>have fun/a good time + Gerund</li>
+<li>sit/stand/lie + (expression of place) + Gerund<ul>
+<li>She sat at her desk writing a letter.</li>
+</ul>
+</li>
+<li>find/catch + object + Gerund</li>
+</ul>
+</li>
+</ol>
+<h2 id="Infinitives-of-Purpose"><a href="#Infinitives-of-Purpose" class="headerlink" title="Infinitives of Purpose"></a>Infinitives of Purpose</h2><ol>
+<li>to + Verb<ul>
+<li>in order to Verb</li>
+</ul>
+</li>
+<li>for + noun<ul>
+<li>(예외) be used for가 일반적이고 전형적인 목적을 나타낼 때 쓰인다.</li>
+<li>A saw is used for cutting wood. (주어도 saw이고, 동사도 현재이다.)</li>
+<li>A chain saw was used <strong>to cut</strong> down the old oak tree.</li>
+</ul>
+</li>
+</ol>
+<h2 id="Need-Gerund-Passive를-나타내기-위해서-쓰임"><a href="#Need-Gerund-Passive를-나타내기-위해서-쓰임" class="headerlink" title="Need + Gerund (Passive를 나타내기 위해서 쓰임)"></a>Need + Gerund (Passive를 나타내기 위해서 쓰임)</h2><ul>
+<li>My house needs to be painted.</li>
+<li>My house needs <strong>painting</strong>. (동일한 뜻)</li>
+</ul>
+<h2 id="Causative-Verb-Make-Have-Get"><a href="#Causative-Verb-Make-Have-Get" class="headerlink" title="Causative Verb (Make, Have, Get)"></a>Causative Verb (Make, Have, Get)</h2><ol>
+<li>뜻: “X” causes “Y” to do something.<ul>
+<li>make : 강제로 시킴.</li>
+<li>have : 요청함.</li>
+<li>get : 설득하려 애씀.</li>
+</ul>
+</li>
+<li>수동태 form<ul>
+<li>I had my watch repaired.</li>
+<li>I got my watch repaired.</li>
+</ul>
+</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/04/17/600W-GRAMMAR-Complements/" data-id="cjzrymwi7008j6on27rrco2b8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/04/17/600W-GRAMMAR-Complements/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/04/17/600W-GRAMMAR-Complements/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="blog-600W-GRAMMAR-Clause-Reduction" class="article article-type-blog" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/04/02/600W-GRAMMAR-Clause-Reduction/">[600W][GRAMMAR] Clause Reduction</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/04/02/600W-GRAMMAR-Clause-Reduction/">
+            <time datetime="2017-04-02T09:25:45.000Z" itemprop="datePublished">2017-04-02</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/English/">English</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/600W/">600W</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/Grammar/">Grammar</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Adjective-Clause"><a href="#Adjective-Clause" class="headerlink" title="Adjective Clause"></a>Adjective Clause</h2><ol>
+<li>관계대명사 + be<ul>
+<li>The man <strong>who is standing</strong></li>
+<li>The man <strong>standing</strong></li>
+</ul>
+</li>
+<li>그냥 동사도 되나 봄.<ul>
+<li>alphabet <strong>that consists of</strong></li>
+<li>alphabet <strong>consisting of</strong></li>
+</ul>
+</li>
+<li><strong>주의</strong>: Stative verb일 때 쓸수 없고, 몇몇은 뜻이 달라지므로 조심.<ul>
+<li>woman who had a dog.</li>
+<li>woman <strong>having</strong> a dog. (먹는다는 action의 의미가 됨.)</li>
+</ul>
+</li>
+</ol>
+<h2 id="Adverb-Clause"><a href="#Adverb-Clause" class="headerlink" title="Adverb Clause"></a>Adverb Clause</h2><ol>
+<li>While <ul>
+<li>While은 놔둘 수도, 없앨 수도 있다.</li>
+<li>While getting a coffee,</li>
+<li>Getting a coffee,</li>
+</ul>
+</li>
+<li>Because <ul>
+<li>Because를 반드시 없애야 한다.</li>
+<li>Wanting more money,</li>
+</ul>
+</li>
+<li>After <ul>
+<li>걍 놔두는 가보다</li>
+<li>After driving home,</li>
+</ul>
+</li>
+<li>Since <ul>
+<li>~이래로 뜻인 경우, 이 것도 놔두나 보다.</li>
+<li>Since getting his driver’s license, </li>
+</ul>
+</li>
+<li>Even tough <ul>
+<li>줄일 수 없다.</li>
+</ul>
+</li>
+<li>When <ul>
+<li>두가지 뜻이 있는데, “~하는 중”이 아니라 “~일 때” 의 뜻일 때 On ~ing, Upon ~ing 로 줄인다.</li>
+<li>On seeing the tiger,</li>
+<li>Upon hearing the news,</li>
+</ul>
+</li>
+</ol>
+<h2 id="Negative"><a href="#Negative" class="headerlink" title="Negative"></a>Negative</h2><ol>
+<li>Without <ul>
+<li>If not을 without으로 바꿀 수 있다</li>
+<li>Without reading the book,</li>
+</ul>
+</li>
+<li>Not + ing<ul>
+<li>After not getting</li>
+</ul>
+</li>
+</ol>
+<h2 id="With-Perfect-Participles"><a href="#With-Perfect-Participles" class="headerlink" title="With Perfect Participles"></a>With Perfect Participles</h2><ol>
+<li>After<ul>
+<li>After she won</li>
+<li>After winning</li>
+<li>After having won</li>
+</ul>
+</li>
+<li>연결하면서, 줄이기. (survive가 시간 상 먼저라서 가능 한듯 함.)<ul>
+<li>She was still alive. <strong>She had</strong> barely survived the accident.</li>
+<li>She was still alive<strong>, having</strong> barely survived the accident.</li>
+</ul>
+</li>
+</ol>
+<h2 id="With-Passive-Voice"><a href="#With-Passive-Voice" class="headerlink" title="With Passive Voice"></a>With Passive Voice</h2><ol>
+<li>문장을 붙이면서, 줄이기<ul>
+<li><strong>Coffee is produced</strong> around the world. It is major trade commodity.</li>
+<li><strong>Produced</strong> around the world, coffee is major trade commodity.</li>
+</ul>
+</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://soopdop.github.io/2017/04/02/600W-GRAMMAR-Clause-Reduction/" data-id="cjzrymwc3004c6on21l5zcveb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://soopdop.github.io/2017/04/02/600W-GRAMMAR-Clause-Reduction/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/04/02/600W-GRAMMAR-Clause-Reduction/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="blog-600W-READING-UNIT-4-Cultures-in-Contact" class="article article-type-blog" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -376,7 +1727,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/03/23/600W-READING-UNIT-4-Cultures-in-Contact/" data-id="cjtiho8cx004n2cn24efngb58" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/03/23/600W-READING-UNIT-4-Cultures-in-Contact/" data-id="cjzrymwin008o6on2o8qwaobn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -601,7 +1952,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/03/20/600W-WRITING-ANIMAL-VOCABULARY/" data-id="cjtiho8d7004u2cn2nt9b3tks" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/03/20/600W-WRITING-ANIMAL-VOCABULARY/" data-id="cjzrymwig008m6on2eov17sno" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -812,7 +2163,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Agreement-with-Nouns/" data-id="cjtiho8c600492cn2cayaaexd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Agreement-with-Nouns/" data-id="cjzrymwbr00456on2om9dl7wv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1035,7 +2386,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Articles/" data-id="cjtiho8cn004g2cn2cqpaiqiv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://soopdop.github.io/2017/03/13/600W-GRAMMAR-Articles/" data-id="cjzrymwia008k6on27es3dcss" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1113,1894 +2464,6 @@ ga('send', 'pageview');
 
 
 
-    <article id="blog-600W-READING-UNIT-2-Parents-and-Children" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/07/600W-READING-UNIT-2-Parents-and-Children/">[600W][READING] UNIT 2 - Parents and Children</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/07/600W-READING-UNIT-2-Parents-and-Children/">
-            <time datetime="2017-03-07T12:24:33.000Z" itemprop="datePublished">2017-03-07</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/600W/">600W</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/Reading/">Reading</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Vocabulary"><a href="#Vocabulary" class="headerlink" title="Vocabulary"></a>Vocabulary</h2><h2 id="CHAPTER-5-Mother-Was-Really-Somebody"><a href="#CHAPTER-5-Mother-Was-Really-Somebody" class="headerlink" title="CHAPTER 5 - Mother Was Really Somebody"></a>CHAPTER 5 - Mother Was Really Somebody</h2><h2 id="CHAPTER-6-The-Problems-of-Fathers-and-Sons"><a href="#CHAPTER-6-The-Problems-of-Fathers-and-Sons" class="headerlink" title="CHAPTER 6 - The Problems of Fathers and Sons"></a>CHAPTER 6 - The Problems of Fathers and Sons</h2><h3 id="Vocabulary-1"><a href="#Vocabulary-1" class="headerlink" title="Vocabulary"></a>Vocabulary</h3><ol>
-<li>articulate - 잘 표현하는 또렷한.</li>
-<li>illiterate - 문맹의.</li>
-<li>surge - (n.) 치밀어 오름.</li>
-<li>resentment - 분함.</li>
-<li>bent over - 몸을 숙이다.</li>
-<li>After all - 결국에는</li>
-<li>ignorance - 무식</li>
-<li>ignorant person - 무식한 사람.</li>
-<li>bear - 참다, 견디다.</li>
-<li>thrust forward - 들이밀다(????)</li>
-<li>walk out of - ~에서 나가버리다.</li>
-<li>back porch - 뒷 베란다</li>
-<li>embarrassment - 당황.</li>
-<li>churning - 휘젖기</li>
-<li>churn -  휘젖다.</li>
-<li>sup with - ~와 저녁을 먹다. (old use) </li>
-<li>stomped out of - 자리를 박차고 나가다.(?)</li>
-<li>ran furiously down the back alley</li>
-<li>run down - 들이 받다.</li>
-<li>furiously - 미친듯이</li>
-<li>back alley - 뒷골목 </li>
-<li>staggering - 휘청거리는 / 충격적인</li>
-<li>vomit - 토하다</li>
-<li>supper - 저녁식사, 야참의 느낌.</li>
-<li>clutching - 움켜잡고 있는</li>
-<li>rim - 둥근 물건의 가장자리</li>
-<li>surname - family name, last name </li>
-<li>humble - 미천한, 변변치 않은</li>
-<li>painstaking - 힘든</li>
-<li>solemn [썰룸] - 침통한 </li>
-<li>tight-lipped - 말이 없는, 화가나가 입을 꽉 다문.</li>
-<li>make sure - ~을 확실히 하다. 반드시~하다.</li>
-<li>proper - 제대로된, 적절한</li>
-<li>sequence - 순서</li>
-<li>bulbous nose and squinty eyes - 주먹코와 사시눈 </li>
-<li>smirk building on his face - 그의 얼굴에 만들어지고 있는 능글 맞은 웃음(?)</li>
-<li>smirk - 능글 맞은 웃음</li>
-<li>building on - ~ 기반한, 만들어지고 있는?</li>
-<li>literally - 문자 그대로, 그야말로, 정말로</li>
-<li>squirmed - 꿈틀거렸다. 몹시 당혹해 했다.</li>
-<li>licked - 핥았다. </li>
-<li>glanced - 힐끗 봤다.</li>
-<li>sheepishly - 소심하게 (순한 양처럼)</li>
-<li>leering - 음흉하게 보고(웃고) 있는, </li>
-<li>jabby little scribbles</li>
-<li>jabby - 유일한,고유한 (urban dic에서 찾음)</li>
-<li>scribbles - 갈겨쓴 글씨, 난필, 낙서</li>
-<li>How do you expect me to read this scribble?</li>
-<li>furniture polish - 가구용 광택제.</li>
-<li>restrain - 제지 하다, 제약하다 (네이버 사전엔 안나옴.)</li>
-<li>twisted away - 몸을 뒤틀어 빠져 나오다.</li>
-<li>was now backing and stumbling out</li>
-<li>throbbing with - ~로 화끈거리다, 두근거리다, 고동치다, 욱신거리다.</li>
-<li>awful humiliation - 지독한 굴욕</li>
-<li>flung - fling의 과거, (특히 화가나서) 내던지다</li>
-<li>wept - weep의 과거, 울다.</li>
-<li>exhaustion - 소진, 기진맥진</li>
-<li>guilt-ridden - 죄책감에 쌓인</li>
-<li>neatly penciled - 깔끔하게 연필로 쓴</li>
-<li>wistful - 애석한</li>
-<li>multisyllabic - syllable이 여러개인</li>
-<li>beyond his grasp - 이해할 수 없는, 손이 닿지 않는 곳에</li>
-</ol>
-<h3 id="Structures"><a href="#Structures" class="headerlink" title="Structures"></a>Structures</h3><ol>
-<li>Nor did it me that my hero Pancho Villa was also illiterate.<ul>
-<li>부정동의 표현. Neither do I, Nor do I</li>
-</ul>
-</li>
-<li>I would walk out of the kitchen and sit on the back porch, my stomach churning disappointment, so deep my embarrassment, that I never invited my friends into the house during that after-dinner hour when my mother habitually read to him.</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/03/07/600W-READING-UNIT-2-Parents-and-Children/" data-id="cjtiho8d0004q2cn22v2l54jm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/03/07/600W-READING-UNIT-2-Parents-and-Children/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/03/07/600W-READING-UNIT-2-Parents-and-Children/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="blog-600W-WRITING-Prepositions" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/05/600W-WRITING-Prepositions/">[600W][WRITING] Prepositions</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/05/600W-WRITING-Prepositions/">
-            <time datetime="2017-03-05T09:32:33.000Z" itemprop="datePublished">2017-03-05</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/600W/">600W</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/writing/">writing</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="At-On-In"><a href="#At-On-In" class="headerlink" title="At/On/In"></a>At/On/In</h2><h3 id="기본-규칙"><a href="#기본-규칙" class="headerlink" title="기본 규칙"></a>기본 규칙</h3><ol>
-<li>At - 하루 중 언젠가<ul>
-<li>at five o’clock</li>
-<li>at lunchtime</li>
-<li>at sunset</li>
-</ul>
-</li>
-<li>On - 일/요일<ul>
-<li>on Friday</li>
-<li>on 16 May 1999</li>
-<li>on my birthday</li>
-</ul>
-</li>
-<li>In - 달/년/계절<ul>
-<li>in October</li>
-<li>in 1998 </li>
-<li>in winter</li>
-<li>in the Middle Ages</li>
-<li>in the past</li>
-<li>in the future</li>
-</ul>
-</li>
-</ol>
-<h3 id="다음의-경우에도-at을-사용함"><a href="#다음의-경우에도-at을-사용함" class="headerlink" title="다음의 경우에도 at을 사용함."></a>다음의 경우에도 at을 사용함.</h3><ol>
-<li>at night</li>
-<li>at the weekend / at weekends</li>
-<li>at Christmas</li>
-<li>at the moment / at present</li>
-<li>at the same time </li>
-</ol>
-<h3 id="in-the-morning-그러나-On-Friday-morning"><a href="#in-the-morning-그러나-On-Friday-morning" class="headerlink" title="in the morning, 그러나 On Friday morning."></a>in the morning, 그러나 On Friday morning.</h3><ol>
-<li>in the morning<ul>
-<li>on Friday morning</li>
-</ul>
-</li>
-<li>in the afternoon<ul>
-<li>on Sunday afternoon</li>
-</ul>
-</li>
-<li>in the evening<ul>
-<li>on Monday evening</li>
-</ul>
-</li>
-</ol>
-<h3 id="last-next-this-every-앞에는-at-on-in을-안쓴다"><a href="#last-next-this-every-앞에는-at-on-in을-안쓴다" class="headerlink" title="last, next, this, every 앞에는 at/on/in을 안쓴다."></a>last, next, this, every 앞에는 at/on/in을 안쓴다.</h3><ol>
-<li>I’ll see you <strong>next Friday.</strong></li>
-<li>They got married <strong>last March.</strong></li>
-</ol>
-<h3 id="얼마-후에-in"><a href="#얼마-후에-in" class="headerlink" title="얼마 후에, in"></a>얼마 후에, in</h3><ol>
-<li>The train will be leaving <strong>in a few minutes</strong>. (몇분 후에)</li>
-<li>She’ll be here <strong>in a moment</strong>. (곧, 바로)</li>
-</ol>
-<h2 id="위치-표현"><a href="#위치-표현" class="headerlink" title="위치 표현"></a>위치 표현</h2><ol>
-<li>Above / Over ~ 위에</li>
-<li>Across ~을 가로질러<ul>
-<li>Draw a line across the page.</li>
-</ul>
-</li>
-<li>Against ~에 기대어</li>
-<li>Ahead of/In front of ~앞에</li>
-<li>Among ~ 사이에</li>
-<li>Around ~ 둘레에</li>
-<li>Behind ~ 뒤에</li>
-<li>Below ~ 아래에<ul>
-<li>Write your name below the line.</li>
-</ul>
-</li>
-<li>Beneath ~ 아래에<ul>
-<li>He sat beneath the tree.</li>
-</ul>
-</li>
-<li>Beside / Next to ~ 옆에</li>
-<li>Between ~ 사이에<ul>
-<li>She is between two frees.</li>
-</ul>
-</li>
-<li>From ~ 으로부터<ul>
-<li>She came from the house.</li>
-</ul>
-</li>
-<li>In front of ~ 앞에</li>
-<li>Inside ~ 안쪽에</li>
-<li>Nearby ~ 근처에</li>
-<li>Off ~ 아래로, 멀리로<ul>
-<li>His hat is off. (전시차 맞나???)</li>
-</ul>
-</li>
-<li>Through ~을 통과해서<ul>
-<li>She want through the door.</li>
-</ul>
-</li>
-<li>Toward ~을 향하여<ul>
-<li>She is walking toward the house.</li>
-</ul>
-</li>
-<li>Under ~ 아래에</li>
-<li>Within ~ 이내에 (시간적, 공간적)<ul>
-<li>Please mark only within the circle.</li>
-</ul>
-</li>
-</ol>
-<h2 id="Verb-Preposition-Combinations"><a href="#Verb-Preposition-Combinations" class="headerlink" title="Verb + Preposition Combinations"></a>Verb + Preposition Combinations</h2><ol>
-<li>account for - ~을 설명하다, ~의 이유가 되다, ~의 지출 내역을 보고하다</li>
-<li>accuse of - ~의 죄로 고소/고발/기소하다.</li>
-<li>adapt to - ~에 적응하다. </li>
-<li>add to - ~에 더하다.</li>
-<li>adjust to - ~에 적응하다.</li>
-<li>agree on - ~라는 점을 동의하다.</li>
-<li>agree with - ~에게 동의하다.</li>
-<li>apologize for - ~에 대해서 사과하다.</li>
-<li>apologize to - ~에게 사과하다.</li>
-<li>apply for - ~에 지원하다.</li>
-<li>approve of - ~을 승인하다.</li>
-<li>argue with - ~와 언쟁을 발이다.</li>
-<li>arrive at - ~에 도착하다, ~에 이르다.</li>
-<li>ask for - ~에 대해서 묻다, ~를 찾다</li>
-<li>believe in - ~을 믿다.</li>
-<li>belong to - ~에 속하다, ~소유이다.</li>
-<li>blame (someone) for - ~에 대해서 ~을 비난하다.</li>
-<li>blame (something) on - ~을 ~의 탓으로 돌리다.(뒤집어 씌우다)</li>
-<li>borrow from - ~로부터 빌리다.</li>
-<li>care about - ~에 마음을 쓰다.</li>
-<li>catch up with - ~을 따라잡다.</li>
-<li>come from - ~의 출신이다.</li>
-<li>comment on - ~에 대해서 주석을 달다, 해설하다, 의견을 말하다.</li>
-<li>communicate with - ~와 연락하다.</li>
-<li>compare with - ~과 비교하다.</li>
-<li>compliment (someone) on - ~에게 ~에 대해서 칭친하다.</li>
-<li>congratulate on - ~을 축하하다.</li>
-<li>concentrate on - ~에 집중하다.</li>
-<li>consent to - ~에 동의하다.</li>
-<li>consist of - ~로 구성되다.</li>
-<li>convince (someone) of - ~을 ~에게 설득시키다.</li>
-<li>deal with - ~을 처리하다.</li>
-<li>decide between - ~중 어느 하나로 결정하다.</li>
-<li>decide on - ~으로 결정하다. ~을 결심하다.</li>
-<li>depend on - ~에 의존하다.</li>
-<li>(dis)approve of - 찬성하다, 반대하다.</li>
-<li>dream about, of - ~을 꿈꾸다.</li>
-<li>excuse (someone) for - ~의 ~를 용서하다.</li>
-<li>explain (something) to - ~을 ~에게 설명하다.</li>
-<li>feel like - ~하고 싶다, ~가지고 싶다.</li>
-<li>forget about - ~에 대해서 잊다.</li>
-<li>forgive (someone) for - ~가 ~한것을 용서하다.</li>
-<li>get along with - ~와 잘 지내다.</li>
-<li>get rid of - ~을 없애다.</li>
-<li>get with - ~에 적응하다. ~에 주목하다. (???)</li>
-<li>get used to - ~에 익숙해지다.</li>
-<li>happen to - ~에게 일어나다.</li>
-<li>have confidence in - ~에 대해서 자신이 있다.</li>
-<li>have influence over - ~에 대해서 영향력을 가지고 있다.</li>
-<li>have an opportunity for - ~할 기회가 있다.</li>
-<li>have patience with - ~을 참을 수 있다. (?)</li>
-<li>have a reason for - ~하는 이유가 있다.</li>
-<li>hear about - ~에 관해서 듣다. (상세하게?)</li>
-<li>hear from - ~로부터 연락을 받다.</li>
-<li>hear of - ~에 대해서 듣다. (소문 등으로?)</li>
-<li>insist on - ~을 고집하다, 주장하다, 강요하다, 강조하다.</li>
-<li>introduce to - ~에 대한 기초를 가르치다.</li>
-<li>invite (someone) to - ~을 ~에 초대하다.</li>
-<li>keep for, from - (???)</li>
-<li>laugh about - ~에 대해서 웃다.</li>
-<li>laugh at - ~을 비웃다.</li>
-<li>learn about - ~에 대해서 배우다.</li>
-<li>listen for - ~을 들으려고 귀를 귀울이다.</li>
-<li>listen to - ~을 듣다.</li>
-<li>look at - ~을 보다. ~을 살피다.</li>
-<li>look for - ~을 바라다, 찾다, 구하다.</li>
-<li>look forward to - ~을 고대하다.</li>
-<li>object to - ~에 반대하다.</li>
-<li>participate in - ~에 참가하다.</li>
-<li>pay for - ~에 대해서 지불하다.</li>
-<li>plan on - ~할 예정(계획)이다.</li>
-<li>prefer to - ~보다 좋아하다. (A to B 또는 ~ing to ~ing)</li>
-<li>prepare for - 준비하다.</li>
-<li>prevent from - ~을 막다. (A from B : A가 B하는 것을)</li>
-<li>provide for - ~에게 공급하다, ~를 대비하다.</li>
-<li>provide (someone) with - ~에게 ~을 주다.</li>
-<li>recover from - ~에서 회복하다.</li>
-<li>refer to - ~에 대해서 언급하다.</li>
-<li>relate to - ~와 관련되다.</li>
-<li>rely on - ~에 의지하다.</li>
-<li>remind (someone) of - ~에게 ~을 생각하게 하다.</li>
-<li>search for - ~을 찾다.</li>
-<li>see about - ~을 조사하다, 찾다, 가능한지 생각하다.</li>
-<li>send for - ~을 부르기 위해 보내다. (본인이 가지러 갈때는 call for)</li>
-<li>separate from - ~에서 분리하다.</li>
-<li>show <strong>up at</strong> - ~에 나타나다, 얼굴을 보이다.</li>
-<li>speak about - ~에 대해서 말하다.</li>
-<li>spend (money) on - ~에 돈을 쓰다.</li>
-<li>stop (someone) from - ~이 ~하는 것을 중지시키다.</li>
-<li>substitute for - ~을 대신하다.</li>
-<li>subtract from - ~에서 빼다.</li>
-<li>succeed in - ~ 에 성공하다.</li>
-<li>suspect (someone) of - ~에게 ~혐의를 두다.<ul>
-<li>Suspect a person of murder.</li>
-</ul>
-</li>
-<li>take advantage of - ~을 활용하다.</li>
-<li>take care of - ~을 돌보다.</li>
-<li>talk about - ~에 대해서 이야기 하다.</li>
-<li>talk (something) over (with someone) - ~와 ~에 대해서 이야기를 나누다. </li>
-<li>talk to - ~에게 말을 건네다.</li>
-<li>thank (someone) for - ~에게 ~에 대해서 감사하다.</li>
-<li>think about - ~에 대해서 생각하다, 고려하다.</li>
-<li>think of - ~을 머릿속에 떠올리다(?)</li>
-<li>throw away - ~을 없애다, 버리다.</li>
-<li>vote for - ~에 투표하다.</li>
-<li>wait for - ~을 기다리다.</li>
-<li>warn about - ~에 대해서 주의를 주다. 경고하다.</li>
-<li>waste (money) on - ~에 돈을 낭비하다.</li>
-<li>wish for - ~을 바라다.</li>
-<li>work for - ~을 지지하다, ~을 위해 일하다, ~에서 일하다.</li>
-<li>worry about - ~에 대해 걱정하다.</li>
-</ol>
-<h2 id="Be-adjective-Preposition-Combinations"><a href="#Be-adjective-Preposition-Combinations" class="headerlink" title="Be + adjective + Preposition Combinations"></a>Be + adjective + Preposition Combinations</h2><ol>
-<li>be accustomed to - ~에 익숙하다. 잘 알다.</li>
-<li>be accused of - ~로 비난 받다. </li>
-<li>be acquainted with - ~와 친분이 있다. (connected with)</li>
-<li>be addicted to - ~에 중독되다.</li>
-<li>be annoyed at - ~에 화가나다.</li>
-<li>be allergic to - ~에 앨러지가 있다.</li>
-<li>be amazed at - ~에 깜짝 놀라다.</li>
-<li>be anxious about - ~에 대해 걱정하다, 속을 태우다.</li>
-<li>be appreciated for - ~에 감사하다.</li>
-<li>be ashamed of - ~을 부끄러워 하다.</li>
-<li>be associated with - ~와 관련이 있다</li>
-<li>be astonished at/by - ~에 놀라다. </li>
-<li>be aware of - ~을 알다.</li>
-<li>be angry with - ~에 화나다.</li>
-<li>be afraid of - ~을 두려워하다.</li>
-<li>be attached to - ~에 소속하다, 부착하다, 첨부하다.</li>
-<li>be bad at - ~을 못하다. (not good at)</li>
-<li>be based on - ~에 기초하다.</li>
-<li>be beneficial to - ~에 이롭다.<ul>
-<li>Drinking green tea can also be beneficial to your skin.Drinking green tea can also <strong>be beneficial to</strong> your skin.</li>
-</ul>
-</li>
-<li>be boastful for - ~을 뽐내다. 자랑하다. </li>
-<li>be bored with - ~에 실증이 나다.</li>
-<li>be brilliant at - ~에 뛰어나다, 걸출하다. (good at)</li>
-<li>be busy with - ~하느라 바쁘다.</li>
-<li>be capable of - ~할 수 있다.</li>
-<li>be careful with,of - ~을 조심하다.</li>
-<li>be certain about, of - ~을 확신하다.</li>
-<li>be characteristic of - (???????)</li>
-<li>be clever at - ~을 잘하다. (good at)</li>
-<li>be connected with - ~와 관계가 있다.  </li>
-<li>be conscious of - ~을 알다. (aware of)</li>
-<li>be content with - ~에 만족하다. (satisfied with)</li>
-<li>be crazy about - ~에 열광하다.</li>
-<li>be crowded with - ~로 가득 차다.</li>
-<li>be curious about - ~에 대해 궁금해하다.</li>
-<li>be dissatisfied with - ~이 불만이다. (not satisfied with)</li>
-<li>be doubtful about - ~에 대해서 의심스럽다. </li>
-<li>be delighted at/about - ~에 대해서 기쁘다.</li>
-<li>be derived from - ~로부터 파생되다.</li>
-<li>be different from - ~와 다르다.</li>
-<li>be disappointed with - ~에 실망하다. </li>
-<li>be eager for - ~을 열망하다.</li>
-<li>be eligible for - ~할 자격이 있다. (qualified for, competent for)</li>
-<li>be enthusiastic about - ~에 열광하다. (crazy about) </li>
-<li>be excellent in/at - ~을 뛰어나게 잘하다. (goot at)</li>
-<li>be excited about - ~에 대해 들뜨다.</li>
-<li>be experienced in - ~에 경험이 있다. </li>
-<li>be exposed to - ~에 노출되다.</li>
-<li>be envious of - ~을 질투/시기하다. (jealous of)<ul>
-<li>Don’t be envious of Toby’s friends.</li>
-</ul>
-</li>
-<li>be faithful to - ~에 충실하다, 성실하다.<ul>
-<li>Dogs are faithful to their owners.</li>
-</ul>
-</li>
-<li>be familiar with - ~에 익숙하다. 잘 알다. (accustomed to)</li>
-<li>be famous for - ~로 유명하다.</li>
-<li>be fed up with - ~에 진저리가 나다. 질리다.<ul>
-<li>I’m getting to be fed up with this one.</li>
-</ul>
-</li>
-<li>be free of/from - ~에 자유롭다.</li>
-<li>be frightened of - ~을 무서워 하다.<ul>
-<li>be frightened at - ~에 놀라다.</li>
-</ul>
-</li>
-<li>be friendly with - ~와 의가 좋다. </li>
-<li>be fond of - ~을 좋아하다.<ul>
-<li>I am fond of traveling.I am fond of traveling.</li>
-</ul>
-</li>
-<li>be furious about - ~에 대해서 격분하다.</li>
-<li>be furnished with - ~이 비치되다.</li>
-<li>be full of - ~에 몰두하다.</li>
-<li>be generous with/about - ~에 너그럽다.</li>
-<li>be guilty of/about - ~을 범하다.</li>
-<li>be gentle with - ~에게 다정하다.</li>
-<li>be good at - ~을 잘하다.</li>
-<li>be grateful to - ~에 감사하다. (thankful to) </li>
-<li>be happy about - ~에 대해서 기뻐하다.</li>
-<li>be hopeful of/about - ~에 대해서 낙관하고 있다.</li>
-<li>be identical with/to - ~와 동일하다.</li>
-<li>be immune to - ~에 면역이 되다.</li>
-<li>be impressed with - ~에 감동을 받다. </li>
-<li>be inferior to - ~보다 못하다, 열등하다. </li>
-<li>be indifferent to - ~에 무관심하다. <ul>
-<li>He was indifferent to politics. </li>
-</ul>
-</li>
-<li>be innocent of - ~에 대해서 모르다. ~에 대해서 무죄다.</li>
-<li>be interested in - ~에 관심이 있다.</li>
-<li>be involved with - ~와 관계를 맺다???</li>
-<li>be incapable of - ~할 능력이 없다.</li>
-<li>be jealous of - ~을 시기하다.</li>
-<li>be kind to - ~에게 친절을 베풀다, 불쌍히 여기다.</li>
-<li>be keen on - ~에 열중하다. </li>
-<li>be late for - ~에 늦다.</li>
-<li>be limited to - ~에 제한되다.</li>
-<li>be lucky at - ~에 재수가 좋다(?)</li>
-<li>be nervous of/about - ~에 신경을 곤두세우다, 초조해하다.</li>
-<li>be notorious for - ~로 악명이 높다.<ul>
-<li>He is notorious for his theft.He is notorious for his theft.</li>
-</ul>
-</li>
-<li>be opposed to - ~에 반대하다. (stand opposed to)</li>
-<li>be patient with - ~에 참을성 있게 굴다. ~에 인내심을 가지다.<ul>
-<li>Be patient with your children!</li>
-</ul>
-</li>
-<li>be pessimistic about - ~에 대해서 비관적이다.<ul>
-<li>There is no reason to be pessimistic about the future.</li>
-</ul>
-</li>
-<li>be pleased with - ~에 대해서 기뻐하다, 맘에 든다. 만족한다. (satisfied with)</li>
-<li>be polite to - ~에게 예의 바르게 대하다.</li>
-<li>be popular with - ~에게 인기가 있다, ~에게 평이 좋다.</li>
-<li>be presented with - ???</li>
-<li>be proud of - ~을 자랑으로 여기다.</li>
-<li>be punished for - ~을 하여 벌을 받다.</li>
-<li>be puzzled by/about - ~에 어쩔줄 몰라하다. 당황하다.</li>
-<li>be qualified for - ~에 자격이 있다. (eligible for, competent for)  </li>
-<li>be ready for - ~할 준비가 되어 있다</li>
-<li>be related to - ~와 관계가 있다.</li>
-<li>be relevant to - ~와 관계가 있다.</li>
-<li>be respectful for - 질문. 인터넷에 to나 of만 있는 것 같다.</li>
-<li>be responsible for - ~에 책임이 있다.</li>
-<li>be rid of - ~에서 벗어나다.<ul>
-<li>I’m glad to be rid of this boring job.</li>
-</ul>
-</li>
-<li>be sad about - ~에 대해서 서러워하다. (feel sad about)</li>
-<li>be safe from - ~로부터 안전하다.</li>
-<li>be satisfied with - ~에 만족하다.</li>
-<li>be scared of - ~을 두려워하다. (frightened of, terrified of)</li>
-<li>be sensitive to - 잘 타다.(더위, 추위, 간지럼)</li>
-<li>be serious about - ~에 대해서 진지하다.</li>
-<li>be sick of - ~에 질리다. 넌더리가 나다.</li>
-<li>be similar to - ~와 비슷하다.</li>
-<li>be shocked by - ~에 충격을 받다 (shattered by)</li>
-<li>be skillful at - ~에 숙련되다 (proficient at, skilled at)</li>
-<li>be slow at - ~하는데 느리다.</li>
-<li>be sorry for/about - ~에 대해 유감이다.</li>
-<li>be successful in - ~에 성공하다.</li>
-<li>be suitable for - ~에 알맞다.</li>
-<li>be sure of/about - ~에 확신을 가지다. (feel sure of)</li>
-<li>be superior to - ~보다 뛰어나다.</li>
-<li>be surprised at - ~에 놀라다.</li>
-<li>be suspicious of - ~에 대한 의심을 하다.</li>
-<li>be sympathetic with - ~을 동정하다. </li>
-<li>be terrible at - ~에 서투르다. ~실력이 형편없다</li>
-<li>be terrified of - ~을 무서워 하다. (frightened of, scared of)</li>
-<li>be tired of - 싫증이 나다. </li>
-<li>be thankful to/for - ~에게(to) ~에 대해서(for) 감사하다.</li>
-<li>be trilled with - ????</li>
-<li>be troubled with - ~로 고통받다, 시달리다.</li>
-<li>be typical of - ~을 대표한다. ~을 표상한다.<ul>
-<li>It is typical of him to insult his wife.</li>
-</ul>
-</li>
-<li>be unaware of - ~을 모른다.</li>
-<li>be upset about - ~에 대해서 언짢,속상,걱정(?) 하다.</li>
-<li>be used to - ~에 익숙하다.</li>
-<li>be wrong with/about - ~에 이상이 있다.<ul>
-<li>There’s nothing wrong with me.</li>
-</ul>
-</li>
-<li>be worried about - ~에 대해서 걱정하다.</li>
-</ol>
-<h2 id="Quiz-첫-테스트-많이-틀림"><a href="#Quiz-첫-테스트-많이-틀림" class="headerlink" title="Quiz (첫 테스트. 많이 틀림)"></a>Quiz (첫 테스트. 많이 틀림)</h2><ol>
-<li>I usually get up (at) 6:00</li>
-<li>Do you believe (in) ghosts?</li>
-<li>Germany is (by) France. (near, beside)</li>
-<li>Children rely (on) their parents for food and shelter.</li>
-<li>I usually take my vacation (in) July.</li>
-<li>He threw a ball (at) the window.<ul>
-<li>throw at - 맞으라고 던지다.</li>
-<li>throw to - 잡을 수 있게 던지다.</li>
-</ul>
-</li>
-<li>He as worked here (for) five years.</li>
-<li>Chris excels (at) sports.</li>
-<li>John is very fond (of) children.</li>
-<li>He is very proud (of) his high grades.</li>
-<li>My sister was born (on) May 21st.<ul>
-<li>in a month</li>
-<li>on a day</li>
-</ul>
-</li>
-<li>Andrea contributed many ideas (to) the discussion.</li>
-<li>There is a painting hanging (above) my desk.</li>
-<li>Please write your name (on) the dotted line.</li>
-<li>Did you forgive him (for) lying to you?<ul>
-<li>forgive someone for something : ~이 ~한것을 용서하다.</li>
-</ul>
-</li>
-</ol>
-<h2 id="Prepositions-of-Time-in-at-on-nothing"><a href="#Prepositions-of-Time-in-at-on-nothing" class="headerlink" title="Prepositions of Time - in/at/on/nothing"></a>Prepositions of Time - in/at/on/nothing</h2><ol>
-<li>Let’s meet (x) tomorrow.</li>
-<li>Let’s meet (at) six o’click.</li>
-<li>He was born (in) July.</li>
-<li>I went there (in) 1978.</li>
-<li>She’ll be at work (on) Friday.</li>
-<li><strong>We met (on) Christmas day. (day 때문)</strong></li>
-<li>The drove to Rochester (on) September 15th. (15th 때문)</li>
-<li>We arrived in this country (in) October.</li>
-<li>I love to go shopping (at) Christmas time. (time 때문)</li>
-<li>We get up early (in) the morning.</li>
-<li>Do you often go out (at) night?</li>
-<li>What do you like doing (on) Sundays?</li>
-<li>She is watching TV. (at) the moment.</li>
-<li>They lived in Germany (in) the 1980s.</li>
-<li>I’ll see you (in) a few weeks.</li>
-</ol>
-<h2 id="Prepositions-of-Place-and-Movement"><a href="#Prepositions-of-Place-and-Movement" class="headerlink" title="Prepositions of Place and Movement"></a>Prepositions of Place and Movement</h2><ol>
-<li>He lives (in) Montreal.</li>
-<li><strong>I work (in) Tokyo.</strong></li>
-<li><strong>She arrived (in) Madrid yesterday.</strong></li>
-<li><strong>I arrived (at) work early this morning.</strong></li>
-<li>She went (x) there yesterday.</li>
-<li><strong>We went (on) a trip (to) France last year.</strong><ul>
-<li>go on a walk, go on a trip, go on vacation.</li>
-</ul>
-</li>
-<li>We went (to) France last year.</li>
-<li>Let’s go (on/for) a walk after work.</li>
-<li>When will you go (on) vacation?</li>
-<li>We stayed (at/in) the Hotel Vancouver last year.</li>
-<li>She has lived (x) abroad three times.</li>
-<li>We came (x) home early last night.</li>
-<li><strong>Can you run (to) the store and get some mandoo.</strong><ul>
-<li>자동사라서 ~으로를 뜻하는 to가 들어감.</li>
-</ul>
-</li>
-<li><strong>They visited (x) Greece last year.</strong><ul>
-<li>타동사라서 to가 필요 없음.</li>
-</ul>
-</li>
-<li><strong>My cat is waiting (at) the top of the stairs.</strong><ul>
-<li>at the top of something : something의 가장 윗 부분.</li>
-<li>on top of something: something 위에.</li>
-</ul>
-</li>
-<li><strong>Your seat is (in) the tenth row.</strong><ul>
-<li>in the row</li>
-</ul>
-</li>
-<li>Turn left (at) the traffic lights.</li>
-<li>I will meet my girlfriend (in/on) Granville Street.</li>
-<li>I live (on) the fifth floor of my apartment building.</li>
-<li>We waited for over an hour (at) the bus-stop.</li>
-<li>There is a good map (on) page 36.</li>
-<li>Open your books (to) page 36.</li>
-<li>Cairo is (on) the Nile River.<ul>
-<li>Cities are on a river.</li>
-</ul>
-</li>
-<li>What do you have (in) your hands?<ul>
-<li>in: 손 바닥 안에.</li>
-<li>on: 손 등에.</li>
-</ul>
-</li>
-<li>There is beautiful poster (on) the wall.</li>
-<li>There is a small statue (on) the desk.</li>
-<li>There is a magnificent painting hanging (above/over) the desk.</li>
-<li>There is a tall plant (beside/next to/near) the desk.</li>
-</ol>
-<h2 id="Prepositions-with-the-“Be”-verb-많이-틀림"><a href="#Prepositions-with-the-“Be”-verb-많이-틀림" class="headerlink" title="Prepositions with the “Be” verb (많이 틀림)"></a>Prepositions with the “Be” verb (많이 틀림)</h2><ol>
-<li>I want to see a movie tonight. Who is (with) me?</li>
-<li>I’m sorry. This cake isn’t (for) you. It is not your birthday.</li>
-<li>I got selected to play for the city soccer team. I’m (in)!</li>
-<li>That book is (by) Dickens.</li>
-<li>Are the lights (on)?</li>
-<li>No. They are (off).</li>
-<li><strong>I’m (for) equal rights for men and women. We all have the same rights.</strong></li>
-<li><strong>I’m (against) child labor. I don’t think children should work.</strong><ul>
-<li>for : support</li>
-<li>against : oppose</li>
-</ul>
-</li>
-<li>Mark is (on) the bus, but Kate is (in) a taxi.</li>
-<li><strong>Is Pete here today? Yes, but I’m not sure where. He is (around). I saw him 5 minutes ago.</strong></li>
-<li><strong>You look sick. Are you ok? No. I’m a little (off) today.</strong><ul>
-<li>be off : don’t feel good.</li>
-</ul>
-</li>
-<li><strong>I am so tired. I was (up) until 2am last night.</strong><ul>
-<li>be up : stay awake.</li>
-</ul>
-</li>
-<li><strong>Don’t lie to me. I am (onto) you. I know what you did yesterday.</strong><ul>
-<li>be onto somebody: ~의 잘못을 알고 있다.</li>
-</ul>
-</li>
-<li>Susan is so (into) you. She is always looking at you and smiling.<ul>
-<li>be into something: ~에 관심이 많다.</li>
-</ul>
-</li>
-</ol>
-<h2 id="Quiz-첫-테스트-많이-틀림-1"><a href="#Quiz-첫-테스트-많이-틀림-1" class="headerlink" title="Quiz (첫 테스트. 많이 틀림)"></a>Quiz (첫 테스트. 많이 틀림)</h2><ol>
-<li>I usually get up (at) 6:00</li>
-<li>Do you believe (in) ghosts?</li>
-<li>Germany is (by) France. (near, beside)</li>
-<li>Children rely (on) their parents for food and shelter.</li>
-<li>I usually take my vacation (in) July.</li>
-<li>He threw a ball (at) the window.<ul>
-<li>throw at - 맞으라고 던지다.</li>
-<li>throw to - 잡을 수 있게 던지다.</li>
-</ul>
-</li>
-<li>He as worked here (for) five years.</li>
-<li>Chris excels (at) sports.</li>
-<li>John is very fond (of) children.</li>
-<li>He is very proud (of) his high grades.</li>
-<li>My sister was born (on) May 21st.<ul>
-<li>in a month</li>
-<li>on a day</li>
-</ul>
-</li>
-<li>Andrea contributed many ideas (to) the discussion.</li>
-<li>There is a painting hanging (above) my desk.</li>
-<li>Please write your name (on) the dotted line.</li>
-<li>Did you forgive him (for) lying to you?<ul>
-<li>forgive someone for something : ~이 ~한것을 용서하다.</li>
-</ul>
-</li>
-</ol>
-<h2 id="Prepositions-of-Time-in-at-on-nothing-1"><a href="#Prepositions-of-Time-in-at-on-nothing-1" class="headerlink" title="Prepositions of Time - in/at/on/nothing"></a>Prepositions of Time - in/at/on/nothing</h2><ol>
-<li>Let’s meet (x) tomorrow.</li>
-<li>Let’s meet (at) six o’click.</li>
-<li>He was born (in) July.</li>
-<li>I went there (in) 1978.</li>
-<li>She’ll be at work (on) Friday.</li>
-<li><strong>We met (on) Christmas day. (day 때문)</strong></li>
-<li>The drove to Rochester (on) September 15th. (15th 때문)</li>
-<li>We arrived in this country (in) October.</li>
-<li>I love to go shopping (at) Christmas time. (time 때문)</li>
-<li>We get up early (in) the morning.</li>
-<li>Do you often go out (at) night?</li>
-<li>What do you like doing (on) Sundays?</li>
-<li>She is watching TV. (at) the moment.</li>
-<li>They lived in Germany (in) the 1980s.</li>
-<li>I’ll see you (in) a few weeks.</li>
-</ol>
-<h2 id="Prepositions-of-Place-and-Movement-1"><a href="#Prepositions-of-Place-and-Movement-1" class="headerlink" title="Prepositions of Place and Movement"></a>Prepositions of Place and Movement</h2><ol>
-<li>He lives (in) Montreal.</li>
-<li><strong>I work (in) Tokyo.</strong></li>
-<li><strong>She arrived (in) Madrid yesterday.</strong></li>
-<li><strong>I arrived (at) work early this morning.</strong></li>
-<li>She went (x) there yesterday.</li>
-<li><strong>We went (on) a trip (to) France last year.</strong><ul>
-<li>go on a walk, go on a trip, go on vacation.</li>
-</ul>
-</li>
-<li>We went (to) France last year.</li>
-<li>Let’s go (on/for) a walk after work.</li>
-<li>When will you go (on) vacation?</li>
-<li>We stayed (at/in) the Hotel Vancouver last year.</li>
-<li>She has lived (x) abroad three times.</li>
-<li>We came (x) home early last night.</li>
-<li><strong>Can you run (to) the store and get some mandoo.</strong><ul>
-<li>자동사라서 ~으로를 뜻하는 to가 들어감.</li>
-</ul>
-</li>
-<li><strong>They visited (x) Greece last year.</strong><ul>
-<li>타동사라서 to가 필요 없음.</li>
-</ul>
-</li>
-<li><strong>My cat is waiting (at) the top of the stairs.</strong><ul>
-<li>at the top of something : something의 가장 윗 부분.</li>
-<li>on top of something: something 위에.</li>
-</ul>
-</li>
-<li><strong>Your seat is (in) the tenth row.</strong><ul>
-<li>in the row</li>
-</ul>
-</li>
-<li>Turn left (at) the traffic lights.</li>
-<li>I will meet my girlfriend (in/on) Granville Street.</li>
-<li>I live (on) the fifth floor of my apartment building.</li>
-<li>We waited for over an hour (at) the bus-stop.</li>
-<li>There is a good map (on) page 36.</li>
-<li>Open your books (to) page 36.</li>
-<li>Cairo is (on) the Nile River.<ul>
-<li>Cities are on a river.</li>
-</ul>
-</li>
-<li>What do you have (in) your hands?<ul>
-<li>in: 손 바닥 안에.</li>
-<li>on: 손 등에.</li>
-</ul>
-</li>
-<li>There is beautiful poster (on) the wall.</li>
-<li>There is a small statue (on) the desk.</li>
-<li>There is a magnificent painting hanging (above/over) the desk.</li>
-<li>There is a tall plant (beside/next to/near) the desk.</li>
-</ol>
-<h2 id="Prepositions-with-the-“Be”-verb-많이-틀림-1"><a href="#Prepositions-with-the-“Be”-verb-많이-틀림-1" class="headerlink" title="Prepositions with the “Be” verb (많이 틀림)"></a>Prepositions with the “Be” verb (많이 틀림)</h2><ol>
-<li>I want to see a movie tonight. Who is (with) me?</li>
-<li>I’m sorry. This cake isn’t (for) you. It is not your birthday.</li>
-<li>I got selected to play for the city soccer team. I’m (in)!</li>
-<li>That book is (by) Dickens.</li>
-<li>Are the lights (on)?</li>
-<li>No. They are (off).</li>
-<li><strong>I’m (for) equal rights for men and women. We all have the same rights.</strong></li>
-<li><strong>I’m (against) child labor. I don’t think children should work.</strong><ul>
-<li>for : support</li>
-<li>against : oppose</li>
-</ul>
-</li>
-<li>Mark is (on) the bus, but Kate is (in) a taxi.</li>
-<li><strong>Is Pete here today? Yes, but I’m not sure where. He is (around). I saw him 5 minutes ago.</strong></li>
-<li><strong>You look sick. Are you ok? No. I’m a little (off) today.</strong><ul>
-<li>be off : don’t feel good.</li>
-</ul>
-</li>
-<li><strong>I am so tired. I was (up) until 2am last night.</strong><ul>
-<li>be up : stay awake.</li>
-</ul>
-</li>
-<li><strong>Don’t lie to me. I am (onto) you. I know what you did yesterday.</strong><ul>
-<li>be onto somebody: ~의 잘못을 알고 있다.</li>
-</ul>
-</li>
-<li>Susan is so (into) you. She is always looking at you and smiling.<ul>
-<li>be into something: ~에 관심이 많다.</li>
-</ul>
-</li>
-</ol>
-<h2 id="Prepositions-of-Time-어렵지-않음"><a href="#Prepositions-of-Time-어렵지-않음" class="headerlink" title="Prepositions of Time (어렵지 않음)"></a>Prepositions of Time (어렵지 않음)</h2><ol>
-<li>with + noun</li>
-<li>during + noun</li>
-<li>while + gerund (or S+V)</li>
-<li>for + duration</li>
-<li>since + start time</li>
-</ol>
-<h2 id="Nouns-with-Prepositions-매우-어려움"><a href="#Nouns-with-Prepositions-매우-어려움" class="headerlink" title="Nouns with Prepositions (매우 어려움)"></a>Nouns with Prepositions (매우 어려움)</h2><ol>
-<li><strong>She gave me a check (for) a lot of money.</strong></li>
-<li>The reasons (for) this meeting is to discuss the merger.</li>
-<li><strong>Last month we saw a real increase (in) profits.</strong> <ul>
-<li>decrease in, changes in, differences in, growth in.</li>
-</ul>
-</li>
-<li><strong>There is real demands (for) new products.</strong></li>
-<li>He put a lot of demands (on) his employees</li>
-<li>I hope there is a fall (in) house prices soon.</li>
-<li><strong>The cause (to) his problems is his family.</strong></li>
-<li>Did you do any damage (to) the house?<ul>
-<li>on: 지붕, in: 안쪽, to: 바깥 벽</li>
-</ul>
-</li>
-<li><strong>I think your attitude (toward) your sister is very bad indeed.</strong></li>
-<li>There is no difference (between) the two.</li>
-<li><strong>Did you take a photo (of) the class?</strong><ul>
-<li>with: 같이 찍었을때, of: 내가 클래스 메이트를 찍을 때.</li>
-</ul>
-</li>
-<li>Did you get an invitation (to) her wedding?</li>
-<li>What is the connection (between) the two people.</li>
-<li>Please pay attention (to) your mother.</li>
-</ol>
-<h2 id="Prepositions-with-Comparisons"><a href="#Prepositions-with-Comparisons" class="headerlink" title="Prepositions with Comparisons"></a>Prepositions with Comparisons</h2><ol>
-<li>Your phone is similar (to) mine.</li>
-<li>There is a huge difference (between) liking someone and loving someone.</li>
-<li>How is a horse different (from) pony?</li>
-<li>I’m sorry. I’m not familiar (with) this program.</li>
-<li>Those two books seem quite similar (x).</li>
-<li>Those two books seem quite similar to each other.</li>
-<li><strong>My life now is the same (as) my life five years ago.</strong></li>
-<li>People are the same all over the world.</li>
-<li><strong>Much (like) Americans, Canadians tend to leave home at a young age.</strong></li>
-<li>Korea mandoo looks (like) Japanese gyoza.</li>
-<li>Mark looks (x) happy.</li>
-<li>Mark looks (like) he is happy.</li>
-<li>I prefer reading (to) writing.</li>
-<li>They have similarities in how they book, talk and move.</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/03/05/600W-WRITING-Prepositions/" data-id="cjtiho8db004x2cn29pkzyspn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/03/05/600W-WRITING-Prepositions/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/03/05/600W-WRITING-Prepositions/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="blog-500E-READING-Vocabulary" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/04/500E-READING-Vocabulary/">[500E][READING] Vocabulary</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/04/500E-READING-Vocabulary/">
-            <time datetime="2017-03-03T22:02:01.000Z" itemprop="datePublished">2017-03-04</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/500E/">500E</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/reading/">reading</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/03/04/500E-READING-Vocabulary/" data-id="cjtiho89l002l2cn26owwpoof" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/03/04/500E-READING-Vocabulary/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/03/04/500E-READING-Vocabulary/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="blog-500E-GRAMMAR-UNIT-17-18-Indirect-Speech-and-Indirect-Questions" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/02/20/500E-GRAMMAR-UNIT-17-18-Indirect-Speech-and-Indirect-Questions/">[500E][GRAMMAR] UNIT 17,18 Indirect Speech and Indirect Questions</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/02/20/500E-GRAMMAR-UNIT-17-18-Indirect-Speech-and-Indirect-Questions/">
-            <time datetime="2017-02-20T10:20:33.000Z" itemprop="datePublished">2017-02-20</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/500E/">500E</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/grammar/">grammar</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Driect-Speech의-규칙"><a href="#Driect-Speech의-규칙" class="headerlink" title="Driect Speech의 규칙"></a>Driect Speech의 규칙</h2><ol>
-<li>said와 함께 comma를 찍는다.<ul>
-<li>Our manager <strong>said,</strong> “Treat …”</li>
-</ul>
-</li>
-<li>따옴표 안쪽은 대문자로 시작한다.<ul>
-<li>My colleague said, “<strong>W</strong>e are…”</li>
-</ul>
-</li>
-<li>comma + said가 뒤쪽에 붙을 수 있다.<ul>
-<li>“The…”, the president said.</li>
-</ul>
-</li>
-<li>said사용할 때, S+V가 아닌 V+S 으로도 쓴다. 단, 이때는 이름을 쓴다.<ul>
-<li>“ We didn’t do well this year”, said Liz.</li>
-</ul>
-</li>
-<li>따옴표 마지막에 구두점이 나오면 밖에는 쓰지 않는다.<ul>
-<li>“What are you doing?” he asked.</li>
-<li>“What are you doing?” 새로문 문장 시작.</li>
-</ul>
-</li>
-</ol>
-<h2 id="Indirect-Speech의-규칙"><a href="#Indirect-Speech의-규칙" class="headerlink" title="Indirect Speech의 규칙"></a>Indirect Speech의 규칙</h2><ol>
-<li>시제를 하나씩 되돌린다.<ul>
-<li>is, are =&gt; was, were</li>
-<li>will =&gt; would</li>
-<li>can =&gt; could</li>
-<li>may =&gt; might (???)</li>
-<li>should, might, ought to, could =&gt; 그대로</li>
-</ul>
-</li>
-<li>다음과 같은 경우 시제를 그대로 둘 수 있다.<ul>
-<li>사실, 일반적인 진실<ul>
-<li>He said that a pay raise is a common reward.</li>
-</ul>
-</li>
-<li>습관, 일상, 반복적인 일<ul>
-<li>He said that their meetings always begin on time.</li>
-</ul>
-</li>
-<li>진행 중인 일<ul>
-<li>He said that she is studying hard for the exam.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="Reporting-Verb들"><a href="#Reporting-Verb들" class="headerlink" title="Reporting Verb들."></a>Reporting Verb들.</h2><ol>
-<li>목적어가 필요 없는 동사 (목적어를 쓰려면 to를 붙인다.)<ul>
-<li>admit, announce, complain, confess, exclaim, explain, mention ,remark, reply, report, state, and swear.</li>
-<li>He <strong>swore to us</strong> that he’d be on time in the future.</li>
-</ul>
-</li>
-<li>목적어가 항상 필요한 동사 <ul>
-<li>tell, convince, assure, inform, notify, and remind</li>
-<li>The president reminded them that all workers need to be creative.</li>
-</ul>
-</li>
-<li>say / tell / ask 의 차이<ul>
-<li>say + something + (to someone)</li>
-<li>tell + someone + something</li>
-<li>ask + (someone) + something</li>
-</ul>
-</li>
-</ol>
-<h2 id="Indirect-Imperatives-Requests-and-Advice"><a href="#Indirect-Imperatives-Requests-and-Advice" class="headerlink" title="Indirect Imperatives, Requests, and Advice"></a>Indirect Imperatives, Requests, and Advice</h2><ol>
-<li>명령<ul>
-<li>say/tell + Infinitives</li>
-<li>Mr. Jung said <strong>not to make</strong> a lot of noise.</li>
-</ul>
-</li>
-<li>요청<ul>
-<li>ask/tell/say + Infinitives</li>
-<li>Mr. Cho told us to turn off our cell phones.</li>
-</ul>
-</li>
-<li>충고<ul>
-<li>tell/say + Infinitives</li>
-<li>Carl told us <strong>not to reject</strong> any ideas. </li>
-</ul>
-</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/02/20/500E-GRAMMAR-UNIT-17-18-Indirect-Speech-and-Indirect-Questions/" data-id="cjtiho88f001t2cn2oicw0ftd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/02/20/500E-GRAMMAR-UNIT-17-18-Indirect-Speech-and-Indirect-Questions/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/02/20/500E-GRAMMAR-UNIT-17-18-Indirect-Speech-and-Indirect-Questions/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="blog-500E-GRAMMAR-UNIT-15-That-or-Noun-Clauses-with-Whs-and-If-and-Whether" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/02/20/500E-GRAMMAR-UNIT-15-That-or-Noun-Clauses-with-Whs-and-If-and-Whether/">[500E][GRAMMAR] UNIT 15 ~ 16 - That clauses / Noun clauses with Wh- and If/Whether</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/02/20/500E-GRAMMAR-UNIT-15-That-or-Noun-Clauses-with-Whs-and-If-and-Whether/">
-            <time datetime="2017-02-20T08:44:52.000Z" itemprop="datePublished">2017-02-20</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/500E/">500E</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/grammar/">grammar</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="That-Clauses"><a href="#That-Clauses" class="headerlink" title="That Clauses"></a>That Clauses</h2><h3 id="특징"><a href="#특징" class="headerlink" title="특징"></a>특징</h3><ol>
-<li>Noun clause 이다.<ul>
-<li>Main clause에도 S+V가 있고, that 절에도 S+V가 있다.</li>
-</ul>
-</li>
-<li>That은 종종 생략된다.</li>
-</ol>
-<h3 id="시제"><a href="#시제" class="headerlink" title="시제"></a>시제</h3><ol>
-<li>Main clause가 현재 일 때<ul>
-<li>의미에 따라 that clause는 현재, 과가, 미래가 될 수 있음.<ul>
-<li>Many Americans feel that nothing <strong>is</strong> impossible.</li>
-<li>Some historians don’t think that early American history <strong>influenced</strong> American culture.</li>
-<li>I Assume that you <strong>are going to</strong> do more research.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Main clause가 과가 일 때<ul>
-<li>That clause가 현재 - universal truth나 fact를 표현 할때.<ul>
-<li>Who discovered that the Earth <strong>is</strong> round and not flat?</li>
-</ul>
-</li>
-<li>That clause가 과거 - Main clause와 동시에 일어난 것을 표현 할때.<ul>
-<li>My professor noticed that many students <strong>were writing</strong> about the nineteenth century.</li>
-</ul>
-</li>
-<li>That clause가 과거 완료 - That clause가 먼저 일어난 일 표현<ul>
-<li>I heard that she <strong>had failed</strong> the test.</li>
-</ul>
-</li>
-<li>That clause가 미래 - That clause가 나중에 일어난 일 표현.<ul>
-<li>will 대신 would, was/were going to를 쓴다.</li>
-<li>We discovered that we were going to study twentieth-century history.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="형용사-뒤-That-clause"><a href="#형용사-뒤-That-clause" class="headerlink" title="형용사 뒤 That clause"></a>형용사 뒤 That clause</h3><ol>
-<li><p>감정, 확실성을 표현할 때 사용할 수 있음.</p>
-<ul>
-<li>I’m certain that ~ </li>
-<li>I’m pleased that ~</li>
-</ul>
-</li>
-<li><p>It + be + adjective + that ~</p>
-<ul>
-<li>감정, 확실성의 정도를 표현할 때 사용할 수 있음.</li>
-<li>certain, clear, evident, (un)fortune, interesting, (un)likely, surprising, understandable </li>
-</ul>
-</li>
-</ol>
-<h3 id="명사-뒤-That-clause"><a href="#명사-뒤-That-clause" class="headerlink" title="명사 뒤 That clause"></a>명사 뒤 That clause</h3><ol>
-<li>Noun + That<ul>
-<li>생각을 표현할 때 쓰인다.</li>
-<li>belief, feeling, impression, and possibility</li>
-<li>It was our impression that the historian was wrong.</li>
-</ul>
-</li>
-<li>Noun + be + that<ul>
-<li>concern, difference, hope, idea, impression, point, problem, saying, and views.</li>
-<li>The point is that the United States is a very large country. </li>
-</ul>
-</li>
-</ol>
-<h3 id="동사-뒤-That-clause"><a href="#동사-뒤-That-clause" class="headerlink" title="동사 뒤 That clause"></a>동사 뒤 That clause</h3><ol>
-<li>정신 활동(?)을 표현할 때 쓰인다. <ul>
-<li>assume, believe, decide, discover, expect, feel, find (out), guess, hear, hope, imagine, know, learn, notice, read, realize, recognize, say, see</li>
-<li>Many Americans think that anyone can succeed.</li>
-</ul>
-</li>
-</ol>
-<h3 id="Wh-와-같이-쓰기"><a href="#Wh-와-같이-쓰기" class="headerlink" title="Wh-와 같이 쓰기"></a>Wh-와 같이 쓰기</h3><ol>
-<li>Wh절 안의 순서는 S+V이다.<ul>
-<li>I don’t know what time <strong>it is</strong>.</li>
-</ul>
-</li>
-<li>Wh절은 단수이다.<ul>
-<li>What happened next <strong>is</strong> going to surprise you.</li>
-</ul>
-</li>
-<li>주로 다음 동사 뒤에 나온다고 한다.<ul>
-<li>생각과 의견: consider, know, remember<ul>
-<li>I don’t remember who invented the airplane.</li>
-</ul>
-</li>
-<li>배움과 인식: figure out, find out, see, understand<ul>
-<li>We need to figure out why our invention failed.</li>
-</ul>
-</li>
-<li>감정: care, doubt, hate, like, love<ul>
-<li>Our professor cares how we do our work.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Verb + Preposition 뒤에도 잘 나온다고 한다.<ul>
-<li>care about, decide on, find out about, forget about, know about, learn about, read about, see about</li>
-</ul>
-</li>
-<li>Infinitives와 같이 쓸 때.<ul>
-<li>should나 can을 포함한 절을 who to, whom to, what to 등으로 줄 일 수 있다.</li>
-<li>주로 다음의 부정사가 쓰인다고 한다.<ul>
-<li>to ask, to consider, to decide, to figure, to find, to forget, to know, to learn, to remember, to say, to see, to show, to understand, and to wonder.</li>
-<li>I don’t know what to say<ul>
-<li>= I don’t know what can I say</li>
-</ul>
-</li>
-<li>I don’t know who/whom to ask for<ul>
-<li>= I don’t know who/whom we should ask for</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="If-whether와-함께-사용하는-Noun-clauses"><a href="#If-whether와-함께-사용하는-Noun-clauses" class="headerlink" title="If/whether와 함께 사용하는 Noun clauses"></a>If/whether와 함께 사용하는 Noun clauses</h3><ol>
-<li>용도 - 뭔가 물어볼 때 쓴다.<ul>
-<li>I don’t know if/whether ~</li>
-<li>I’m not sure if/whether ~</li>
-</ul>
-</li>
-<li>시제 - That절 규칙과 같을 것.</li>
-<li>whether의 예외 3가지 (if에는 해당하지 않는 것)<ul>
-<li>or not을 whether 바로 뒤에 쓸 수 있다. (if의 경우 가장 뒤에만.)<ul>
-<li>The scientist didn’t know <strong>whether or not</strong> you would understand her invention.</li>
-</ul>
-</li>
-<li>to 부정사를 쓸 수 있다. (뜻: should, can)<ul>
-<li>He didn’t know whether <strong>to share</strong> his discovery.</li>
-</ul>
-</li>
-<li>preposition 뒤에 쓸 수 있다. <ul>
-<li>다음 동사들이 있다. care about, decide on, find out about, forget about, know about, and read about.</li>
-<li>You should <strong>forget about whether</strong> you’ll make a lot of money with that invention. </li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="that과-if의-차이-정보를-줄-때와-물을-때의-차이"><a href="#that과-if의-차이-정보를-줄-때와-물을-때의-차이" class="headerlink" title="that과 if의 차이 (정보를 줄 때와 물을 때의 차이)"></a>that과 if의 차이 (정보를 줄 때와 물을 때의 차이)</h2><ol>
-<li>Indirect question과 that절을 가진 에서 헷갈릴 수 있는 것. <ol>
-<li>We have heard that</li>
-<li>I’m not sure if</li>
-<li>No one know if</li>
-<li>I understand that</li>
-<li>It’s important that </li>
-<li>There is evidence that</li>
-<li>It is clear that</li>
-<li>It is unclear if</li>
-</ol>
-</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/02/20/500E-GRAMMAR-UNIT-15-That-or-Noun-Clauses-with-Whs-and-If-and-Whether/" data-id="cjtiho88n001x2cn2v4w1dl8p" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/02/20/500E-GRAMMAR-UNIT-15-That-or-Noun-Clauses-with-Whs-and-If-and-Whether/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/02/20/500E-GRAMMAR-UNIT-15-That-or-Noun-Clauses-with-Whs-and-If-and-Whether/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="blog-500E-READING-UNIT-3" class="article article-type-blog" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/02/02/500E-READING-UNIT-3/">[500E][READING] UNIT 3</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/02/02/500E-READING-UNIT-3/">
-            <time datetime="2017-02-01T15:29:20.000Z" itemprop="datePublished">2017-02-02</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/500E/">500E</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/reading/">reading</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Vocabulary"><a href="#Vocabulary" class="headerlink" title="Vocabulary"></a>Vocabulary</h2><ol>
-<li>accurately - 정확하게</li>
-<li>assumption - 추정 </li>
-<li>colleague - 동료</li>
-<li>competence - 능숙함, 능숙도</li>
-<li>consistent with - ~와 일치하는</li>
-<li>equipped with - ~을 갖춘</li>
-<li>extracurricular - 과외의</li>
-<li>innate - 타고난</li>
-<li>nurture - 양육하다</li>
-<li>period - 기간, 시기</li>
-<li>select - (주의를기울여)선택하다.</li>
-<li>theoretically - 이론상으로 </li>
-<li>capture - (사진이나 글로 감정・분위기 등을) 정확히 포착하다, 담아내다.</li>
-<li>creative - 창의적인</li>
-<li>episode - 사건</li>
-<li>exaggerate - 과장하다</li>
-<li>impassioned - 간절한, 열정적인</li>
-<li>motivate - 동기부여하다</li>
-<li>profound - 심오한, 극심한, 깊은, 엄청난</li>
-<li>rely on - 의존하다, 의지하다</li>
-<li>refuge - 피난처, 은신처, 보호시설</li>
-<li>resentful - 분해하는, 분개하는</li>
-<li>significance - 중요성, 의의 </li>
-<li>suspect - 의심하다.</li>
-</ol>
-<h2 id="Vocabulary-Skill-Prefixes-and-suffixes"><a href="#Vocabulary-Skill-Prefixes-and-suffixes" class="headerlink" title="Vocabulary Skill : Prefixes and suffixes"></a>Vocabulary Skill : Prefixes and suffixes</h2><ol>
-<li>Prefix - 의미를 변화 시킴<ol>
-<li>anti-, against, antiwar</li>
-<li>co-, together, cooperation</li>
-<li>extra-, more, extracurricular</li>
-<li>in-, not, independence</li>
-<li>inter-, go between, interact</li>
-<li>mid-, middle, mid-fifties</li>
-<li>mis-, incorrect/badly, misunderstanding</li>
-<li>re-, again, represent</li>
-</ol>
-</li>
-<li>Suffix - 품사를 변화 시킴<ol>
-<li>nouns : -ence, -ance, -tion</li>
-<li>adj. : -ent, -ant, -ful</li>
-<li>verbs : -ate, -ize</li>
-</ol>
-</li>
-</ol>
-<h2 id="Grammar-Past-Perfect"><a href="#Grammar-Past-Perfect" class="headerlink" title="Grammar : Past Perfect"></a>Grammar : Past Perfect</h2><p>생략.</p>
-<h2 id="My-vocabulary"><a href="#My-vocabulary" class="headerlink" title="My vocabulary"></a>My vocabulary</h2><ol>
-<li>choir - 합창단, 성가대 (콰이어)</li>
-<li>prize - 상</li>
-<li>award a scholarship - 장학금을 주다.</li>
-<li>commitment - 헌신</li>
-<li>dread - 두려워하다</li>
-<li>thrive - 잘 자라다</li>
-<li>rebel - 반항하다</li>
-<li>adopt - (특정한 방식이나 자세를) 쓰다, 취하다.</li>
-<li>supportive - 힘을 주는 </li>
-<li>in particular - 특히</li>
-<li>pay close attention - 세심한 주의를 기울이다.</li>
-<li>excel - 뛰어나다.</li>
-<li>bond - 유대</li>
-<li>could it be that xxx ? - ~라고 할수 있을까?</li>
-<li>bounce back - 다시 회복되다.</li>
-<li>pull away - 떠나다.</li>
-<li>on a regular basis - 정기적으로</li>
-<li><p>self-reliance - 자기 의존 </p>
-</li>
-<li><p>no matter how late - 아무리 늦어도 </p>
-</li>
-<li>go off - 자리를 뜨다.</li>
-<li>end up - 결국 처하게 되다.</li>
-<li>on one’s own terms - 자기 방식대</li>
-<li>poetry - 시</li>
-<li>a sense of purpose - 목적의식</li>
-<li>excuse - 변명, 구실</li>
-<li>lurch by - 휘청거리다</li>
-<li>tramp around - 터벅터벅 걷다</li>
-<li>in turn - 차례차례(?)</li>
-<li>take part in - 참가하다.</li>
-<li>put down - 내려두다, 적다.</li>
-<li>get one’s hand on - 손에 넣다.</li>
-<li>bold - 대담한</li>
-<li>original - 독창적인</li>
-<li>fly in the ointment - 옥의 티 (연고안의 파리?)</li>
-<li>above everything else - 다른 무엇 보다도</li>
-<li>taunt - 놀리다, 비웃다, 조롱하다.</li>
-<li>people involved - 관련된 사람(?)</li>
-<li>for sure - 확실히</li>
-<li>People looked to him to put into words what was going on<ul>
-<li>look to - 기대하다(?)</li>
-<li>put into - 표현하다(?)</li>
-</ul>
-</li>
-<li>throughout one’s life - 일생을 통하여</li>
-<li>spiritual - 정신의, 정신적인</li>
-<li>aesthetic - 심미적, 미학적</li>
-<li>luxuriate in - 즐기다 탐닉하다. </li>
-<li>hook over - ~에 걸다</li>
-<li>in a trance - 딴데 정신이 팔려</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://soopdop.github.io/2017/02/02/500E-READING-UNIT-3/" data-id="cjtiho89a002e2cn247gznc87" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://soopdop.github.io/2017/02/02/500E-READING-UNIT-3/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://soopdop.github.io/2017/02/02/500E-READING-UNIT-3/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/27/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/29/">Next &raquo;</a>
     </nav>
@@ -3019,8 +2482,8 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
-                            <p class="item-title"><a href="/2019/03/21/Summary-김과장-비즈니스-영어로-날다-2019-03-15/" class="title">[Summary] 김과장 비즈니스 영어로 날다 2019-03-15</a></p>
-                            <p class="item-date"><time datetime="2019-03-21T09:57:47.000Z" itemprop="datePublished">2019-03-21</time></p>
+                            <p class="item-title"><a href="/2019/03/28/Summary-김과장-비즈니스-영어로-날다-2019-03-22/" class="title">[Summary] 김과장 비즈니스 영어로 날다 2019-03-22</a></p>
+                            <p class="item-date"><time datetime="2019-03-28T12:19:37.000Z" itemprop="datePublished">2019-03-28</time></p>
                         </div>
                     </li>
                 
@@ -3028,8 +2491,8 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
-                            <p class="item-title"><a href="/2019/03/20/Summary-김과장-비즈니스-영어로-날다-2019-03-14/" class="title">[Summary] 김과장 비즈니스 영어로 날다 2019-03-14</a></p>
-                            <p class="item-date"><time datetime="2019-03-20T14:29:42.000Z" itemprop="datePublished">2019-03-20</time></p>
+                            <p class="item-title"><a href="/2019/03/28/Summary-김과장-비즈니스-영어로-날다-2019-03-21/" class="title">[Summary] 김과장 비즈니스 영어로 날다 2019-03-21</a></p>
+                            <p class="item-date"><time datetime="2019-03-28T12:19:34.000Z" itemprop="datePublished">2019-03-28</time></p>
                         </div>
                     </li>
                 
@@ -3037,8 +2500,8 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
-                            <p class="item-title"><a href="/2019/03/19/Summary-김과장-비즈니스-영어로-날다-2019-03-13/" class="title">[Summary] 김과장 비즈니스 영어로 날다 2019-03-13</a></p>
-                            <p class="item-date"><time datetime="2019-03-19T14:38:22.000Z" itemprop="datePublished">2019-03-19</time></p>
+                            <p class="item-title"><a href="/2019/03/28/Summary-김과장-비즈니스-영어로-날다-2019-03-20/" class="title">[Summary] 김과장 비즈니스 영어로 날다 2019-03-20</a></p>
+                            <p class="item-date"><time datetime="2019-03-28T12:19:32.000Z" itemprop="datePublished">2019-03-28</time></p>
                         </div>
                     </li>
                 
@@ -3046,8 +2509,8 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
-                            <p class="item-title"><a href="/2019/03/18/Summary-김과장-비즈니스-영어로-날다-2019-03-12/" class="title">[Summary] 김과장 비즈니스 영어로 날다 2019-03-12</a></p>
-                            <p class="item-date"><time datetime="2019-03-18T13:44:17.000Z" itemprop="datePublished">2019-03-18</time></p>
+                            <p class="item-title"><a href="/2019/03/28/Summary-김과장-비즈니스-영어로-날다-2019-03-19/" class="title">[Summary] 김과장 비즈니스 영어로 날다 2019-03-19</a></p>
+                            <p class="item-date"><time datetime="2019-03-28T12:19:29.000Z" itemprop="datePublished">2019-03-28</time></p>
                         </div>
                     </li>
                 
@@ -3055,8 +2518,8 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a></p>
-                            <p class="item-title"><a href="/2019/03/16/Summary-김과장-비즈니스-영어로-날다-2019-03-11/" class="title">[Summary] 김과장 비즈니스 영어로 날다 2019-03-11</a></p>
-                            <p class="item-date"><time datetime="2019-03-16T14:29:02.000Z" itemprop="datePublished">2019-03-16</time></p>
+                            <p class="item-title"><a href="/2019/03/28/Summary-김과장-비즈니스-영어로-날다-2019-03-18/" class="title">[Summary] 김과장 비즈니스 영어로 날다 2019-03-18</a></p>
+                            <p class="item-date"><time datetime="2019-03-28T12:19:26.000Z" itemprop="datePublished">2019-03-28</time></p>
                         </div>
                     </li>
                 
@@ -3069,7 +2532,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">319</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">325</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -3078,7 +2541,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -3087,7 +2550,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">320</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/400/">400</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500E/">500E</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/500W/">500W</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/600W/">600W</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">326</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/etc/">etc</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grammar/">grammar</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-Book-Summary/">javascript, Book Summary</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-jsfiddle/">javascript, jsfiddle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osd/">osd</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/">writing</a><span class="tag-list-count">8</span></li></ul>
         </div>
     </div>
 
